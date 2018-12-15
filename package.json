@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "postbuild": "mv public/js/infinity.css public/css"
   },
   "author": "zachary kadish",
   "license": "ISC",
@@ -15,6 +16,8 @@
     "babel-loader": "^8.0.4",
     "css-loader": "^1.0.1",
     "html5-boilerplate": "^6.1.0",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
     "node-sass-json-importer": "^4.1.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

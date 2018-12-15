@@ -1,12 +1,17 @@
 const path = require('path');
 const jsonImporter = require('node-sass-json-importer');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+// TODO: add postcss - autoprefixer
 
 module.exports = {
   mode: 'production',
-  entry: './src/js/index.js',
+  entry: {
+    infinity: './src/index.js'
+  },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    filename: '[name].js',
+    path: path.resolve(__dirname, "public/js"),
   },
   module: {
     rules: [
@@ -16,10 +21,16 @@ module.exports = {
         loader: "babel-loader",
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.(sc|c)ss$/,
         use: [
-          { loader: 'css-loader' },
-          { loader: 'style-loader' },
+          // { loader: 'style-loader' },
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPathx: "public/css",
+            }
+          },
+          'css-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -29,5 +40,10 @@ module.exports = {
         ],
       }
     ]
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    })
+  ],
 }
