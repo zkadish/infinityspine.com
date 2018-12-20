@@ -1,3 +1,20 @@
+@import "./material-ui/layout/variables";
+@import "./material-ui/layout/mixins";
+
 body {
   background-color: lightblue;
+}
+
+// over ride padding for all grids
+.mdc-layout-grid {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.header {
+  background: #fff;
+}
+
+.secondary-menu {
+  @include mdc-layout-grid-cell(desktop, 4, 0);
 }
