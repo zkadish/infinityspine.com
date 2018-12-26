@@ -1,18 +1,51 @@
 @import "./material-ui/layout/variables";
 @import "./material-ui/layout/mixins";
 
-body {
-  background-color: lightblue;
-}
+$MAIN_BLUE: #2c3384;
 
-// over ride padding for all grids
-.mdc-layout-grid {
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-
+// home page
 .header {
   background: #fff;
+  height: 120px;
+  &__logo {
+    img {
+      margin: 24px;
+      height: 72px;
+    }
+  }
+}
+
+.main-menu {
+  display: flex;
+  align-items: center;
+}
+
+// mdc overrides
+.mdc-button:not(:disabled) {
+  color: var(--mdc-theme-primary, $MAIN_BLUE);
+}
+
+// Call to Action Splashes
+.splash {
+  position: relative;
+
+  &__images {
+    img {
+      width: 100%;
+    }
+  }
+
+  .splash-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 1px dashed blue;
+    &__text {
+
+    };
+  }
 }
 
 .secondary-menu {

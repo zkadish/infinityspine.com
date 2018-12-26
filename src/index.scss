@@ -1,7 +1,10 @@
-@import './css/normalize.css';
-@import './css/main.css';
+@import "./css/normalize.css";
+@import "./css/main.css";
 
-@import './scss/material-ui/layout/mdc-layout-grid.scss';
-@import './scss/home.scss';
+@import "./scss/material-ui/layout/mdc-layout-grid.scss";
+@import "../node_modules/@material/button/dist/mdc.button.css";
 
-@import './scss/temp.scss';
+@import "./scss/global.scss";
+@import "./scss/home.scss";
+
+@import "./scss/temp.scss";

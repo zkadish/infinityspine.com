@@ -1156,7 +1156,8 @@ body {
   padding-bottom: 0px; }
 
 .header {
-  background: #fff; }
+  background: #fff;
+  height: 120px; }
 
 .secondary-menu {
   width: calc(33.33333% - 0);

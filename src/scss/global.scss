@@ -1,0 +1,27 @@
+// Global
+body {
+  background-color: lightblue;
+}
+
+// over ride padding for all grids
+.mdc-layout-grid {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.vertical-rule {
+  width: 1px;
+  height: 15px;
+  margin: 0 1em;
+  border-left: 1px solid #000;
+}
+
+.no-margin {
+  padding: 0;
+}
