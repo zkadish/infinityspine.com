@@ -1,5 +1,6 @@
-@import "./material-ui/layout/variables";
-@import "./material-ui/layout/mixins";
+// @import "./material-ui/layout/variables";
+// @import "./material-ui/layout/mixins";
+@import "@material/button/mdc-button";
 
 $MAIN_BLUE: #2c3384;
 
@@ -9,7 +10,7 @@ $MAIN_BLUE: #2c3384;
   height: 120px;
   &__logo {
     img {
-      margin: 24px;
+      margin: 24px 0;
       height: 72px;
     }
   }
@@ -21,9 +22,9 @@ $MAIN_BLUE: #2c3384;
 }
 
 // mdc overrides
-.mdc-button:not(:disabled) {
-  color: var(--mdc-theme-primary, $MAIN_BLUE);
-}
+// .mdc-button:not(:disabled) {
+//   color: var(--mdc-theme-primary, $MAIN_BLUE);
+// }
 
 // Call to Action Splashes
 .splash {
@@ -37,17 +38,65 @@ $MAIN_BLUE: #2c3384;
 
   .splash-content {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     border: 1px dashed blue;
-    &__text {
-
-    };
+    // #new-patient {
+    //   border: 1px solid red;
+    //   width: 200px;
+    //   height: 100px;
+    // }
+    .mdc-card {
+      position: relative;
+      top: 10vh;
+      padding: 24px;
+      width: 50vw;
+      background: rgba(255, 255, 255, .5);
+      font-size: 2.2rem;
+      text-align: center;
+    }
+    .new-patient {
+      @include mdc-button-ink-color(teal);
+      @include mdc-states(teal);
+      position: relative;
+      top: 30vh;
+      height: inherit;
+      padding: 16px;
+      // border: 1px solid red;
+      font-size: 1.5rem;
+    }
+    &__social {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      top: 20%;
+      left: 5%;
+      border: 1px solid red;
+      .fab {
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 0 20px;
+      }
+      .fa-at {
+        text-align: center;
+      }
+    }
+    .new-patient-btn {
+      height: inherit;
+      padding: 16px;
+      // border: 1px solid red;
+      font-size: 1.5rem;
+    }
   }
 }
 
-.secondary-menu {
-  @include mdc-layout-grid-cell(desktop, 4, 0);
-}
+// .secondary-menu {
+//   @include mdc-layout-grid-cell(desktop, 4, 0);
+// }

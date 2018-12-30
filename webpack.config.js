@@ -1,7 +1,9 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const jsonImporter = require('node-sass-json-importer');
+const autoprefixer = require('autoprefixer');
 
 const devMode = process.env.NODE_ENV !== 'production';
 const mode = process.env.NODE_ENV;
@@ -52,16 +54,18 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              options: {
-                config: {
-                  path: `${__dirname} /postcss.config.js`,
-                },
-              },
+              plugins: () => [autoprefixer()],
+              // options: {
+              //   config: {
+              //     path: `${__dirname} /postcss.config.js`,
+              //   },
+              // },
             },
           },
           {
             loader: 'sass-loader',
             options: {
+              includePaths: ['./node_modules'],
               importer: jsonImporter(),
             },
           },
@@ -79,13 +83,43 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.woff$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '../fonts',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'svg',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      PRODUCTION: JSON.stringify(process.env.NODE_ENV === 'production'),
+    }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       inject: devMode,
       template: path.resolve(__dirname, 'src/index.html'),
+      title: 'Infinity Spine',
+      javascript: !devMode ? '<script src="js/infinity.js"></script>' : '',
+      styles: !devMode ? '<link rel="stylesheet" href="css/infinity.css">' : '',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
