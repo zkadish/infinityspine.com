@@ -1,12 +1,14 @@
+import { MDCRipple } from '@material/ripple';
+
 console.log('js/index.js loaded!x');
-
 console.log(PRODUCTION);
-// const head = document.querySelector('head');
-// const body = document.querySelector('body');
-// const styles = '<link rel="stylesheet" href="css/infinity.css">';
-// const javascript = '<script src="js/infinity.js"></script>';
 
-// if (PRODUCTION) {
-//   head.appendChild(styles);
-//   body.appendChild(javascript);
-// }
+// Init Buttons
+const home = new MDCRipple(document.querySelector('.main-nav__home'));
+const about = new MDCRipple(document.querySelector('.main-nav__about'));
+const treatments = new MDCRipple(document.querySelector('.main-nav__treatments'));
+const testimonials = new MDCRipple(document.querySelector('.main-nav__testimonials'));
+const blog = new MDCRipple(document.querySelector('.main-nav__blog'));
+const contact = new MDCRipple(document.querySelector('.main-nav__contact'));
+
+const newPatient = new MDCRipple(document.querySelector('.new-patient'));

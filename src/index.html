@@ -28,18 +28,18 @@
         <img alt="infinity-spine" src="img/logo.png" />
       </div>
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 flex">
-        <div class="main-menu">
-          <button class="mdc-button">home</button>
+        <div class="main-nav">
+          <button class="main-nav__home mdc-button">home</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">about</button>
+          <button class="main-nav__about mdc-button">about</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">treatments</button>
+          <button class="main-nav__treatments mdc-button">treatments</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">testimonials</button>
+          <button class="main-nav__testimonials mdc-button">testimonials</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">blog</button>
+          <button class="main-nav__blog mdc-button">blog</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">contact</button>
+          <button class="main-nav__contact mdc-button">contact</button>
         </div>
       </div>
     </div>
@@ -56,8 +56,9 @@
               will be some of the most important
               choices you make in your life!
           </div>
-          <button class="new-patient mdc-button">
-            NEW PATIENT
+          <button class="new-patient mdc-fab mdc-fab--extended" aria-label="new patient">
+              <i class="fab fa-pagelines"></i>&nbsp
+              <span class="mdc-fab__label">New Patient</span>
           </button>
           <!-- <div id="new-patient">
             test
