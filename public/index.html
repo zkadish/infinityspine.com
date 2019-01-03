@@ -28,18 +28,18 @@
         <img alt="infinity-spine" src="img/logo.png" />
       </div>
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 flex">
-        <div class="main-menu">
-          <button class="mdc-button">home</button>
+        <div class="main-nav">
+          <button class="main-nav__home mdc-button">home</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">about</button>
+          <button class="main-nav__about mdc-button">about</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">treatments</button>
+          <button class="main-nav__treatments mdc-button">treatments</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">testimonials</button>
+          <button class="main-nav__testimonials mdc-button">testimonials</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">blog</button>
+          <button class="main-nav__blog mdc-button">blog</button>
           <hr class="vertical-rule" />
-          <button class="mdc-button">contact</button>
+          <button class="main-nav__contact mdc-button">contact</button>
         </div>
       </div>
     </div>
@@ -56,37 +56,43 @@
               will be some of the most important
               choices you make in your life!
           </div>
-          <button class="new-patient mdc-button">
-            NEW PATIENT
+          <button class="new-patient mdc-fab mdc-fab--extended" aria-label="new patient">
+              <i class="fab fa-pagelines"></i>&nbsp
+              <span class="mdc-fab__label">New Patient</span>
           </button>
-          <!-- <div id="new-patient">
-            test
-          </div> -->
-          <!-- <button class="new-patient-btn mdc-fab mdc-fab--extended">
-            <span class="material-icons mdc-fab__icon">add</span>
-            <span class="mdc-fab__label">New Patient</span>
-          </button> -->
           <div class="splash-content__social">
-            <i class="fab fa-facebook-square"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-twitter-square"></i>
-            <i class="fas fa-at fa-lg"></i>
+            <button class="social mdc-fab">
+              <i class="fab fa-facebook-square"></i>
+            </button>
+            <button class="social mdc-fab">
+              <i class="fab fa-instagram"></i>
+            </button>
+            <button class="social mdc-fab">
+              <i class="fab fa-twitter-square"></i>
+            </button>
+            <button class="social mdc-fab">
+              <i class="fas fa-at fa-lg"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="mdc-layout-grid">
+  <div class="call-today mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-        Call today...
+        Call today for your personal consultation 480.656.6200
       </div>
     </div>
   </div>
-  <div class="mdc-layout-grid">
+  <div class="selling-points mdc-layout-grid">
     <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-        Selling points...
+      <div class="selling-points__img mdc-layout-grid__cell mdc-layout-grid__cell--span-5">
+        <img src="img/runners.png" alt="sport specific treatments" width="300" />
+        <img src="img/scoliosis.png" alt="injury specific treatments" width="300" />
+      </div>
+      <div class="selling-points__copy mdc-layout-grid__cell mdc-layout-grid__cell--span-7">
+        copy
       </div>
     </div>
   </div>

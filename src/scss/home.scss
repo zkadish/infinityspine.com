@@ -7,17 +7,19 @@
 .header {
   background: #fff;
   height: 120px;
+
   &__logo {
+
     img {
       margin: 24px 0;
       height: 72px;
     }
   }
-}
 
-.main-nav {
-  display: flex;
-  align-items: center;
+  .main-nav {
+    display: flex;
+    align-items: center;
+  }
 }
 
 // Call to Action Splashes
@@ -25,6 +27,9 @@
   position: relative;
 
   &__images {
+    height: 670px;
+    overflow: hidden;
+
     img {
       width: 100%;
     }
@@ -40,14 +45,15 @@
     right: 0;
     bottom: 0;
     left: 0;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid $GREY_LIGHT;
 
     .mdc-card {
       position: relative;
       top: 10vh;
       padding: 24px;
       width: 50vw;
-      background: rgba(255, 255, 255, .5);
+      background: $TRANSPARENT_WHITE;
+      color: $BLUE_DARK;
       font-size: 2.2rem;
       text-align: center;
     }
@@ -67,18 +73,74 @@
       flex-direction: column;
       top: 20%;
       left: 5%;
-      border: 1px solid red;
 
-      .fab {
-        display: flex;
-        justify-content: center;
-        font-size: 2rem;
+      button {
         margin: 0 0 20px;
       }
 
-      .fa-at {
-        text-align: center;
+      .fab {
+        font-size: 2rem;
       }
+
+      .fa-at {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
+.call-today {
+  display: flex;
+  height: 110px;
+  background: $BLUE_DARK;
+  .mdc-layout-grid__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    font-family: "robotothin", Arial, Helvetica, sans-serif;
+  }
+}
+
+.selling-points {
+  &__img {
+    display: flex;
+    justify-content: center;
+    height: 640px;
+
+    .mdc-layout-grid__cell {
+      &:nth-child(1) {
+        padding-top: 48px;
+      }
+      &:nth-child(2) {
+        padding-bottom: 48px;
+      }
+      width: 100%;
+    }
+  }
+
+  &__copy {
+    display: flex;
+    height: 640px;
+    .mdc-layout-grid__inner {
+      width: 100%;
+    }
+
+    .mdc-layout-grid__cell {
+      position: relative;
+      height: 308px;
+      color: $BLUE_DARK;
+      font-family: "robotothin", Arial, Helvetica, sans-serif;
+      font-size: 1.2rem;
+      &:nth-child(1) {
+        display: flex;
+      }
+    }
+
+    &--upper-text {
+      position: absolute;
+      bottom: 0;
     }
   }
 }

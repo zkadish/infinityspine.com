@@ -2,13 +2,14 @@
 $BLUE_DARK: #2c3384;
 $BLUE_MEDIUM: #3658a8;
 $BLUE_LIGHT: #00aeef;
-$GREY: #cbcaca;
+$GREY_LIGHT: #cbcaca;
+$TRANSPARENT_WHITE: rgba(255,255,255,.5);
 
 // background colors
 $mdc-theme-primary: #2c3384;
 $mdc-theme-secondary: #3658a8;
 $mdc-theme-surface: #2c3384;
-$mdc-theme-background: #fff;
+$mdc-theme-background: red;
 
 // text colors
 $mdc-theme-on-primary: #fff;
@@ -21,7 +22,7 @@ $mdc-theme-text-hint-on-background: #fff;
 $mdc-theme-text-disabled-on-background: #fff;
 $mdc-theme-text-icon-on-background: #fff;
 
-$mdc-theme-text-primary-on-light: #000;
+$mdc-theme-text-primary-on-light: red;
 $mdc-theme-text-secondary-on-light: #000;
 $mdc-theme-text-hint-on-light: #000;
 $mdc-theme-text-disabled-on-light: #000;
@@ -32,6 +33,15 @@ $mdc-theme-text-secondary-on-dark: #fff;
 $mdc-theme-text-hint-on-dark: #fff;
 $mdc-theme-text-disabled-on-dark: #fff;
 $mdc-theme-text-icon-on-dark: #fff;
+
+// header tag reset
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
 
 
 
