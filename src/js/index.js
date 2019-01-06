@@ -5,6 +5,14 @@ import '../img/logo.png';
 import '../img/back-pain-01.jpg';
 import '../img/runners.png';
 import '../img/scoliosis.png';
+import '../img/adjustment.png';
+import '../img/sports.png';
+import '../img/functional.png';
+import '../img/red-light.png';
+import '../img/breathing.png';
+import '../img/knee.png';
+import '../img/elbow.png';
+import '../img/dr-john-thoma.jpg';
 
 console.log('PRODUCTION', PRODUCTION);
 

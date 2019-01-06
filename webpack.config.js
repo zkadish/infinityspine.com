@@ -8,8 +8,6 @@ const autoprefixer = require('autoprefixer');
 const devMode = process.env.NODE_ENV !== 'production';
 const mode = process.env.NODE_ENV;
 
-console.log(devMode);
-
 // NOTE: to gain more control you can make separate
 // webpack configs for the js and the css
 // TODO: add postcss - autoprefixer - Verify its working
@@ -17,7 +15,7 @@ console.log(devMode);
 // TODO: add eslint-loader: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
 // TODO: add styleLint: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
 
-// console.log('debMode:', devMode);
+console.log('debMode:', devMode);
 // console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
 
 module.exports = {
@@ -39,7 +37,6 @@ module.exports = {
       {
         test: /\.(sc|c)ss$/,
         use: [
-          // 'style-loader',
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           // {
           //   loader: MiniCssExtractPlugin.loader,
@@ -71,7 +68,7 @@ module.exports = {
           },
         ],
       },
-      {
+      { // images are imported into src/js/index.js
         test: /\.(png|jpg|gif)$/,
         use: [
           {
@@ -90,19 +87,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts',
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'svg',
+              outputPath: devMode ? 'fonts' : '../fonts',
             },
           },
         ],

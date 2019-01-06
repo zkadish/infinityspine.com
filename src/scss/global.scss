@@ -10,6 +10,16 @@ body {
   padding-bottom: 0px;
 }
 
+// override padding for a grid
+.no-margin {
+  padding: 0;
+}
+
+// override cell margin for a grid
+.no-gap {
+  grid-gap: 0;
+}
+
 .flex {
   display: flex;
   align-items: center;
@@ -21,8 +31,4 @@ body {
   height: 15px;
   margin: 0 1em;
   border-left: 1px solid #000;
-}
-
-.no-margin {
-  padding: 0;
 }
