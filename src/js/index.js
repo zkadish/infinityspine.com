@@ -24,9 +24,9 @@ const testimonials = new MDCRipple(document.querySelector('.main-nav__testimonia
 const blog = new MDCRipple(document.querySelector('.main-nav__blog'));
 const contact = new MDCRipple(document.querySelector('.main-nav__contact'));
 
-const facebook = new MDCRipple(document.querySelectorAll('.social')[0]);
-const instagram = new MDCRipple(document.querySelectorAll('.social')[1]);
-const twitter = new MDCRipple(document.querySelectorAll('.social')[2]);
-const email = new MDCRipple(document.querySelectorAll('.social')[3]);
+// const facebook = new MDCRipple(document.querySelector('.social'));
+// const instagram = new MDCRipple(document.querySelectorAll('.social')[1]);
+// const twitter = new MDCRipple(document.querySelectorAll('.social')[2]);
+// const email = new MDCRipple(document.querySelectorAll('.social')[3]);
 
 const newPatient = new MDCRipple(document.querySelector('.new-patient'));
