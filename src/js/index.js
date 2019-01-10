@@ -2,6 +2,7 @@ import { MDCRipple } from '@material/ripple';
 
 // import images
 import '../img/logo.png';
+import '../img/logo-only.png';
 import '../img/back-pain-01.jpg';
 import '../img/runners.png';
 import '../img/scoliosis.png';
