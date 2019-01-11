@@ -69,7 +69,6 @@
     justify-content: space-evenly;
     align-items: center;
     border-bottom: 1px solid $GREY_LIGHT;
-    border: 1px solid red;
 
     .mdc-card {
       padding: 24px;
@@ -148,9 +147,16 @@
     color: $BLUE_DARK;
     font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
+
     &:nth-child(3) {
       & > div {
         bottom: 0;
+      }
+    }
+
+    &:nth-child(4) {
+      .selling-points__copy {
+        bottom: auto;
       }
     }
   }
@@ -170,6 +176,8 @@
   &__copy {
     position: absolute;
     bottom: 0;
+    margin: 0 24px 0 0;
+    max-width: 620px;
   }
 }
 
@@ -232,6 +240,11 @@
     text-align: center;
   }
 
+  &__copy {
+    margin: 0 24px 0 0;
+    max-width: 620px;
+  }
+
   img {
     width: 300px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -247,7 +260,6 @@
 
 // call to action
 .testimonials-header {
-  // height: 110px;
   background: $BLUE_DARK;
   border-bottom: 1px solid $GREY_LIGHT;
 
@@ -263,14 +275,15 @@
 }
 
 .testimonials {
-  .mdc-layout-grid__inner {
-    padding: 72px 48px 0;
-  }
+  padding: 72px 96px 24px;
+  // padding-top: 72px;
+  // padding-bottom: 72px;
+  // .mdc-layout-grid__inner {
+  // }
 }
 
 // class to action
 .testimonials-footer {
-  // height: 110px;
   background: white;
   border-bottom: 1px solid $GREY_LIGHT;
 
@@ -286,7 +299,6 @@
 }
 
 .blog-header {
-  // height: 110px;
   background: $GREY_LIGHT;
   border-bottom: 1px solid $GREY_LIGHT;
 
@@ -302,20 +314,10 @@
 }
 
 .blog-preview {
-  padding-top: 96px;
-
-  img {
-    width: 360px;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
-  }
-
-  h2 {
-    margin: 24px 0;
-  }
+  padding: 96px 0 48px;
 
   .mdc-layout-grid__cell {
     position: relative;
-    height: 520px;
     color: $BLUE_DARK;
     font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: 1.175rem;
@@ -333,6 +335,16 @@
       justify-content: flex-start;
     }
   }
+
+  img {
+    width: 100%;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  h2 {
+    margin: 24px 0;
+  }
+
   &__post {
     width: 360px;
   }
@@ -357,15 +369,17 @@
 }
 
 .footer {
-  padding: 72px 0 96px;
+  padding: 72px 48px 96px;
   background-color: $BLUE_DARK;
   color: white;
   font-family: "robotothin", Arial, Helvetica, sans-serif;
+  // border: 1px solid red;
 
   .mdc-layout-grid__cell {
     display: flex;
     justify-content: center;
     line-height: 2;
+    // border: 1px solid red;
 
     .fab {
       margin: 10px 5px 0 0;
@@ -380,20 +394,35 @@
     }
 
     &:nth-child(1) {
+      // border: 1px solid red;
       h2 {
         position: relative;
-        top: 14px;
+        top: 15px;
         font-family: "sportscenter", Arial, Helvetica, sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+        letter-spacing: 4px;
+      }
+
+      .footer__content--copy {
+        position: relative;
+        top: 13px;
+        padding: 0 48px 0 0;
       }
     }
 
     &:nth-child(2) {
       display: flex;
+      margin: 24px 0 0;
       align-items: center;
       
       .name {
         text-align: center;
+      }
+    }
+
+    &:nth-child(3) {
+      h2 {
+        letter-spacing: 4px;
       }
     }
   }
