@@ -1,0 +1,133 @@
+@media (max-width: 1279px) and (min-width: 1024px) {
+  body { border: 1px dashed green; }
+  .header {
+    padding: 0 48px;
+    &__logo {
+      img {
+        width: 102px;
+      }
+      &--copy {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  .vertical-rule {
+    margin: 0 .5em;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 864px) {
+  body { border: 1px dashed red; }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+  }
+
+  .vertical-rule {
+    margin: 0 .5em;
+  }
+
+  .header {
+    padding: 0 48px;
+
+    .mdc-layout-grid__cell {
+      &:nth-child(2) {
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+    }
+
+    &__logo {
+      img {
+        width: 102px;
+      }
+      &--copy {
+        font-size: 1.1rem;
+      }
+    }
+    .main-nav {
+      top: 0;
+    }
+  }
+
+  .splash {
+    &__content {
+      .mdc-card {
+        width: 680px;
+        font-size: 1.8rem;
+      }
+
+      .mobile-call {
+        bottom: -33px;
+        height: 60px;
+        width: 60px;
+        .fas {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .call-to-action {
+    &__copy {
+      line-height: 1.75;
+    }
+  }
+
+  .selling-points {
+    &__img {
+      // position: absolute;
+      // right: 16px;
+      // height: 260px;
+      // width: 260px;
+    }
+  }
+
+  .sub-nav {
+    .mdc-layout-grid__cell {
+      padding: 16px 16px 24px 32px;
+      // border: 10px solid red;
+      // color: white;
+  
+      // h2 {
+      //   margin: 0 0 24px;
+      // }
+  
+      // &:nth-child(2n - 1) {
+      //   background: $BLUE_MEDIUM;
+      // }
+      
+      // &:nth-child(2n) {
+      //   background: $GREY_LIGHT;
+      // }
+
+      &:nth-child(4) {
+        // background: $GREY_LIGHT;
+        font-size: .75rem;
+        border: 1px solid red;
+      }
+    }
+  }
+}
+
+@media (max-width: 863px) and (min-width: 480px) {
+  body { border: 1px dashed blue; }
+  .header {
+    padding: 0 48px;
+    &__logo {
+      img {
+        width: 102px;
+      }
+      &--copy {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  .vertical-rule {
+    margin: 0 .5em;
+  }
+}

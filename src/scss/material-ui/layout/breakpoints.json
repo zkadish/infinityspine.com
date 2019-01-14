@@ -1,7 +1,12 @@
 {
   "breakpoints": {
-    "desktop": "840px",
-    "tablet": "480px",
+    "desk1920": "1920px",
+    "desk1600": "1600px",
+    "desk1440": "1440px",
+    "desk1280": "1280px",
+    "desk1024": "1024px",
+    "tab864": "864px",
+    "pho480": "480px",
     "phone": "0px"
   }
 }

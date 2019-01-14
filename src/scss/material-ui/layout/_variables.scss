@@ -21,32 +21,57 @@
 @import "breakpoints.json";
 
 $mdc-layout-grid-breakpoints: (
-  desktop: map-get($breakpoints, desktop),
-  tablet: map-get($breakpoints, tablet),
+  desk1920: map-get($breakpoints, desk1920),
+  desk1600: map-get($breakpoints, desk1600),
+  desk1440: map-get($breakpoints, desk1440),
+  desk1280: map-get($breakpoints, desk1280),
+  desk1024: map-get($breakpoints, desk1024),
+  tab864: map-get($breakpoints, tab864),
+  pho480: map-get($breakpoints, pho480),
   phone: map-get($breakpoints, phone)
 ) !default;
 
 $mdc-layout-grid-columns: (
-  desktop: 12,
-  tablet: 8,
+  desk1920: 12,
+  desk1600: 12,
+  desk1440: 12,
+  desk1280: 12,
+  desk1024: 12,
+  tab864: 12,
+  pho480: 8,
   phone: 4
 ) !default;
 
 $mdc-layout-grid-default-margin: (
-  desktop: 24px,
-  tablet: 16px,
-  phone: 16px
+  desk1920: 24px,
+  desk1600: 24px,
+  desk1440: 24px,
+  desk1280: 24px,
+  desk1024: 24px,
+  tab864: 16px,
+  pho480: 8px,
+  phone: 8px
 ) !default;
 
 $mdc-layout-grid-default-gutter: (
-  desktop: 24px,
-  tablet: 16px,
-  phone: 16px
+  desk1920: 24px,
+  desk1600: 24px,
+  desk1440: 24px,
+  desk1280: 24px,
+  desk1024: 24px,
+  tab864: 16px,
+  pho480: 8px,
+  phone: 8px
 ) !default;
 
 $mdc-layout-grid-column-width: (
-  desktop: 72px,
-  tablet: 72px,
+  desk1920: 72px,
+  desk1600: 72px,
+  desk1440: 72px,
+  desk1280: 72px,
+  desk1024: 72px,
+  tab864: 72px,
+  pho480: 72px,
   phone: 72px
 ) !default;
 

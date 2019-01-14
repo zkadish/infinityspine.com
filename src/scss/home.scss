@@ -4,24 +4,29 @@
 @import "@material/fab/mdc-fab";
 
 .header {
-  background: white;
+  // background: white;
   padding: 0 72px;
   border-bottom: 1px solid $GREY_LIGHT;
   
   .mdc-layout-grid__cell {
     display: flex;
     align-items: center;
-    height: 120px;
+    &:nth-child(1) {
+      margin: 24px 0;
+    }
+    // height: 120px;
     // border: 1px solid red;
+    &:nth-child(2) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
   }
 
   &__logo {
-    // text-align: center;
-    // padding: 24px 0 0;
-    // border: 1px solid red;
+    width: 332px;
 
     img {
-      // margin: 0 0 10px;
       width: 116px;
     }
 
@@ -58,7 +63,7 @@
     }
   }
 
-  .splash-content {
+  &__content {
     position: absolute;
     top: 0;
     right: 0;
@@ -72,7 +77,7 @@
 
     .mdc-card {
       padding: 24px;
-      width: 50vw;
+      width: 720px;
       background: $TRANSPARENT_WHITE;
       color: $BLUE_DARK;
       font-size: 2.2rem;
@@ -86,7 +91,7 @@
       font-size: 1.5rem;
     }
 
-    &__social {
+    &--social {
       position: absolute;
       display: flex;
       flex-direction: column;
