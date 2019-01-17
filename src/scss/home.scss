@@ -281,10 +281,6 @@
 
 .testimonials {
   padding: 72px 96px 24px;
-  // padding-top: 72px;
-  // padding-bottom: 72px;
-  // .mdc-layout-grid__inner {
-  // }
 }
 
 // class to action
@@ -378,13 +374,11 @@
   background-color: $BLUE_DARK;
   color: white;
   font-family: "robotothin", Arial, Helvetica, sans-serif;
-  // border: 1px solid red;
 
   .mdc-layout-grid__cell {
     display: flex;
     justify-content: center;
     line-height: 2;
-    // border: 1px solid red;
 
     .fab {
       margin: 10px 5px 0 0;
@@ -399,7 +393,6 @@
     }
 
     &:nth-child(1) {
-      // border: 1px solid red;
       h2 {
         position: relative;
         top: 15px;

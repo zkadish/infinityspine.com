@@ -75,40 +75,56 @@
   .call-to-action {
     &__copy {
       line-height: 1.75;
+      h1 {
+        text-align: center;
+      }
     }
   }
 
   .selling-points {
     &__img {
-      // position: absolute;
-      // right: 16px;
-      // height: 260px;
-      // width: 260px;
+      right: 24px;
     }
   }
 
   .sub-nav {
     .mdc-layout-grid__cell {
       padding: 16px 16px 24px 32px;
-      // border: 10px solid red;
-      // color: white;
-  
-      // h2 {
-      //   margin: 0 0 24px;
-      // }
-  
-      // &:nth-child(2n - 1) {
-      //   background: $BLUE_MEDIUM;
-      // }
-      
-      // &:nth-child(2n) {
-      //   background: $GREY_LIGHT;
-      // }
 
       &:nth-child(4) {
-        // background: $GREY_LIGHT;
         font-size: .75rem;
         border: 1px solid red;
+      }
+    }
+  }
+
+  .treatments {
+    &__img {
+      right: 24px;
+    }
+  }
+
+  .blog-preview {
+    .mdc-layout-grid__cell {
+      
+      &:nth-child(1) {
+        justify-content: flex-end;
+      }
+      &:nth-child(2) {
+        justify-content: flex-start;
+      }
+      &:nth-child(3) {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .footer {
+    .mdc-layout-grid__cell {
+      &:nth-child(1) {
+        h2 {
+          font-size: 1rem;
+        }
       }
     }
   }
