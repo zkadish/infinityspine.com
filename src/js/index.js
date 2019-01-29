@@ -3,7 +3,8 @@ import { MDCRipple } from '@material/ripple';
 // import images
 import '../img/logo.png';
 import '../img/logo-only.png';
-import '../img/back-pain-01.png';
+import '../img/splash-01.png';
+import '../img/splash-01-pho480.png';
 import '../img/runners.png';
 import '../img/scoliosis.png';
 import '../img/adjustment.png';
@@ -32,8 +33,11 @@ const contact = new MDCRipple(document.querySelector('.main-nav__contact')); // 
 
 const newPatient = new MDCRipple(document.querySelector('.new-patient')); // eslint-disable-line
 
+// select images
+const splash01 = document.querySelector('#splash-01');
+console.log(splash01);
 
-window.onresize = () => {
+function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
     console.log('desk1920');
   }
@@ -60,9 +64,16 @@ window.onresize = () => {
 
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
     console.log('pho480');
+    splash01.setAttribute('src', 'img/splash-01-pho480.png');
   }
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
     console.log('phone');
   }
+}
+
+window.onresize = () => {
+  matchMedia();
 };
+
+matchMedia();

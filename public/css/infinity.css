@@ -7002,6 +7002,8 @@ body {
       justify-content: flex-end; }
   .header__logo {
     width: 332px; }
+    .header__logo--mobile-nav {
+      display: none; }
     .header__logo img {
       width: 116px; }
     .header__logo--copy {
@@ -7025,7 +7027,7 @@ body {
     overflow: hidden; }
     .splash__images img {
       width: 100%; }
-  .splash .splash-content {
+  .splash__content {
     position: absolute;
     top: 0;
     right: 0;
@@ -7036,29 +7038,29 @@ body {
     justify-content: space-evenly;
     align-items: center;
     border-bottom: 1px solid #cbcaca; }
-    .splash .splash-content .mdc-card {
+    .splash__content .mdc-card {
       padding: 24px;
-      width: 50vw;
+      width: 720px;
       background: rgba(255, 255, 255, 0.5);
       color: #2c3384;
       font-size: 2.2rem;
       text-align: center; }
-    .splash .splash-content .new-patient {
+    .splash__content .new-patient {
       height: inherit;
       padding: 16px;
       border-radius: 5px;
       font-size: 1.5rem; }
-    .splash .splash-content__social {
+    .splash__content--social {
       position: absolute;
-      display: flex;
-      flex-direction: column;
       top: 20%;
-      left: 5%; }
-      .splash .splash-content__social button {
+      left: 5%;
+      display: flex;
+      flex-direction: column; }
+      .splash__content--social button {
         margin: 0 0 20px; }
-      .splash .splash-content__social .fab, .splash .splash-content__social .fas {
+      .splash__content--social .fab, .splash__content--social .fas {
         font-size: 2rem; }
-    .splash .splash-content .mobile-call {
+    .splash__content .mobile-call {
       position: absolute;
       bottom: -43px;
       height: 80px;
@@ -7067,7 +7069,7 @@ body {
       border: none;
       border-radius: 50%;
       font-size: 2rem; }
-      .splash .splash-content .mobile-call .fas {
+      .splash__content .mobile-call .fas {
         position: relative;
         top: 3px;
         color: white;
@@ -7149,8 +7151,7 @@ body {
     font-size: 1.2rem; }
   .treatments__img {
     position: absolute;
-    right: 48px;
-    text-align: center; }
+    right: 48px; }
   .treatments__copy {
     margin: 0 24px 0 0;
     max-width: 620px; }
@@ -7289,6 +7290,12 @@ body {
 @media (max-width: 1023px) and (min-width: 864px) {
   body {
     border: 1px dashed red; }
+  h1 {
+    font-size: 2rem; }
+  h2 {
+    font-size: 1.45rem; }
+  .vertical-rule {
+    margin: 0 .5em; }
   .header {
     padding: 0 48px; }
     .header .mdc-layout-grid__cell:nth-child(2) {
@@ -7300,18 +7307,144 @@ body {
       font-size: 1.1rem; }
     .header .main-nav {
       top: 0; }
-  .vertical-rule {
-    margin: 0 .5em; } }
+  .splash__content .mdc-card {
+    width: 680px;
+    font-size: 1.8rem; }
+  .splash__content .mobile-call {
+    bottom: -33px;
+    height: 60px;
+    width: 60px; }
+    .splash__content .mobile-call .fas {
+      font-size: 2rem; }
+  .call-to-action__copy {
+    line-height: 1.75; }
+    .call-to-action__copy h1 {
+      text-align: center; }
+  .selling-points__img {
+    right: 24px; }
+  .sub-nav .mdc-layout-grid__cell {
+    padding: 16px 16px 24px 32px; }
+    .sub-nav .mdc-layout-grid__cell:nth-child(4) {
+      font-size: .75rem;
+      border: 1px solid red; }
+  .treatments__img {
+    right: 24px; }
+  .blog-preview .mdc-layout-grid__cell:nth-child(1) {
+    justify-content: flex-end; }
+  .blog-preview .mdc-layout-grid__cell:nth-child(2) {
+    justify-content: flex-start; }
+  .blog-preview .mdc-layout-grid__cell:nth-child(3) {
+    justify-content: flex-end; }
+  .footer .mdc-layout-grid__cell:nth-child(1) h2 {
+    font-size: 1rem; } }
 
 @media (max-width: 863px) and (min-width: 480px) {
   body {
     border: 1px dashed blue; }
+  h1 {
+    font-size: 2rem; }
+  h2 {
+    font-size: 1.45rem; }
+  .vertical-rule {
+    margin: 0 .5em; }
   .header {
-    padding: 0 48px; }
-    .header__logo img {
-      width: 102px; }
-    .header__logo--copy {
-      font-size: 1.1rem; }
+    padding: 24px 48px; }
+    .header .mdc-layout-grid__cell:nth-child(2) {
+      display: none; }
+    .header__logo {
+      display: flex;
+      width: auto; }
+      .header__logo .mdc-fab {
+        border-radius: 5px;
+        margin-right: 32px;
+        font-size: 2rem; }
+      .header__logo--mobile-nav {
+        display: block; }
+      .header__logo img {
+        width: 102px; }
+      .header__logo--copy {
+        font-size: 1.1rem; }
+    .header .main-nav {
+      top: 0; }
+  .splash {
+    height: 310px; }
+    .splash__content .mdc-card {
+      display: none; }
+    .splash__content .new-patient {
+      position: relative;
+      top: 50px;
+      justify-content: flex-end; }
+    .splash__content--social {
+      left: 10%;
+      right: 10%;
+      flex-direction: row;
+      justify-content: space-between; }
+      .splash__content--social button {
+        margin: 0; }
+  .call-to-action__copy {
+    text-align: center; }
+    .call-to-action__copy h1 {
+      font-size: 1.7rem; }
+  .selling-points {
+    padding-top: 48px;
+    padding-bottom: 48px; }
+    .selling-points .mdc-layout-grid__inner {
+      grid-gap: 0; }
+    .selling-points .mdc-layout-grid__cell:nth-child(2) {
+      height: auto;
+      padding: 16px 32px; }
+    .selling-points .mdc-layout-grid__cell:nth-child(3) {
+      display: none; }
+    .selling-points .mdc-layout-grid__cell:nth-child(4) {
+      height: auto;
+      padding: 0 32px; }
+    .selling-points__copy {
+      position: relative;
+      bottom: inherit; }
+  .sub-nav .mdc-layout-grid__cell:nth-child(2) {
+    background: #cbcaca; }
+  .sub-nav .mdc-layout-grid__cell:nth-child(3) {
+    background: #cbcaca; }
+  .sub-nav .mdc-layout-grid__cell:nth-child(4) {
+    background: #3658a8; }
+  .treatments {
+    display: flex;
+    justify-content: center; }
+    .treatments .mdc-layout-grid__cell {
+      height: inherit; }
+      .treatments .mdc-layout-grid__cell:nth-child(2n+2) {
+        margin: 0 0 48px; }
+      .treatments .mdc-layout-grid__cell:nth-child(8) {
+        margin: 0; }
+    .treatments__img {
+      position: static;
+      right: inherit; }
+    .treatments__copy {
+      width: 300px;
+      margin: 0; }
+  .testimonials-footer__copy {
+    padding: 0 32px;
+    text-align: center; }
+    .testimonials-footer__copy h1 {
+      font-size: 1.7rem; }
+  .blog-preview .mdc-layout-grid__cell:nth-child(1) {
+    justify-content: center; }
+  .blog-preview .mdc-layout-grid__cell:nth-child(2) {
+    padding: 48px 0; }
+  .blog-preview .mdc-layout-grid__cell:nth-child(3) {
+    justify-content: center; }
+  .blog-preview h2 {
+    margin: 24px 0 0; }
+  .footer .mdc-layout-grid__cell:nth-child(2) {
+    padding: 48px; }
+  .footer .mdc-layout-grid__cell .fab {
+    margin-right: 16px;
+    font-size: 3.5rem; }
+  .footer .mdc-layout-grid__cell .fas {
+    margin-right: 16px;
+    font-size: 3rem; }
+    .footer .mdc-layout-grid__cell .fas:last-child {
+      margin-right: 0; }
   .vertical-rule {
     margin: 0 .5em; } }
 

@@ -15,7 +15,7 @@ const mode = process.env.NODE_ENV;
 // TODO: add eslint-loader: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
 // TODO: add styleLint: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
 
-console.log('debMode:', devMode);
+console.log('devMode:', devMode);
 // console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
 
 module.exports = {

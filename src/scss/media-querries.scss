@@ -227,6 +227,13 @@
     }
 
     .mdc-layout-grid__cell {
+      display: flex;
+      justify-content: center;
+
+      &:nth-child(1) {
+        height: 360px;
+      }
+
       &:nth-child(2) {
         height: auto;
         padding: 16px 32px;
@@ -242,9 +249,22 @@
       }
     }
 
+    img {
+      width: 360px;
+    }
+
+    &__img {
+      position: static;
+      height: 360px;
+      width: 100%;
+      text-align: center;
+    }
+
     &__copy {
-      position: relative;
+      position: static;
       bottom: inherit;
+      max-width: 360px;
+      margin: 0;
     }
   }
   
@@ -284,9 +304,18 @@
     }
 
     &__copy {
-      width: 300px;
+      width: 360px;
       margin: 0;
     }
+
+    img {
+      width: 360px;
+    }
+  }
+
+  .testimonials {
+    padding-right: 60px;
+    padding-left: 60px;
   }
 
   .testimonials-footer {
