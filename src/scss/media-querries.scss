@@ -65,6 +65,7 @@
         bottom: -33px;
         height: 60px;
         width: 60px;
+        border: 1px solid red;
         .fas {
           font-size: 2rem;
         }
@@ -177,9 +178,9 @@
       }
     }
 
-    .main-nav {
-      top: 0;
-    }
+    // .main-nav {
+    //   top: 0;
+    // }
   }
 
   .splash {
@@ -367,8 +368,116 @@
       }
     }
   }
+}
+
+@media (max-width: 479px) {
+  body { border: 1px dashed red; }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.45rem;
+  }
 
   .vertical-rule {
     margin: 0 .5em;
+  }
+
+  .header {
+    padding: 8px 24px;
+
+    .mdc-layout-grid__cell {
+      &:nth-child(2) {
+        display: none;
+      }
+    }
+
+    &__logo {
+      display: flex;
+      width: auto;
+      
+      .mdc-fab {
+        border-radius: 5px;
+        margin-right: 24px;
+        font-size: 1.7rem;
+        height: 45px;
+        width: 45px;
+      }
+
+      &--mobile-nav {
+        display: block;
+      }
+
+      img {
+        width: 70px;
+      }
+
+      &--copy {
+        font-size: .75rem;
+      }
+    }
+  }
+
+  .splash {
+    height: 207px; // remove allow image to define height
+
+    &__content {
+      .mdc-card {
+        display: none;
+      }
+
+      .new-patient {
+        position: relative;
+        top: 25px;
+        justify-content: flex-end;
+        padding: 8px 16px 8px 8px;
+        font-size: 1.2rem;
+
+        .fab {
+          display: none;
+        }
+      }
+
+      &--social {
+        top: 10%;
+        left: 5%;
+        right: 5%;
+        flex-direction: row;
+        justify-content: space-between;
+
+        button {
+          margin: 0;
+        }
+
+        .mdc-fab {
+          height: 48px;
+          width: 48px;
+        }
+
+        .fab, .fas {
+          font-size: 1.7rem;
+        }
+      }
+
+      .mobile-call {
+        // position: absolute;
+        bottom: -33px;
+        height: 60px;
+        width: 60px;
+        // background-color: $BLUE_DARK;
+        // border: none;
+        // border-radius: 50%;
+        // font-size: 1.5rem;
+        // border: 1px solid red;
+        .fas {
+          position: relative;
+          top: 0;
+          color: white;
+          font-size: 2rem;
+        }
+      }
+    }
   }
 }

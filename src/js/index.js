@@ -69,6 +69,7 @@ function matchMedia() {
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
     console.log('phone');
+    splash01.setAttribute('src', 'img/splash-01-pho480.png');
   }
 }
 
