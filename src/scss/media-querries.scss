@@ -17,8 +17,6 @@
 }
 
 @media (max-width: 1023px) and (min-width: 864px) {
-  body { border: 1px dashed red; }
-
   h1 {
     font-size: 2rem;
   }
@@ -65,7 +63,6 @@
         bottom: -33px;
         height: 60px;
         width: 60px;
-        border: 1px solid red;
         .fas {
           font-size: 2rem;
         }
@@ -94,7 +91,6 @@
 
       &:nth-child(4) {
         font-size: .75rem;
-        border: 1px solid red;
       }
     }
   }
@@ -371,7 +367,6 @@
 }
 
 @media (max-width: 479px) {
-  body { border: 1px dashed red; }
 
   h1 {
     font-size: 2rem;
@@ -462,22 +457,192 @@
       }
 
       .mobile-call {
-        // position: absolute;
         bottom: -33px;
         height: 60px;
         width: 60px;
-        // background-color: $BLUE_DARK;
-        // border: none;
-        // border-radius: 50%;
-        // font-size: 1.5rem;
-        // border: 1px solid red;
         .fas {
-          position: relative;
           top: 0;
-          color: white;
           font-size: 2rem;
         }
       }
     }
+  }
+
+  .call-to-action {
+    &__copy {
+      height: 125px;
+      text-align: center;
+      h1 {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .selling-points {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
+    .mdc-layout-grid__inner {
+      grid-gap: 0;
+    }
+
+    .mdc-layout-grid__cell {
+      display: flex;
+      justify-content: center;
+
+      &:nth-child(1) {
+        height: 260px;
+      }
+
+      &:nth-child(2) {
+        height: auto;
+        padding: 16px 0;
+      }
+
+      &:nth-child(3) {
+        display: none;
+      }
+
+      &:nth-child(4) {
+        height: auto;
+        padding: 0;
+      }
+    }
+
+    img {
+      width: 260px;
+    }
+
+    &__img {
+      position: static;
+      width: 100%;
+      text-align: center;
+    }
+
+    &__copy {
+      position: static;
+      bottom: inherit;
+      max-width: 260px;
+      margin: 0;
+    }
+  }
+
+  .treatments {
+    display: flex;
+    justify-content: center;
+
+    .mdc-layout-grid__cell {
+      height: inherit;
+      &:nth-child(2n+2) {
+        margin: 0 0 48px;
+      }
+      &:nth-child(8) {
+        margin: 0;
+      }
+    }
+
+    &__img {
+      position: static;
+      right: inherit;
+    }
+
+    &__copy {
+      width: 280px;
+      margin: 0;
+    }
+
+    img {
+      width: 280px;
+    }
+  }
+
+  .testimonials {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .testimonials-footer {
+    &__copy {
+      padding: 0 32px;
+      text-align: center;
+      h1 {
+        font-size: 1.35rem;
+      }
+    }
+  }
+
+  .blog-header {
+    &__copy {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  .blog-preview {
+    padding: 48px 0 0;
+
+    .mdc-layout-grid__cell {
+      margin: 0 0 24px;
+
+      &:nth-child(1) {
+        justify-content: center;
+      }
+      &:nth-child(2) {
+        justify-content: center;
+      }
+      &:nth-child(3) {
+        justify-content: center;
+        margin: 0;
+      }
+    }
+
+    h2 {
+      margin: 24px 0 0;
+    }
+
+    &__post {
+      width: 260px;
+    }
+  }
+
+  .footer {
+    padding: 48px 16px;
+
+    .mdc-layout-grid__cell {
+      line-height: 1.5;
+
+      &:nth-child(2) {
+        padding: 24px;
+      }
+
+      .fab {
+        margin-right: 11px;
+        font-size: 3rem;
+      }
+      .fas {
+        margin-right: 11px;
+        font-size: 2.75rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+      &:nth-child(1) {
+        h2 {
+          // position: relative;
+          top: 0;
+          // font-family: "sportscenter", Arial, Helvetica, sans-serif;
+          font-size: .75rem;
+          // letter-spacing: 4px;
+        }
+  
+        .footer__content--copy {
+          position: relative;
+          top: 13px;
+          padding: 0;
+        }
+      }
+    } 
   }
 }

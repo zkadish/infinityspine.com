@@ -37,30 +37,30 @@
       
       @include mdc-layout-grid($size, $margin, $mdc-layout-grid-max-width);
 
-      @if $size == desk1920 {
-        border: 1px solid lightgreen;
-      }
-      @if $size == desk1600 {
-        border: 1px solid lightblue;
-      }
-      @if $size == desk1440 {
-        border: 1px solid yellow;
-      }
-      @if $size == desk1280 {
-        border: 1px solid purple;
-      }
-      @if $size == desk1024 {
-        border: 1px solid red;
-      }
-      @if $size == tab864 {
-        border: 1px solid blue;
-      }
-      @if $size == pho480 {
-        border: 1px solid green;
-      }
-      @if $size == phone {
-        border: 1px solid orange;
-      }
+      // @if $size == desk1920 {
+      //   border: 1px solid lightgreen;
+      // }
+      // @if $size == desk1600 {
+      //   border: 1px solid lightblue;
+      // }
+      // @if $size == desk1440 {
+      //   border: 1px solid yellow;
+      // }
+      // @if $size == desk1280 {
+      //   border: 1px solid purple;
+      // }
+      // @if $size == desk1024 {
+      //   border: 1px solid red;
+      // }
+      // @if $size == tab864 {
+      //   border: 1px solid blue;
+      // }
+      // @if $size == pho480 {
+      //   border: 1px solid green;
+      // }
+      // @if $size == phone {
+      //   border: 1px solid orange;
+      // }
     }
   }
 }
