@@ -128,8 +128,6 @@
 }
 
 @media (max-width: 863px) and (min-width: 480px) {
-  body { border: 1px dashed blue; }
-
   h1 {
     font-size: 2rem;
   }
@@ -173,15 +171,9 @@
         font-size: 1.1rem;
       }
     }
-
-    // .main-nav {
-    //   top: 0;
-    // }
   }
 
   .splash {
-    height: 310px; // remove allow image to define height
-
     &__content {
       .mdc-card {
         display: none;
@@ -367,7 +359,6 @@
 }
 
 @media (max-width: 479px) {
-
   h1 {
     font-size: 2rem;
   }
@@ -416,8 +407,6 @@
   }
 
   .splash {
-    height: 207px; // remove allow image to define height
-
     &__content {
       .mdc-card {
         display: none;
@@ -630,11 +619,8 @@
 
       &:nth-child(1) {
         h2 {
-          // position: relative;
           top: 0;
-          // font-family: "sportscenter", Arial, Helvetica, sans-serif;
           font-size: .75rem;
-          // letter-spacing: 4px;
         }
   
         .footer__content--copy {
@@ -644,5 +630,18 @@
         }
       }
     } 
+  }
+
+  .mobile-nav {
+    top: 110px;
+    width: inherit;
+    .mdc-button {
+      display: flex;
+      justify-content: flex-start;
+      height: 60px;
+      width: 100%;
+      padding: 0 16px;
+      font-size: 1rem;
+    }
   }
 }

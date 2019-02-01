@@ -3,6 +3,10 @@
 @import "@material/button/mdc-button";
 @import "@material/fab/mdc-fab";
 
+.container {
+  position: relative;
+}
+
 .header {
   // background: white;
   padding: 0 72px;
@@ -425,5 +429,28 @@
         letter-spacing: 4px;
       }
     }
+  }
+}
+
+.mobile-nav {
+  position: absolute;
+  top: 158px;
+  width: 50%;
+  left: 0;
+  background: white;
+  border-right: 1px solid #ccc;
+  .mdc-button {
+    display: flex;
+    justify-content: flex-start;
+    height: 70px;
+    width: 100%;
+    padding: 0 24px;
+    font-size: 1.25rem;
+  }
+  .horizontal-rule{
+    height: 0;
+    width: 100%;
+    margin: 0;
+    border-left: 1px solid #ccc;
   }
 }

@@ -32,3 +32,18 @@ body {
   margin: 0 1em;
   border-left: 1px solid #000;
 }
+
+.horizontal-rule {
+  // width: 1px;
+  height: 1px;
+  margin: 1em 0;
+  border-left: 1px solid #000;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-flex {
+  display: flex;
+}
