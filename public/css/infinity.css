@@ -5233,64 +5233,56 @@ h2 {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 24px;
-    padding: var(--mdc-layout-grid-margin-desk1920, 24px);
-    border: 1px solid lightgreen; } }
+    padding: var(--mdc-layout-grid-margin-desk1920, 24px); } }
 
 @media (min-width: 1600px) and (max-width: 1919px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 24px;
-    padding: var(--mdc-layout-grid-margin-desk1600, 24px);
-    border: 1px solid lightblue; } }
+    padding: var(--mdc-layout-grid-margin-desk1600, 24px); } }
 
 @media (min-width: 1440px) and (max-width: 1599px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 24px;
-    padding: var(--mdc-layout-grid-margin-desk1440, 24px);
-    border: 1px solid yellow; } }
+    padding: var(--mdc-layout-grid-margin-desk1440, 24px); } }
 
 @media (min-width: 1280px) and (max-width: 1439px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 24px;
-    padding: var(--mdc-layout-grid-margin-desk1280, 24px);
-    border: 1px solid purple; } }
+    padding: var(--mdc-layout-grid-margin-desk1280, 24px); } }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 24px;
-    padding: var(--mdc-layout-grid-margin-desk1024, 24px);
-    border: 1px solid red; } }
+    padding: var(--mdc-layout-grid-margin-desk1024, 24px); } }
 
 @media (min-width: 864px) and (max-width: 1023px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 16px;
-    padding: var(--mdc-layout-grid-margin-tab864, 16px);
-    border: 1px solid blue; } }
+    padding: var(--mdc-layout-grid-margin-tab864, 16px); } }
 
 @media (min-width: 480px) and (max-width: 863px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 8px;
-    padding: var(--mdc-layout-grid-margin-pho480, 8px);
-    border: 1px solid green; } }
+    padding: var(--mdc-layout-grid-margin-pho480, 8px); } }
 
 @media (max-width: 479px) {
   .mdc-layout-grid {
     box-sizing: border-box;
     margin: 0 auto;
     padding: 8px;
-    padding: var(--mdc-layout-grid-margin-phone, 8px);
-    border: 1px solid orange; } }
+    padding: var(--mdc-layout-grid-margin-phone, 8px); } }
 
 @media (min-width: 1920px) {
   .mdc-layout-grid__inner {
@@ -6514,6 +6506,17 @@ body {
   margin: 0 1em;
   border-left: 1px solid #000; }
 
+.horizontal-rule {
+  height: 1px;
+  margin: 1em 0;
+  border-left: 1px solid #000; }
+
+.display-none {
+  display: none; }
+
+.display-flex {
+  display: flex; }
+
 @-webkit-keyframes mdc-ripple-fg-radius-in {
   from {
     -webkit-animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -6988,9 +6991,17 @@ body {
     transition: transform 135ms 0ms cubic-bezier(0.4, 0, 1, 1);
     transition: transform 135ms 0ms cubic-bezier(0.4, 0, 1, 1), -webkit-transform 135ms 0ms cubic-bezier(0.4, 0, 1, 1); }
 
+.container {
+  position: relative; }
+
 .header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: white;
   padding: 0 72px;
-  border-bottom: 1px solid #cbcaca; }
+  border-bottom: 1px solid #cbcaca;
+  z-index: 1000; }
   .header .mdc-layout-grid__cell {
     display: flex;
     align-items: center; }
@@ -7002,10 +7013,12 @@ body {
       justify-content: flex-end; }
   .header__logo {
     width: 332px; }
-    .header__logo--mobile-nav {
-      display: none; }
+    .header__logo a {
+      text-decoration: none; }
     .header__logo img {
       width: 116px; }
+    .header__logo--mobile-nav {
+      display: none; }
     .header__logo--copy {
       position: relative;
       top: 8px;
@@ -7067,8 +7080,7 @@ body {
       width: 80px;
       background-color: #2c3384;
       border: none;
-      border-radius: 50%;
-      font-size: 2rem; }
+      border-radius: 50%; }
       .splash__content .mobile-call .fas {
         position: relative;
         top: 3px;
@@ -7102,6 +7114,7 @@ body {
     .selling-points .mdc-layout-grid__cell:nth-child(4) .selling-points__copy {
       bottom: auto; }
   .selling-points img {
+    width: 260px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
   .selling-points__img {
     position: absolute;
@@ -7111,8 +7124,8 @@ body {
   .selling-points__copy {
     position: absolute;
     bottom: 0;
-    margin: 0 24px 0 0;
-    max-width: 620px; }
+    max-width: 620px;
+    margin: 0 24px 0 0; }
 
 .sub-nav .mdc-layout-grid__cell {
   padding: 24px 24px 32px 40px;
@@ -7275,6 +7288,47 @@ body {
     .footer .mdc-layout-grid__cell:nth-child(3) h2 {
       letter-spacing: 4px; }
 
+.mobile-nav {
+  position: absolute;
+  top: 158px;
+  width: 50%;
+  left: 0;
+  background: white;
+  border-right: 1px solid #ccc; }
+  .mobile-nav .mdc-button {
+    display: flex;
+    justify-content: flex-start;
+    height: 70px;
+    width: 100%;
+    padding: 0 24px;
+    font-size: 1.25rem; }
+  .mobile-nav .horizontal-rule {
+    height: 0;
+    width: 100%;
+    margin: 0;
+    border-left: 1px solid #ccc; }
+
+.nucca-chiropractic {
+  padding-top: 48px;
+  padding-bottom: 48px; }
+  .nucca-chiropractic .mdc-button--unelevated:not(:disabled) {
+    background-color: var(--mdc-theme-primary, #3658a8); }
+  .nucca-chiropractic .mdc-layout-grid__cell {
+    position: relative;
+    color: #2c3384;
+    font-family: "robotothin", Arial, Helvetica, sans-serif;
+    font-size: 1.2rem; }
+  .nucca-chiropractic__img {
+    position: absolute;
+    right: 48px; }
+  .nucca-chiropractic__copy {
+    max-width: 620px; }
+    .nucca-chiropractic__copy p {
+      margin: 0 0 24px; }
+  .nucca-chiropractic img {
+    width: 300px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
+
 @media (max-width: 1279px) and (min-width: 1024px) {
   body {
     border: 1px dashed green; }
@@ -7288,8 +7342,6 @@ body {
     margin: 0 .5em; } }
 
 @media (max-width: 1023px) and (min-width: 864px) {
-  body {
-    border: 1px dashed red; }
   h1 {
     font-size: 2rem; }
   h2 {
@@ -7325,8 +7377,7 @@ body {
   .sub-nav .mdc-layout-grid__cell {
     padding: 16px 16px 24px 32px; }
     .sub-nav .mdc-layout-grid__cell:nth-child(4) {
-      font-size: .75rem;
-      border: 1px solid red; }
+      font-size: .75rem; }
   .treatments__img {
     right: 24px; }
   .blog-preview .mdc-layout-grid__cell:nth-child(1) {
@@ -7339,8 +7390,6 @@ body {
     font-size: 1rem; } }
 
 @media (max-width: 863px) and (min-width: 480px) {
-  body {
-    border: 1px dashed blue; }
   h1 {
     font-size: 2rem; }
   h2 {
@@ -7364,23 +7413,19 @@ body {
         width: 102px; }
       .header__logo--copy {
         font-size: 1.1rem; }
-    .header .main-nav {
-      top: 0; }
-  .splash {
-    height: 310px; }
-    .splash__content .mdc-card {
-      display: none; }
-    .splash__content .new-patient {
-      position: relative;
-      top: 50px;
-      justify-content: flex-end; }
-    .splash__content--social {
-      left: 10%;
-      right: 10%;
-      flex-direction: row;
-      justify-content: space-between; }
-      .splash__content--social button {
-        margin: 0; }
+  .splash__content .mdc-card {
+    display: none; }
+  .splash__content .new-patient {
+    position: relative;
+    top: 50px;
+    justify-content: flex-end; }
+  .splash__content--social {
+    left: 10%;
+    right: 10%;
+    flex-direction: row;
+    justify-content: space-between; }
+    .splash__content--social button {
+      margin: 0; }
   .call-to-action__copy {
     text-align: center; }
     .call-to-action__copy h1 {
@@ -7390,17 +7435,31 @@ body {
     padding-bottom: 48px; }
     .selling-points .mdc-layout-grid__inner {
       grid-gap: 0; }
-    .selling-points .mdc-layout-grid__cell:nth-child(2) {
-      height: auto;
-      padding: 16px 32px; }
-    .selling-points .mdc-layout-grid__cell:nth-child(3) {
-      display: none; }
-    .selling-points .mdc-layout-grid__cell:nth-child(4) {
-      height: auto;
-      padding: 0 32px; }
+    .selling-points .mdc-layout-grid__cell {
+      display: flex;
+      justify-content: center; }
+      .selling-points .mdc-layout-grid__cell:nth-child(1) {
+        height: 360px; }
+      .selling-points .mdc-layout-grid__cell:nth-child(2) {
+        height: auto;
+        padding: 16px 32px; }
+      .selling-points .mdc-layout-grid__cell:nth-child(3) {
+        display: none; }
+      .selling-points .mdc-layout-grid__cell:nth-child(4) {
+        height: auto;
+        padding: 0 32px; }
+    .selling-points img {
+      width: 360px; }
+    .selling-points__img {
+      position: static;
+      height: 360px;
+      width: 100%;
+      text-align: center; }
     .selling-points__copy {
-      position: relative;
-      bottom: inherit; }
+      position: static;
+      bottom: inherit;
+      max-width: 360px;
+      margin: 0; }
   .sub-nav .mdc-layout-grid__cell:nth-child(2) {
     background: #cbcaca; }
   .sub-nav .mdc-layout-grid__cell:nth-child(3) {
@@ -7420,8 +7479,13 @@ body {
       position: static;
       right: inherit; }
     .treatments__copy {
-      width: 300px;
+      width: 360px;
       margin: 0; }
+    .treatments img {
+      width: 360px; }
+  .testimonials {
+    padding-right: 60px;
+    padding-left: 60px; }
   .testimonials-footer__copy {
     padding: 0 32px;
     text-align: center; }
@@ -7444,7 +7508,171 @@ body {
     margin-right: 16px;
     font-size: 3rem; }
     .footer .mdc-layout-grid__cell .fas:last-child {
-      margin-right: 0; }
-  .vertical-rule {
-    margin: 0 .5em; } }
+      margin-right: 0; } }
 
+@media (max-width: 479px) {
+  h1 {
+    font-size: 2rem; }
+  h2 {
+    font-size: 1.45rem; }
+  .vertical-rule {
+    margin: 0 .5em; }
+  .header {
+    padding: 8px 24px; }
+    .header .mdc-layout-grid__cell:nth-child(2) {
+      display: none; }
+    .header__logo {
+      display: flex;
+      width: auto; }
+      .header__logo .mdc-fab {
+        border-radius: 5px;
+        margin-right: 24px;
+        font-size: 1.7rem;
+        height: 45px;
+        width: 45px; }
+      .header__logo--mobile-nav {
+        display: block; }
+      .header__logo img {
+        width: 70px; }
+      .header__logo--copy {
+        font-size: .75rem; }
+  .splash__content .mdc-card {
+    display: none; }
+  .splash__content .new-patient {
+    position: relative;
+    top: 25px;
+    justify-content: flex-end;
+    padding: 8px 16px 8px 8px;
+    font-size: 1.2rem; }
+    .splash__content .new-patient .fab {
+      display: none; }
+  .splash__content--social {
+    top: 10%;
+    left: 5%;
+    right: 5%;
+    flex-direction: row;
+    justify-content: space-between; }
+    .splash__content--social button {
+      margin: 0; }
+    .splash__content--social .mdc-fab {
+      height: 48px;
+      width: 48px; }
+    .splash__content--social .fab, .splash__content--social .fas {
+      font-size: 1.7rem; }
+  .splash__content .mobile-call {
+    bottom: -33px;
+    height: 60px;
+    width: 60px; }
+    .splash__content .mobile-call .fas {
+      top: 0;
+      font-size: 2rem; }
+  .call-to-action__copy {
+    height: 125px;
+    text-align: center; }
+    .call-to-action__copy h1 {
+      font-size: 1.25rem; }
+  .selling-points {
+    padding-top: 48px;
+    padding-bottom: 48px; }
+    .selling-points .mdc-layout-grid__inner {
+      grid-gap: 0; }
+    .selling-points .mdc-layout-grid__cell {
+      display: flex;
+      justify-content: center; }
+      .selling-points .mdc-layout-grid__cell:nth-child(1) {
+        height: 260px; }
+      .selling-points .mdc-layout-grid__cell:nth-child(2) {
+        height: auto;
+        padding: 16px 0; }
+      .selling-points .mdc-layout-grid__cell:nth-child(3) {
+        display: none; }
+      .selling-points .mdc-layout-grid__cell:nth-child(4) {
+        height: auto;
+        padding: 0; }
+    .selling-points img {
+      width: 260px; }
+    .selling-points__img {
+      position: static;
+      width: 100%;
+      text-align: center; }
+    .selling-points__copy {
+      position: static;
+      bottom: inherit;
+      max-width: 260px;
+      margin: 0; }
+  .treatments {
+    display: flex;
+    justify-content: center; }
+    .treatments .mdc-layout-grid__cell {
+      height: inherit; }
+      .treatments .mdc-layout-grid__cell:nth-child(2n+2) {
+        margin: 0 0 48px; }
+      .treatments .mdc-layout-grid__cell:nth-child(8) {
+        margin: 0; }
+    .treatments__img {
+      position: static;
+      right: inherit; }
+    .treatments__copy {
+      width: 280px;
+      margin: 0; }
+    .treatments img {
+      width: 280px; }
+  .testimonials {
+    padding-right: 20px;
+    padding-left: 20px; }
+  .testimonials-footer__copy {
+    padding: 0 32px;
+    text-align: center; }
+    .testimonials-footer__copy h1 {
+      font-size: 1.35rem; }
+  .blog-header__copy h1 {
+    font-size: 1.5rem; }
+  .blog-preview {
+    padding: 48px 0 0; }
+    .blog-preview .mdc-layout-grid__cell {
+      margin: 0 0 24px; }
+      .blog-preview .mdc-layout-grid__cell:nth-child(1) {
+        justify-content: center; }
+      .blog-preview .mdc-layout-grid__cell:nth-child(2) {
+        justify-content: center; }
+      .blog-preview .mdc-layout-grid__cell:nth-child(3) {
+        justify-content: center;
+        margin: 0; }
+    .blog-preview h2 {
+      margin: 24px 0 0; }
+    .blog-preview__post {
+      width: 260px; }
+  .footer {
+    padding: 48px 16px; }
+    .footer .mdc-layout-grid__cell {
+      line-height: 1.5; }
+      .footer .mdc-layout-grid__cell:nth-child(2) {
+        padding: 24px; }
+      .footer .mdc-layout-grid__cell .fab {
+        margin-right: 11px;
+        font-size: 3rem; }
+      .footer .mdc-layout-grid__cell .fas {
+        margin-right: 11px;
+        font-size: 2.75rem; }
+        .footer .mdc-layout-grid__cell .fas:last-child {
+          margin-right: 0; }
+      .footer .mdc-layout-grid__cell:nth-child(1) h2 {
+        top: 0;
+        font-size: .75rem; }
+      .footer .mdc-layout-grid__cell:nth-child(1) .footer__content--copy {
+        position: relative;
+        top: 13px;
+        padding: 0; }
+  .mobile-nav {
+    top: 110px;
+    width: inherit; }
+    .mobile-nav .mdc-button {
+      display: flex;
+      justify-content: flex-start;
+      height: 60px;
+      width: 100%;
+      padding: 0 16px;
+      font-size: 1rem; } }
+
+
+/*# sourceMappingURL=infinity.css.map*/

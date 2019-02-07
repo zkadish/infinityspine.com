@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
-    "postbuild": "mv public/infinity.js public/js; mv public/infinity.css public/css",
+    "postbuild": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
     "start": "NODE_ENV=development webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -44,6 +44,7 @@
     "@material/fab": "^0.42.0",
     "@material/layout-grid": "^0.41.0",
     "@material/ripple": "^0.42.0",
-    "autoprefixer": "^9.4.3"
+    "autoprefixer": "^9.4.3",
+    "axios": "^0.18.0"
   }
 }

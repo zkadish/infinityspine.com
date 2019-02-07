@@ -8,9 +8,12 @@
 }
 
 .header {
-  // background: white;
+  position: sticky;
+  top: 0;
+  background: white;
   padding: 0 72px;
   border-bottom: 1px solid $GREY_LIGHT;
+  z-index: 1000;
   
   .mdc-layout-grid__cell {
     display: flex;
@@ -18,8 +21,7 @@
     &:nth-child(1) {
       margin: 24px 0;
     }
-    // height: 120px;
-    // border: 1px solid red;
+    
     &:nth-child(2) {
       display: flex;
       align-items: center;
@@ -29,13 +31,17 @@
 
   &__logo {
     width: 332px;
-
-    &--mobile-nav {
-      display: none;
+    
+    a {
+      text-decoration: none;
     }
 
     img {
       width: 116px;
+    }
+
+    &--mobile-nav {
+      display: none;
     }
 
     &--copy {

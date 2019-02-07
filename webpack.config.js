@@ -10,6 +10,7 @@ const mode = process.env.NODE_ENV;
 
 // NOTE: to gain more control you can make separate
 // webpack configs for the js and the css
+// TODO: create entries for page specific js
 // TODO: add postcss - autoprefixer - Verify its working
 // TODO: add css minification
 // TODO: add eslint-loader: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
@@ -22,10 +23,11 @@ module.exports = {
   mode,
   entry: {
     infinity: './src/index.js',
+    home: './src/js/home.js',
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public/js'),
   },
   module: {
     rules: [
@@ -38,12 +40,14 @@ module.exports = {
         test: /\.(sc|c)ss$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          // {
-          //   loader: MiniCssExtractPlugin.loader,
-          //   options: {
-          //     publicPath: "public/css",
-          //   }
-          // },
+          // devMode ? 'style-loader'
+          //   : {
+          //     loader: MiniCssExtractPlugin.loader,
+          //     options: {
+          //       // publicPath: 'public/css',
+          //       outputPath: 'css',
+          //     },
+          //   },
           {
             loader: 'css-loader',
             options: { importLoaders: 1 },
@@ -75,7 +79,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'img',
+              outputPath: '../img',
             },
           },
         ],
@@ -92,14 +96,27 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.pdf$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: '../forms',
+            },
+          },
+        ],
+      },
     ],
   },
+  devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(process.env.NODE_ENV === 'production'),
     }),
     new HtmlWebpackPlugin({
-      filename: 'index.html',
+      filename: '../index.html',
       inject: devMode,
       template: path.resolve(__dirname, 'src/index.html'),
       title: 'Infinity Spine',
