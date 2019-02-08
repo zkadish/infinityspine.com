@@ -28,7 +28,7 @@
           <button class="header__logo--mobile-nav mdc-fab">
             <i class="fas fa-bars"></i>
           </button>
-          <a href="index.html">
+          <a href="/">
             <img alt="infinity-spine" src="img/logo-only.png" />
             <div class="header__logo--copy">INFINITY SPINE CENTER</div>
           </a>
@@ -37,8 +37,8 @@
       <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-12-tab864">
         <div class="main-nav">
           <button
-          class="main-nav__about mdc-button"
-          onclick="document.location='#about'; return false"
+            class="main-nav__about mdc-button"
+            onclick="document.location='#about'; return false"
           >
             about
           </button>
@@ -168,9 +168,11 @@
       <div class="no-gap mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
           <h2>Center</h2>
-          Welcome<br />
-          Our Mission & Vision<br />
-          About Dr. Thoma
+          <!-- Welcome<br /> -->
+          <a class="sub-nav__links" href="#mission-vision">
+            Mission & Vision
+          </a><br />
+          <a class="sub-nav__links" href="#about-dr-thoma">About Dr. Thoma</a>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
           <h2>Appointment</h2>

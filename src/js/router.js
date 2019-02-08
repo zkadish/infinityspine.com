@@ -2,7 +2,18 @@ import axios from 'axios';
 
 const body = document.querySelector('body');
 const container = document.querySelector('.container');
-const routes = ['#nucca-chiropractic'];
+export const routes = [
+  '#nucca-chiropractic',
+  '#sports-physiotherapy',
+  '#functional-medicine',
+  '#red-near-infrared-therapy',
+  '#mission-vision',
+  '#about-dr-thoma',
+  '#corrective-exercises',
+  '#performance-exercise',
+  '#customized-nutrition',
+  '#dr-thoma-blog',
+];
 // const reviewScripts = document.querySelectorAll('.testimonials .mdc-layout-grid__cell > *');
 
 let page = window.location.hash;
@@ -27,20 +38,12 @@ function testimonialTags() {
 }
 
 function getRouteContent(newRoute) {
+  debugger;
   axios.get(`../pages/${newRoute}.html`)
     .then((response) => {
       // remove javascript page <script></script> if it exists
       const pageScript = document.querySelector(`[src="page/${newRoute}.html"]`);
       if (pageScript) body.removeChild(pageScript);
-
-      // Note: I couldn't get selecting the nodes before
-      // page content overwrites the original HTML
-      // let reviewNodeList;
-      // if (newRoute === 'home') {
-      //   // reviewNodeList = document.querySelector('.testimonials .mdc-layout-grid__cell > *');
-      //   reviewNodeList = document.querySelector('.testimonials');
-      //   console.log('reviewNodeList', reviewNodeList);
-      // }
 
       // reset page
       page = newRoute;
@@ -69,7 +72,7 @@ function getRouteContent(newRoute) {
 }
 
 // get route
-export default function onRouterEventHandler(e) {
+export function onRouterEventHandler(e) {
   if (e) e.preventDefault();
 
   const { hash } = window.location;
@@ -103,14 +106,15 @@ window.addEventListener('error', () => {
   console.log('error event');
 }, false);
 
-const nuccaChrioBtn = document.querySelector('.treatments__btn');
-
+const treatmentRoutes = routes.slice(0, 4);
+const treatmentsBtn = document.querySelectorAll('.treatments__btn');
 // READ MORE BUTTON
 // TODO: look for a better place for this Click event
 // NOTE: this also exits in home.js
-function nuccaChrioBtnClickHandler() {
-  // console.log('nuccaChrioBtnClickHandler');
-  window.history.pushState(null, null, '#nucca-chiropractic');
-  onRouterEventHandler();
-}
-nuccaChrioBtn.addEventListener('click', nuccaChrioBtnClickHandler);
+treatmentsBtn.forEach((btn, i) => {
+  function treatmentsBtnClickHandler() {
+    window.history.pushState(null, null, treatmentRoutes[i]);
+    onRouterEventHandler();
+  }
+  btn.addEventListener('click', treatmentsBtnClickHandler);
+});

@@ -69,7 +69,6 @@
   position: relative;
 
   &__images {
-    // height: 670px;
     overflow: hidden;
 
     img {
@@ -200,6 +199,14 @@
 }
 
 .sub-nav {
+  &__links {
+    text-decoration: none;
+    color: white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .mdc-layout-grid__cell {
     padding: 24px 24px 32px 40px;
     color: white;

@@ -7127,6 +7127,12 @@ body {
     max-width: 620px;
     margin: 0 24px 0 0; }
 
+.sub-nav__links {
+  text-decoration: none;
+  color: white; }
+  .sub-nav__links:hover {
+    text-decoration: underline; }
+
 .sub-nav .mdc-layout-grid__cell {
   padding: 24px 24px 32px 40px;
   color: white; }
