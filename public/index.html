@@ -64,9 +64,19 @@
             blog
           </button>
           <hr class="vertical-rule" />
-          <button class="main-nav__forms mdc-button">forms</button>
+          <button
+            class="main-nav__forms mdc-button"
+            onclick="document.location='#new-patient-forms'"
+          >
+            forms
+          </button>
           <hr class="vertical-rule" />
-          <button class="main-nav__contact mdc-button">contact</button>
+          <button
+            class="main-nav__contact mdc-button"
+            onclick="document.location='#contact'"
+          >
+            contact
+          </button>
         </div>
       </div>
     </div>
@@ -168,31 +178,48 @@
       <div class="no-gap mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
           <h2>Center</h2>
-          <!-- Welcome<br /> -->
+          <a class="sub-nav__links" href="welcome">
+            Welcome
+          </a><br />
           <a class="sub-nav__links" href="#mission-vision">
             Mission & Vision
           </a><br />
-          <a class="sub-nav__links" href="#about-dr-thoma">About Dr. Thoma</a>
+          <a class="sub-nav__links" href="#about-dr-thoma">
+            About Dr. Thoma
+          </a>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
           <h2>Appointment</h2>
-          New Paitent<br />
-          What to expect<br />
-          Patient Forms<br />
-          Treatment Types
+          <a class="sub-nav__links" href="#new-patient-forms">
+            New Patient Forms
+          </a><br />
+          <a class="sub-nav__links" href="#faqs">
+            Frequently Asked Questions
+          </a><br />
+          <a class="sub-nav__links" href="#contact-us">
+            Contact Us
+          </a>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
           <h2>Learn More</h2>
-          Testimonials<br />
-          Dr. Thoma’s Blog<br />
-          Frequently Asked Questions
+          <a class="sub-nav__links" href="#more-testimonials">
+            Testimonials
+          </a><br />
+          <a class="sub-nav__links" href="#treatments">
+            Treatment Types
+          </a><br />
+          Dr. Thoma’s Blog
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
-          <h2>Location</h2>
-          8080 E Gelding Dr, Suite 102<br />
-          Scottsdale, AZ 85260<br />
-          (480) 656-6200<br />
-          Map
+          <h2>Locations</h2>
+          <a class="sub-nav__links" href="https://www.google.com/maps/place/8080+E+Gelding+Dr,+Scottsdale,+AZ+85260/@33.6160171,-111.9090251,17z/data=!3m1!4b1!4m5!3m4!1s0x872b744d1dabcb55:0x34c2b57d760cc34!8m2!3d33.6159946!4d-111.9068618">
+            Google Maps<br />
+            8080 E Gelding Dr, Suite 102<br />
+            Scottsdale, AZ 85260
+          </a>
+          <!-- <iframe class="sub-nav__map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.5870666700016!2d-111.9090250847964!3d33.616017080726884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b744d1dabcb55%3A0x34c2b57d760cc34!2s8080+E+Gelding+Dr%2C+Scottsdale%2C+AZ+85260!5e0!3m2!1sen!2sus!4v1549834481092" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
+          <!-- p: (480) 656-6200<br />
+          f: (480) 767-2745 -->
         </div>
       </div>
     </div>
@@ -302,9 +329,9 @@
     <div class="bullets mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <i class="fas fa-stop"></i>
-            <i class="fas fa-stop"></i>
-            <i class="fas fa-stop"></i>
+          <i class="fas fa-stop"></i>
+          <i class="fas fa-stop"></i>
+          <i class="fas fa-stop"></i>
         </div>
       </div>
     </div>
@@ -376,69 +403,69 @@
     <div class="bullets mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <i class="fas fa-stop"></i>
-            <i class="fas fa-stop"></i>
-            <i class="fas fa-stop"></i>
+          <i class="fas fa-stop"></i>
+          <i class="fas fa-stop"></i>
+          <i class="fas fa-stop"></i>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="footer-header call-to-action mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="call-to-action__copy">
-            <h1>Call today for your personal consultation 480.656.6200</h1>
-          </div>
+  <div class="footer-header call-to-action mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+        <div class="call-to-action__copy">
+          <h1>Call today for your personal consultation 480.656.6200</h1>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="footer mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-9-pho480">
-          <div class="footer__content">
-            <h2>INFINITY SPINE CENTER</h2>
-            <div class="footer__content--copy">
-              In addition to chiropractic, therapies include
-              acupuncture, dry needling, corrective movement
-              therapy, red and near infrared light therapy, nutrition,
-              and lifestyle plans that restore and cultivate optimal
-              health and wellness for all ages and cases including
-              acute, maintenance, and injuries as a result of an
-              auto accident.
-            </div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-tab864 mdc-layout-grid__cell--span-8-pho480">
-          <div class="footer__content">
-            <img src="img/dr-john-thoma.jpg" width="200" alt="Dr. John Thoma" />
-            <div class="name">Dr. John Thoma</div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
-          <div class="footer__content">
-            <h2>Contact Information</h2>
-            Infinity Spine Center<br />
-            8080 E Gelding Dr, Suite 102<br />
-            Scottsdale, AZ 85260<br />
-            (480) 656-6200<br />
-            Email@EmailAddress.com<br />
-            <i class="fab fa-facebook-square"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-twitter-square"></i>
-            <i class="fas fa-blog"></i>
-            <i class="fas fa-at"></i>
+  <div class="footer mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-9-pho480">
+        <div class="footer__content">
+          <h2>INFINITY SPINE CENTER</h2>
+          <div class="footer__content--copy">
+            In addition to chiropractic, therapies include
+            acupuncture, dry needling, corrective movement
+            therapy, red and near infrared light therapy, nutrition,
+            and lifestyle plans that restore and cultivate optimal
+            health and wellness for all ages and cases including
+            acute, maintenance, and injuries as a result of an
+            auto accident.
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="credits mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            credits:<br />
-            <a href="http://www.onlinewebfonts.com">online web fonts</a>
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-tab864 mdc-layout-grid__cell--span-8-pho480">
+        <div class="footer__content">
+          <img src="img/dr-john-thoma.jpg" width="200" alt="Dr. John Thoma" />
+          <div class="name">Dr. John Thoma</div>
         </div>
+      </div>
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
+        <div class="footer__content">
+          <h2>Contact Information</h2>
+          Infinity Spine Center<br />
+          8080 E Gelding Dr, Suite 102<br />
+          Scottsdale, AZ 85260<br />
+          (480) 656-6200<br />
+          Email@EmailAddress.com<br />
+          <i class="fab fa-facebook-square"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter-square"></i>
+          <i class="fas fa-blog"></i>
+          <i class="fas fa-at"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="credits mdc-layout-grid">
+    <div class="mdc-layout-grid__inner">
+      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+          credits:<br />
+          <a href="http://www.onlinewebfonts.com">online web fonts</a>
       </div>
     </div>
   </div>

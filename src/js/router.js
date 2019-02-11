@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { REVIEWS_ONE, REVIEWS_TWO } from './constants';
 
 const body = document.querySelector('body');
 const container = document.querySelector('.container');
@@ -12,24 +13,29 @@ export const routes = [
   '#corrective-exercises',
   '#performance-exercise',
   '#customized-nutrition',
+  '#welcome',
   '#dr-thoma-blog',
+  '#new-patient-forms',
+  '#faqs',
+  '#more-testimonials',
+  '#contact',
 ];
 // const reviewScripts = document.querySelectorAll('.testimonials .mdc-layout-grid__cell > *');
 
 let page = window.location.hash;
 
-function testimonialTags() {
+function testimonialTags(token) {
   // TODO: look for a better solution... Cache the original HTML?
   const scriptToken = document.createElement('script');
   scriptToken.setAttribute('type', 'text/javascript');
   scriptToken.innerHTML = (`
-    var review_token = 'uxte1J82H2vgWAbiXjypx3VRQYUQFwvYoHsy9HQWbYlSE4USBY'; 
+    var review_token = "${token}"; 
     var review_target = 'review-container';
   `);
 
   const scriptReview = document.createElement('script');
   scriptReview.setAttribute('type', 'text/javascript');
-  scriptReview.setAttribute('src', 'https://reviewsonmywebsite.com/js/embed.js?v=7')
+  scriptReview.setAttribute('src', 'https://reviewsonmywebsite.com/js/embed.js?v=7');
 
   const reviewContainer = document.createElement('div');
   reviewContainer.id = 'review-container';
@@ -38,7 +44,6 @@ function testimonialTags() {
 }
 
 function getRouteContent(newRoute) {
-  debugger;
   axios.get(`../pages/${newRoute}.html`)
     .then((response) => {
       // remove javascript page <script></script> if it exists
@@ -57,16 +62,22 @@ function getRouteContent(newRoute) {
       if (page === 'home') {
         const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
         script.setAttribute('src', 'js/home.js');
-        testimonialTags().forEach(node => reviews.appendChild(node));
+        // insert page specific javascript
+        body.appendChild(script);
+        testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
       }
 
-      // insert page specific javascript
-      body.appendChild(script);
+      if (page === 'more-testimonials') {
+        const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
+        testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
+      }
+
       // make sure loaded content starts at the top...
       window.scroll(0, 0);
       // replay the anchor tag...
       document.location = window.location.hash;
     }).catch((error) => {
+      // TODO: route to 404 error page
       console.error('Error:', error); // eslint-disable-line
     });
 }
@@ -76,8 +87,6 @@ export function onRouterEventHandler(e) {
   if (e) e.preventDefault();
 
   const { hash } = window.location;
-  // console.log('currentHash:', newHash);
-  // console.log('page', page);
 
   // if window.location.hash is in routes[]
   if (routes.includes(hash)) {

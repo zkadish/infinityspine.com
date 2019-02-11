@@ -1,5 +1,5 @@
 import { MDCRipple } from '@material/ripple';
-import MAIN_NAV from './constants';
+import { MAIN_NAV } from './constants';
 
 import './router';
 
@@ -20,7 +20,9 @@ import '../img/elbow.png';
 import '../img/dr-john-thoma.jpg';
 
 // import forms
-import '../forms/infinity-spine-new-patient-form.pdf';
+import '../forms/nucca-new-patient-form.pdf';
+import '../forms/functional-medicine-form.pdf';
+import '../forms/Insurance-Intake-form.pdf';
 
 // console.log('PRODUCTION', PRODUCTION); // eslint-disable-line
 

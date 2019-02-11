@@ -7133,6 +7133,10 @@ body {
   .sub-nav__links:hover {
     text-decoration: underline; }
 
+.sub-nav__map {
+  width: 100%;
+  height: 200px; }
+
 .sub-nav .mdc-layout-grid__cell {
   padding: 24px 24px 32px 40px;
   color: white; }
@@ -7314,24 +7318,24 @@ body {
     margin: 0;
     border-left: 1px solid #ccc; }
 
-.nucca-chiropractic {
+.page {
   padding-top: 48px;
   padding-bottom: 48px; }
-  .nucca-chiropractic .mdc-button--unelevated:not(:disabled) {
+  .page .mdc-button--unelevated:not(:disabled) {
     background-color: var(--mdc-theme-primary, #3658a8); }
-  .nucca-chiropractic .mdc-layout-grid__cell {
+  .page .mdc-layout-grid__cell {
     position: relative;
     color: #2c3384;
     font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: 1.2rem; }
-  .nucca-chiropractic__img {
+  .page__img {
     position: absolute;
     right: 48px; }
-  .nucca-chiropractic__copy {
+  .page__copy {
     max-width: 620px; }
-    .nucca-chiropractic__copy p {
+    .page__copy p {
       margin: 0 0 24px; }
-  .nucca-chiropractic img {
+  .page img {
     width: 300px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
 
