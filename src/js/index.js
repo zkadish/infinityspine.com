@@ -28,10 +28,7 @@ import '../forms/Insurance-Intake-form.pdf';
 
 const mobileNavBtn = document.querySelector('.header__logo--mobile-nav');
 const mobileNavMenu = document.querySelector('.mobile-nav');
-// const reviewScripts = document.querySelectorAll('.testimonials .mdc-layout-grid__cell > *');
-const mobileNavBtnRipple = new MDCRipple(mobileNavBtn); // eslint-disable-line
-
-// console.log('reviewScripts:', reviewScripts);
+// const mobileNavBtnRipple = new MDCRipple(mobileNavBtn); // eslint-disable-line
 
 function mobileNavBtnClickHandler() {
   mobileNavMenu.classList.toggle('display-none');
@@ -60,69 +57,58 @@ function initMobileNavButtons() {
   });
 }
 
-const facebook = new MDCRipple(document.querySelector('.social')); // eslint-disable-line
-const instagram = new MDCRipple(document.querySelectorAll('.social')[1]); // eslint-disable-line
-const twitter = new MDCRipple(document.querySelectorAll('.social')[2]); // eslint-disable-line
-const blog = new MDCRipple(document.querySelectorAll('.social')[3]); // eslint-disable-line
-const email = new MDCRipple(document.querySelectorAll('.social')[4]); // eslint-disable-line
+// const facebook = new MDCRipple(document.querySelector('.social')); // eslint-disable-line
+// const instagram = new MDCRipple(document.querySelectorAll('.social')[1]); // eslint-disable-line
+// const twitter = new MDCRipple(document.querySelectorAll('.social')[2]); // eslint-disable-line
+// const blog = new MDCRipple(document.querySelectorAll('.social')[3]); // eslint-disable-line
+// const email = new MDCRipple(document.querySelectorAll('.social')[4]); // eslint-disable-line
 
-const newPatient = new MDCRipple(document.querySelector('.new-patient')); // eslint-disable-line
-
-// select splash images for breakpoint image swapping.
-const splash01 = document.querySelector('#splash-01');
+// const newPatient = new MDCRipple(document.querySelector('.new-patient')); // eslint-disable-line
 
 function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
-    console.log('desk1920');
+    console.log('index.js - desk1920');
     initMainNavButtons();
-    splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1919px) and (min-width: 1600px)').matches) {
-    console.log('desk1600');
+    console.log('index.js - desk1600');
     initMainNavButtons();
-    splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1599px) and (min-width: 1440px)').matches) {
-    console.log('desk1440');
+    console.log('index.js - desk1440');
     initMainNavButtons();
-    splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1439px) and (min-width: 1280px)').matches) {
-    console.log('desk1280');
+    console.log('index.js - desk1280');
     initMainNavButtons();
-    splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1279px) and (min-width: 1024px)').matches) {
-    console.log('desk1024');
+    console.log('index.js - desk1024');
     initMainNavButtons();
-    splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1023px) and (min-width: 864px)').matches) {
-    console.log('tab864');
+    console.log('index.js - tab864');
     initMainNavButtons();
-    splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
-    console.log('pho480');
+    console.log('index.js - pho480');
     initMobileNavButtons();
-    splash01.setAttribute('src', 'img/splash-01-pho480.png');
   }
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
-    console.log('phone');
+    console.log('index.js - phone');
     initMobileNavButtons();
-    splash01.setAttribute('src', 'img/splash-01-pho480.png');
   }
 }
-
-window.onresize = () => {
-  matchMedia();
-};
-
 matchMedia();
+
+// matchMedia in this file is only being used on load
+// window.onresize = () => {
+//   matchMedia();
+// };

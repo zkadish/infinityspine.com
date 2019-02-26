@@ -6,6 +6,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "postbuild": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
+    "prestart": "NODE_ENV=development webpack", 
     "start": "NODE_ENV=development webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

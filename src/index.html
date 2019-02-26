@@ -1,135 +1,150 @@
 <!doctype html>
 <html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title><%= htmlWebpackPlugin.options.title %></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="apple-touch-icon" href="icon.png">
+    <!-- Place favicon.ico in the root directory -->
 
-  <!-- <link rel="manifest" href="site.webmanifest"> -->
-  <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
-  <!-- <link rel="stylesheet" href="css/infinity.css"> -->
-  <!-- <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" /> -->
-  <%= htmlWebpackPlugin.options.styles %>
-</head>
-
-<body>
-  <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-  <div class="header mdc-layout-grid">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-tab864 mdc-layout-grid__cell--span-12-pho480">
-        <div class="header__logo">
-          <button class="header__logo--mobile-nav mdc-fab">
-            <i class="fas fa-bars"></i>
-          </button>
-          <a href="/">
-            <img alt="infinity-spine" src="img/logo-only.png" />
-            <div class="header__logo--copy">INFINITY SPINE CENTER</div>
-          </a>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-12-tab864">
-        <div class="main-nav">
-          <button
-            class="main-nav__about mdc-button"
-            onclick="document.location='#about'; return false"
-          >
-            about
-          </button>
-          <hr class="vertical-rule" />
-          <button
-            class="main-nav__treatments mdc-button"
-            onclick="document.location='#treatments'"
-          >
-            treatments
-          </button>
-          <hr class="vertical-rule" />
-          <button
-            class="main-nav__testimonials mdc-button"
-            onclick="document.location='#testimonials'"
-          >
-            testimonials
-          </button>
-          <hr class="vertical-rule" />
-          <button
-            class="main-nav__blog mdc-button"
-            onclick="document.location='#blog'"
-          >
-            blog
-          </button>
-          <hr class="vertical-rule" />
-          <button
-            class="main-nav__forms mdc-button"
-            onclick="document.location='#new-patient-forms'"
-          >
-            forms
-          </button>
-          <hr class="vertical-rule" />
-          <button
-            class="main-nav__contact mdc-button"
-            onclick="document.location='#contact'"
-          >
-            contact
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <div class="no-margin mdc-layout-grid">
+    <%= htmlWebpackPlugin.options.styles %>
+  </head>
+  <body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+    <![endif]-->
+    <div class="header mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="splash mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="splash__images">
-            <img id="splash-01" alt="back-pain" src="img/splash-01.png" />
-          </div>
-          <div class="splash__content">
-            <div class="mdc-card">
-              The decisions you make about your health,
-              will be some of the most important
-              choices you make in your life!
-            </div>
-            <button
-              class="new-patient mdc-fab mdc-fab--extended"
-              aria-label="new patient"
-              type="submit"
-              onclick="console.log('test');window.open('forms/infinity-spine-new-patient-form.pdf')"
-            >
-              <i class="fab fa-pagelines"></i>&nbsp
-              <span class="mdc-fab__label">New Patient Form</span>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-tab864 mdc-layout-grid__cell--span-12-pho480">
+          <div class="header__logo">
+            <button class="header__logo--mobile-nav mdc-fab">
+              <i class="fas fa-bars"></i>
             </button>
-            <div class="splash__content--social">
-              <button class="social mdc-fab">
-                <i class="fab fa-facebook-square"></i>
-              </button>
-              <button class="social mdc-fab">
-                <i class="fab fa-instagram"></i>
-              </button>
-              <button class="social mdc-fab">
-                <i class="fab fa-twitter-square"></i>
-              </button>
-              <button class="social mdc-fab">
-                <i class="fas fa-blog"></i>
-              </button>
-              <button class="social mdc-fab">
-                <i class="fas fa-at fa-lg"></i>
-              </button>
-            </div>
-            <button class="mobile-call">
-              <i class="fas fa-mobile-alt"></i>
+            <a href="/" data-route="#home">
+              <img alt="infinity-spine" src="img/logo-only.png" />
+              <div class="header__logo--copy">INFINITY SPINE CENTER</div>
+            </a>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-layout-grid__cell--span-12-tab864">
+          <div class="main-nav">
+            <button
+              class="main-nav__about mdc-button"
+              data-route="#about"
+              onclick="document.location='#about'; return false"
+            >
+              about
+            </button>
+            <hr class="vertical-rule" />
+            <button
+              class="main-nav__treatments mdc-button"
+              data-route="#treatments"
+              onclick="document.location='#treatments'"
+            >
+              treatments
+            </button>
+            <hr class="vertical-rule" />
+            <button
+              class="main-nav__testimonials mdc-button"
+              data-route="#testimonials"
+              onclick="document.location='#testimonials'"
+            >
+              testimonials
+            </button>
+            <hr class="vertical-rule" />
+            <button
+              class="main-nav__blog mdc-button"
+              data-route="#blog"
+              onclick="document.location='#blog'"
+            >
+              blog
+            </button>
+            <hr class="vertical-rule" />
+            <button
+              class="main-nav__forms mdc-button"
+              data-route="#new-patient-forms"
+              onclick="document.location='#new-patient-forms'"
+            >
+              forms
+            </button>
+            <hr class="vertical-rule" />
+            <button
+              class="main-nav__contact mdc-button"
+              data-route="#contact"
+              onclick="document.location='#contact'"
+            >
+              contact
             </button>
           </div>
         </div>
       </div>
     </div>
 
-    <div id="about" class="call-to-action mdc-layout-grid">
+    <div class="container">
+      <!-- content for initial load -->
+      <div class="no-margin mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="splash mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <div class="splash__images">
+              <img id="splash-01" alt="back-pain" src="img/splash-01.png" />
+            </div>
+            <div class="splash__content">
+              <div class="mdc-card">
+                The decisions you make about your health,
+                will be some of the most important
+                choices you make in your life!
+              </div>
+              <button
+                class="new-patient mdc-fab mdc-fab--extended"
+                aria-label="new patient"
+                type="submit"
+                onclick="console.log('test');window.open('forms/infinity-spine-new-patient-form.pdf')"
+              >
+                <i class="fab fa-pagelines"></i>&nbsp
+                <span class="mdc-fab__label">New Patient Form</span>
+              </button>
+              <div class="splash__content--social">
+                <button class="social mdc-fab">
+                  <i class="fab fa-facebook-square"></i>
+                </button>
+                <button class="social mdc-fab">
+                  <i class="fab fa-instagram"></i>
+                </button>
+                <button class="social mdc-fab">
+                  <i class="fab fa-twitter-square"></i>
+                </button>
+                <button class="social mdc-fab">
+                  <i class="fas fa-blog"></i>
+                </button>
+                <button class="social mdc-fab">
+                  <i class="fas fa-at fa-lg"></i>
+                </button>
+              </div>
+              <button class="mobile-call">
+                <i class="fas fa-mobile-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="about" class="call-to-action mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <div class="call-to-action__copy">
+              <h1>Call today for your personal consultation 480.656.6200</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end content for initial load -->
+    </div>
+
+    <div class="footer-header call-to-action mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
           <div class="call-to-action__copy">
@@ -139,362 +154,107 @@
       </div>
     </div>
 
-    <div class="selling-points mdc-layout-grid">
+    <div class="footer mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--span-8-pho480">
-          <div class="selling-points__img">
-            <img src="img/runners.png" alt="sport specific treatments" />
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-9-pho480">
+          <div class="footer__content">
+            <h2>INFINITY SPINE CENTER</h2>
+            <div class="footer__content--copy">
+              In addition to chiropractic, therapies include
+              acupuncture, dry needling, corrective movement
+              therapy, red and near infrared light therapy, nutrition,
+              and lifestyle plans that restore and cultivate optimal
+              health and wellness for all ages and cases including
+              acute, maintenance, and injuries as a result of an
+              auto accident.
+            </div>
           </div>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
-          <div class="selling-points__copy">
-            <h2>Gentle, Specific, Scientific Chriopractic</h2>
-            At Infinity Spine Center, Scottsdale Chiropractor Dr. Thoma is committed to
-            providing NUCCA Chiropractic Care and auto accident care. NUCCA Chiropractic
-            is a gentle, specific, and scientific based chiropractic treatment for
-            misalignment of the upper cervical spine. Dr. Thoma is the only NUCCA Chiropractic
-            member practicing in Scottsdale.
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-tab864 mdc-layout-grid__cell--span-8-pho480">
+          <div class="footer__content">
+            <img src="img/dr-john-thoma.jpg" width="200" alt="Dr. John Thoma" />
+            <div class="name">Dr. John Thoma</div>
           </div>
         </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--span-8-pho480">
-          <div class="selling-points__img">
-            <img src="img/scoliosis.png" alt="injury specific treatments" width="260" />
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
-          <div class="selling-points__copy">
-            In addition to chiropractic, therapies include acupuncture, dry needling, corrective
-            movement therapy, red and near infrared light therapy, nutrition, and lifestyle
-            plans that restore and cultivate optimal health and wellness for all ages
-            and cases including acute, maintenance, and injuries as a result of an auto accident.
-            We use NUCCA Chiropractic supplemented with corrective movement
-            therapy designed for your specific posture and muscle and joint dysfunction.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="sub-nav no-margin mdc-layout-grid">
-      <div class="no-gap mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
-          <h2>Center</h2>
-          <a class="sub-nav__links" href="welcome">
-            Welcome
-          </a><br />
-          <a class="sub-nav__links" href="#mission-vision">
-            Mission & Vision
-          </a><br />
-          <a class="sub-nav__links" href="#about-dr-thoma">
-            About Dr. Thoma
-          </a>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
-          <h2>Appointment</h2>
-          <a class="sub-nav__links" href="#new-patient-forms">
-            New Patient Forms
-          </a><br />
-          <a class="sub-nav__links" href="#faqs">
-            Frequently Asked Questions
-          </a><br />
-          <a class="sub-nav__links" href="#contact-us">
-            Contact Us
-          </a>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
-          <h2>Learn More</h2>
-          <a class="sub-nav__links" href="#more-testimonials">
-            Testimonials
-          </a><br />
-          <a class="sub-nav__links" href="#treatments">
-            Treatment Types
-          </a><br />
-          Dr. Thoma’s Blog
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
-          <h2>Locations</h2>
-          <a class="sub-nav__links" href="https://www.google.com/maps/place/8080+E+Gelding+Dr,+Scottsdale,+AZ+85260/@33.6160171,-111.9090251,17z/data=!3m1!4b1!4m5!3m4!1s0x872b744d1dabcb55:0x34c2b57d760cc34!8m2!3d33.6159946!4d-111.9068618">
-            Google Maps<br />
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
+          <div class="footer__content">
+            <h2>Contact Information</h2>
+            Infinity Spine Center<br />
             8080 E Gelding Dr, Suite 102<br />
-            Scottsdale, AZ 85260
-          </a>
-          <!-- <iframe class="sub-nav__map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.5870666700016!2d-111.9090250847964!3d33.616017080726884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b744d1dabcb55%3A0x34c2b57d760cc34!2s8080+E+Gelding+Dr%2C+Scottsdale%2C+AZ+85260!5e0!3m2!1sen!2sus!4v1549834481092" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-          <!-- p: (480) 656-6200<br />
-          f: (480) 767-2745 -->
+            Scottsdale, AZ 85260<br />
+            (480) 656-6200<br />
+            Email@EmailAddress.com<br />
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-twitter-square"></i>
+            <i class="fas fa-blog"></i>
+            <i class="fas fa-at"></i>
+          </div>
         </div>
       </div>
     </div>
 
-    <div id="treatments" class="treatments-header mdc-layout-grid">
+    <div class="credits mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="treatments-header__copy">
-            <h1>Treatments</h1>
-          </div>
+            credits:<br />
+            <a href="http://www.onlinewebfonts.com">online web fonts</a>
         </div>
       </div>
     </div>
 
-    <div class="treatments mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--span-8-pho480 mdc-layout-grid__cell--span-4-phone">
-          <div class="treatments__img">
-            <img src="img/adjustment.png" alt="NUCCA Adjustments" />
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__copy">
-            <h2>NUCCA</h2>
-            NUCCA chiropractic treatment involves a very light touch to the
-            first cervical vertebra (upper cervical spine) to realign the spine,
-            balance the spinal column and relieve stress and pain...<br />
-            <button class="treatments__btn mdc-button--unelevated">
-              <span class="mdc-button__label">READ MORE</span>
-            </button>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__img">
-            <img src="img/sports.png" alt="Sports Physiotherapy" />
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__copy">
-            <h2>Sports Physiotherapy</h2>
-            Dr. Thoma assesses spine and joint structure and function to
-            design a corrective therapy program that is custom to your
-            individual needs...<br />
-            <button class="treatments__btn mdc-button--unelevated">
-              <span class="mdc-button__label">READ MORE</span>
-            </button>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__img">
-            <img src="img/functional.png" alt="Functional Medicine" />
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__copy">
-            <h2>Functional Medicine</h2>
-            We seek to find out what is the underlying cause of the patient’s
-            health condition, as opposed to just treating the symptoms. By
-            running a multitude of tests...<br />
-            <button class="treatments__btn mdc-button--unelevated">
-              <span class="mdc-button__label">READ MORE</span>
-            </button>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-5 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__img">
-            <img src="img/red-light.png" alt="Red/Near Infrared Therapy" />
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
-          <div class="treatments__copy">
-            <h2>Red/Near Infrared Therapy</h2>
-            Our whole-body light therapy treatment called Photobiomodulation
-            therapy (PBM), is the application of red and near-infrared light to
-            body where there is degeneration or injury...<br />
-            <button class="treatments__btn mdc-button--unelevated">
-              <span class="mdc-button__label">READ MORE</span>
-            </button>
-          </div>
-        </div>
-      </div>
+    <div class="mobile-nav display-none">
+      <button
+        class="mobile-nav__home mdc-button"
+        data-route="#home"
+      >
+        home
+      </button>
+      <hr class="horizontal-rule" />
+      <button
+        class="mobile-nav__about mdc-button"
+        data-route="#about"
+      >
+        about
+      </button>
+      <hr class="horizontal-rule" />
+      <button
+        class="mobile-nav__treatments mdc-button"
+        data-route="#treatments"
+      >
+        treatments
+      </button>
+      <hr class="horizontal-rule" />
+      <button
+        class="mobile-nav__testimonials mdc-button"
+        data-route="#testimonials"
+      >
+        testimonials
+      </button>
+      <hr class="horizontal-rule" />
+      <button
+        class="mobile-nav__blog mdc-button"
+        data-route="#blog"
+      >
+        blog
+      </button>
+      <hr class="horizontal-rule" />
+      <button
+        class="mobile-nav__contact mdc-button"
+        data-route="#contact"
+      >
+        contact
+      </button>
+      <hr class="horizontal-rule" />
     </div>
 
-    <div id="testimonials" class="testimonials-header mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="testimonials-header__copy">
-            <h1>Testimonials</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonials mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <script type="text/javascript"> 
-            var review_token = 'uxte1J82H2vgWAbiXjypx3VRQYUQFwvYoHsy9HQWbYlSE4USBY'; 
-            var review_target = 'review-container'; 
-          </script> 
-          <script src="https://reviewsonmywebsite.com/js/embed.js?v=7" type="text/javascript"></script> 
-          <div id="review-container"></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bullets mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <i class="fas fa-stop"></i>
-          <i class="fas fa-stop"></i>
-          <i class="fas fa-stop"></i>
-        </div>
-      </div>
-    </div>
-
-    <div class="testimonials-footer mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="testimonials-footer__copy">
-            <h1>Set up your appointment today 480.656.6200</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="blog" class="blog-header mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="blog-header__copy">
-            <h1>Dr. Thoma’s Blog</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="blog-preview mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
-          <div class="blog-preview__post">
-            <img src="img/breathing.png" alt="blog image" />
-            <h2>Change Your Breathing,<br />Change Your Life</h2>
-            <div>
-              Breathing is the only bodily function
-              that we can perform with either our
-              subconscious or conscious mind. Because
-              of this, breathing is one of the
-              most powerful tools that yo...
-            </div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
-          <div class="blog-preview__post">
-            <img src="img/knee.png" alt="blog image" />
-            <h2>Gravel and Pain in your<br />Knee: Chrondromalacia</h2>
-            <div>
-              The long-term fix usually involves
-              assessing your feet, ankles, hips, and
-              other body parts to see where your
-              brain has control challenges. One example
-              of how a part of your...
-            </div>
-          </div>
-        </div>
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
-          <div class="blog-preview__post">
-            <img src="img/elbow.png" width="360" alt="blog image" />
-            <h2>Common Tissue Injury<br />and What to Do</h2>
-            <div>
-              Tendinopathy (disease of the tendon)
-              is by far our most common musculoskeletal
-              complaint we see. Typical areas
-              of tendinopathy include the heel,
-              knee, shoulder, and elbow...
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="bullets mdc-layout-grid">
-      <div class="mdc-layout-grid__inner">
-        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <i class="fas fa-stop"></i>
-          <i class="fas fa-stop"></i>
-          <i class="fas fa-stop"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer-header call-to-action mdc-layout-grid">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-        <div class="call-to-action__copy">
-          <h1>Call today for your personal consultation 480.656.6200</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer mdc-layout-grid">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-9-pho480">
-        <div class="footer__content">
-          <h2>INFINITY SPINE CENTER</h2>
-          <div class="footer__content--copy">
-            In addition to chiropractic, therapies include
-            acupuncture, dry needling, corrective movement
-            therapy, red and near infrared light therapy, nutrition,
-            and lifestyle plans that restore and cultivate optimal
-            health and wellness for all ages and cases including
-            acute, maintenance, and injuries as a result of an
-            auto accident.
-          </div>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-12-tab864 mdc-layout-grid__cell--span-8-pho480">
-        <div class="footer__content">
-          <img src="img/dr-john-thoma.jpg" width="200" alt="Dr. John Thoma" />
-          <div class="name">Dr. John Thoma</div>
-        </div>
-      </div>
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
-        <div class="footer__content">
-          <h2>Contact Information</h2>
-          Infinity Spine Center<br />
-          8080 E Gelding Dr, Suite 102<br />
-          Scottsdale, AZ 85260<br />
-          (480) 656-6200<br />
-          Email@EmailAddress.com<br />
-          <i class="fab fa-facebook-square"></i>
-          <i class="fab fa-instagram"></i>
-          <i class="fab fa-twitter-square"></i>
-          <i class="fas fa-blog"></i>
-          <i class="fas fa-at"></i>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="credits mdc-layout-grid">
-    <div class="mdc-layout-grid__inner">
-      <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          credits:<br />
-          <a href="http://www.onlinewebfonts.com">online web fonts</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="mobile-nav display-none">
-    <button class="mobile-nav__home mdc-button">home</button>
-    <hr class="horizontal-rule" />
-    <button class="mobile-nav__about mdc-button">about</button>
-    <hr class="horizontal-rule" />
-    <button class="mobile-nav__treatments mdc-button">treatments</button>
-    <hr class="horizontal-rule" />
-    <button class="mobile-nav__testimonials mdc-button">testimonials</button>
-    <hr class="horizontal-rule" />
-    <button class="mobile-nav__blog mdc-button">blog</button>
-    <hr class="horizontal-rule" />
-    <button class="mobile-nav__contact mdc-button">contact</button>
-    <hr class="horizontal-rule" />
-  </div>
-
-  <!-- JavaScripts -->
-  <%= htmlWebpackPlugin.options.javascript %>
-  <!-- <script src="js/infinity.js"></script> -->
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <!-- <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
-  <!-- <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script> -->
-</body>
-
+    <!-- JavaScripts -->
+    <%= htmlWebpackPlugin.options.javascript %>
+    <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+    <!-- <script>
+      window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+      ga('create', 'UA-XXXXX-Y', 'auto'); ga('send', 'pageview')
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
+  </body>
 </html>

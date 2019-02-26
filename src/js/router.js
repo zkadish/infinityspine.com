@@ -19,8 +19,10 @@ export const routes = [
   '#faqs',
   '#more-testimonials',
   '#contact',
+  '#home',
 ];
-// const reviewScripts = document.querySelectorAll('.testimonials .mdc-layout-grid__cell > *');
+
+console.log('router loaded!');
 
 let page = window.location.hash;
 
@@ -43,12 +45,16 @@ function testimonialTags(token) {
   return [scriptToken, scriptReview, reviewContainer];
 }
 
-function getRouteContent(newRoute) {
+function getRouteContent(newRoute, anchor) {
   axios.get(`../pages/${newRoute}.html`)
     .then((response) => {
       // remove javascript page <script></script> if it exists
-      const pageScript = document.querySelector(`[src="page/${newRoute}.html"]`);
-      if (pageScript) body.removeChild(pageScript);
+      const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
+      if (pageScript) {
+        pageScript.forEach((script) => {
+          body.removeChild(script);
+        });
+      }
 
       // reset page
       page = newRoute;
@@ -59,12 +65,17 @@ function getRouteContent(newRoute) {
       script.setAttribute('id', page);
 
       // route specific HTML and Javascript
-      if (page === 'home') {
+      if (page === 'home' || page === '') {
         const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
         script.setAttribute('src', 'js/home.js');
+
         // insert page specific javascript
         body.appendChild(script);
         testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
+        // window.location.hash = '#home';
+        if (!anchor) {
+          window.history.replaceState({}, '', '#home');
+        }
       }
 
       if (page === 'more-testimonials') {
@@ -74,6 +85,7 @@ function getRouteContent(newRoute) {
 
       // make sure loaded content starts at the top...
       window.scroll(0, 0);
+
       // replay the anchor tag...
       document.location = window.location.hash;
     }).catch((error) => {
@@ -86,44 +98,51 @@ function getRouteContent(newRoute) {
 export function onRouterEventHandler(e) {
   if (e) e.preventDefault();
 
-  const { hash } = window.location;
+  const { pathname } = window.location;
+  let { hash } = window.location;
+  if (pathname === '/' && hash === '') {
+    hash = '#home';
+  }
 
-  // if window.location.hash is in routes[]
+  // if hash is in routes[]
   if (routes.includes(hash)) {
     getRouteContent(hash.replace(/#/g, ''));
     return;
   }
 
-  // if hash is not in routes its an anchor on the home page
-  // if page is not an empty string and current hash is not
-  // current page nav to home content
-  if (page && hash !== page) {
-    getRouteContent('home');
-  }
+  // if hash is an anchor on the home page
+  getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 
-window.addEventListener('beforeunload', onRouterEventHandler, false);
-window.addEventListener('load', onRouterEventHandler, false);
-window.addEventListener('hashchange', onRouterEventHandler, false);
-window.addEventListener('unload', () => {
-  console.log('unload event');
+window.addEventListener('load', (e) => {
+  console.log('load event');
+  onRouterEventHandler(e, window.location.hash);
 }, false);
-window.addEventListener('loadstart', () => {
-  console.log('loadstart event');
+
+window.addEventListener('hashchange', () => {
+  // if hash is in routes
+  if (routes.includes(window.location.hash)) {
+    onRouterEventHandler();
+    return;
+  }
+
+  const { hash } = window.location;
+  const idTags = document.querySelectorAll('[id]');
+  let ids = [];
+  idTags.forEach(tag => ids.push(`#${tag.id}`));
+  // if hash has a matching id on the page its an anchor link
+  if (!ids.includes(hash)) {
+    ids = [];
+    onRouterEventHandler();
+  }
 }, false);
+// window.addEventListener('beforeunload', onRouterEventHandler, false);
+// window.addEventListener('unload', () => {
+//   console.log('unload event');
+// }, false);
+// window.addEventListener('loadstart', () => {
+//   console.log('loadstart event');
+// }, false);
 window.addEventListener('error', () => {
   console.log('error event');
 }, false);
-
-const treatmentRoutes = routes.slice(0, 4);
-const treatmentsBtn = document.querySelectorAll('.treatments__btn');
-// READ MORE BUTTON
-// TODO: look for a better place for this Click event
-// NOTE: this also exits in home.js
-treatmentsBtn.forEach((btn, i) => {
-  function treatmentsBtnClickHandler() {
-    window.history.pushState(null, null, treatmentRoutes[i]);
-    onRouterEventHandler();
-  }
-  btn.addEventListener('click', treatmentsBtnClickHandler);
-});
