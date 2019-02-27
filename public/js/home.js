@@ -2220,18 +2220,7 @@ window.addEventListener('hashchange', function () {
 
 window.addEventListener('error', function () {
   console.log('error event');
-}, false); // const treatmentRoutes = routes.slice(0, 4);
-// const treatmentsBtn = document.querySelectorAll('.treatments__btn');
-// // READ MORE BUTTON
-// // TODO: look for a better place for this Click event
-// // NOTE: this also exits in home.js
-// treatmentsBtn.forEach((btn, i) => {
-//   function treatmentsBtnClickHandler() {
-//     window.history.pushState(null, null, `${treatmentRoutes[i]}`);
-//     onRouterEventHandler();
-//   }
-//   btn.addEventListener('click', treatmentsBtnClickHandler);
-// });
+}, false);
 
 /***/ })
 

@@ -4982,7 +4982,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var mobileNavBtn = document.querySelector('.header__logo--mobile-nav');
 var mobileNavMenu = document.querySelector('.mobile-nav'); // const mobileNavBtnRipple = new MDCRipple(mobileNavBtn); // eslint-disable-line
-// console.log('reviewScripts:', reviewScripts);
 
 function mobileNavBtnClickHandler() {
   mobileNavMenu.classList.toggle('display-none');
@@ -5058,11 +5057,10 @@ function matchMedia() {
   }
 }
 
-matchMedia();
-
-window.onresize = function () {
-  matchMedia();
-};
+matchMedia(); // matchMedia in this file is only being used on load
+// window.onresize = () => {
+//   matchMedia();
+// };
 
 /***/ }),
 
@@ -5203,18 +5201,7 @@ window.addEventListener('hashchange', function () {
 
 window.addEventListener('error', function () {
   console.log('error event');
-}, false); // const treatmentRoutes = routes.slice(0, 4);
-// const treatmentsBtn = document.querySelectorAll('.treatments__btn');
-// // READ MORE BUTTON
-// // TODO: look for a better place for this Click event
-// // NOTE: this also exits in home.js
-// treatmentsBtn.forEach((btn, i) => {
-//   function treatmentsBtnClickHandler() {
-//     window.history.pushState(null, null, `${treatmentRoutes[i]}`);
-//     onRouterEventHandler();
-//   }
-//   btn.addEventListener('click', treatmentsBtnClickHandler);
-// });
+}, false);
 
 /***/ }),
 
