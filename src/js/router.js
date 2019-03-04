@@ -110,6 +110,28 @@ export function onRouterEventHandler(e) {
     return;
   }
 
+
+  const dataRoutes = [...document.querySelectorAll('[data-route]')]
+    .map(r => r.dataset.route.replace('#', ''));
+
+  // let isAnchor = false;
+  const ids = [...document.querySelectorAll('[id]')]
+    .map(id => id.id);
+
+  // some anchors are also routes
+  // the main menu buttons work this way
+  // when on the home page the btns are anchors
+  // when on another page the btns take the
+  // user back to the home page and the anchors
+  // spot on the home page
+  const routesAll = [...ids, ...dataRoutes];
+  const isAnchor = routesAll.some(route => route === hash.replace('#', ''));
+
+  if (!isAnchor) {
+    // getRouteContent('404', window.location.hash.replace(/#/g, ''));
+    window.location = 'pages/404.html';
+    return;
+  }
   // if hash is an anchor on the home page
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
@@ -136,7 +158,13 @@ window.addEventListener('hashchange', () => {
     onRouterEventHandler();
   }
 }, false);
-// window.addEventListener('beforeunload', onRouterEventHandler, false);
+window.addEventListener('beforeunload', () => {
+  // e.preventDefault();
+  // window.location = '/';
+  // debugger;
+  // console.log('beforeunload');
+  // return false;
+}, false);
 // window.addEventListener('unload', () => {
 //   console.log('unload event');
 // }, false);

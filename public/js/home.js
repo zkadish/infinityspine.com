@@ -2097,6 +2097,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ "./src/js/constants.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 
 
 var body = document.querySelector('body');
@@ -2183,6 +2191,32 @@ function onRouterEventHandler(e) {
   if (routes.includes(hash)) {
     getRouteContent(hash.replace(/#/g, ''));
     return;
+  }
+
+  var dataRoutes = _toConsumableArray(document.querySelectorAll('[data-route]')).map(function (r) {
+    return r.dataset.route.replace('#', '');
+  }); // let isAnchor = false;
+
+
+  var ids = _toConsumableArray(document.querySelectorAll('[id]')).map(function (id) {
+    return id.id;
+  }); // some anchors are also routes
+  // the main menu buttons work this way
+  // when on the home page the btns are anchors
+  // when on another page the btns take the
+  // user back to the home page and the anchors
+  // spot on the home page
+
+
+  var routesAll = [].concat(_toConsumableArray(ids), _toConsumableArray(dataRoutes));
+  var isAnchor = routesAll.some(function (route) {
+    return route === hash.replace('#', '');
+  });
+
+  if (!isAnchor) {
+    // getRouteContent('404', window.location.hash.replace(/#/g, ''));
+    window.location = 'pages/404.html';
+    return;
   } // if hash is an anchor on the home page
 
 
@@ -2210,8 +2244,13 @@ window.addEventListener('hashchange', function () {
     ids = [];
     onRouterEventHandler();
   }
-}, false); // window.addEventListener('beforeunload', onRouterEventHandler, false);
-// window.addEventListener('unload', () => {
+}, false);
+window.addEventListener('beforeunload', function () {// e.preventDefault();
+  // window.location = '/';
+  // debugger;
+  // console.log('beforeunload');
+  // return false;
+}, false); // window.addEventListener('unload', () => {
 //   console.log('unload event');
 // }, false);
 // window.addEventListener('loadstart', () => {
