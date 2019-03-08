@@ -6,8 +6,9 @@
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "postbuild": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
-    "prestart": "NODE_ENV=development webpack", 
+    "prestart": "NODE_ENV=development webpack",
     "start": "NODE_ENV=development webpack-dev-server",
+    "poststart": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "zachary kadish",
@@ -40,11 +41,15 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
-    "@material/button": "^0.42.0",
+    "@material/button": "0.42.0",
     "@material/card": "^0.42.0",
-    "@material/fab": "^0.42.0",
+    "@material/checkbox": "^1.0.0",
+    "@material/fab": "^1.0.0",
+    "@material/floating-label": "^1.0.0",
+    "@material/form-field": "^1.0.0",
     "@material/layout-grid": "^0.41.0",
-    "@material/ripple": "^0.42.0",
+    "@material/ripple": "^1.0.0",
+    "@material/textfield": "^1.0.0",
     "autoprefixer": "^9.4.3",
     "axios": "^0.18.0"
   }

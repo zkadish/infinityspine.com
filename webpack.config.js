@@ -24,6 +24,7 @@ module.exports = {
   entry: {
     infinity: './src/index.js',
     home: './src/js/home.js',
+    contact: './src/js/contact.js',
   },
   output: {
     filename: '[name].js',
@@ -91,7 +92,8 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: devMode ? 'fonts' : '../fonts',
+              // outputPath: devMode ? 'fonts' : '../fonts',
+              outputPath: '../fonts',
             },
           },
         ],
@@ -117,11 +119,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      inject: devMode,
+      inject: false,
       template: path.resolve(__dirname, 'src/index.html'),
       title: 'Infinity Spine',
-      javascript: !devMode ? '<script src="js/infinity.js"></script>' : '',
-      styles: !devMode ? '<link rel="stylesheet" href="css/infinity.css">' : '',
+      javascript: '<script src="js/infinity.js"></script>',
+      styles: '<link rel="stylesheet" href="css/infinity.css">',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

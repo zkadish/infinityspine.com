@@ -68,13 +68,22 @@ function getRouteContent(newRoute, anchor) {
       if (page === 'home' || page === '') {
         const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
         script.setAttribute('src', 'js/home.js');
-
         // insert page specific javascript
         body.appendChild(script);
         testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
-        // window.location.hash = '#home';
+
         if (!anchor) {
           window.history.replaceState({}, '', '#home');
+        }
+      }
+
+      if (page === 'contact') {
+        script.setAttribute('src', 'js/contact.js');
+        // insert page specific javascript
+        body.appendChild(script);
+
+        if (!anchor) {
+          window.history.replaceState({}, '', '#contact');
         }
       }
 

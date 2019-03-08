@@ -1,7 +1,41 @@
 .hours {
+  margin: 24px 0 0;
   &__day {
     min-width: 120px;
     font-weight: bold;
     letter-spacing: 1px;
   }
+}
+
+.name-fields {
+  display: flex;
+  margin: 0 0 24px;
+}
+
+#email-field {
+  margin: 0 0 16px;
+}
+
+.mdc-form-field {
+  color: var(--mdc-theme-text-primary-on-background, $BLUE_DARK);
+  margin: 0 0 24px;
+}
+
+.mdc-checkbox {
+  // variable names ($unmarked-stroke-color, $unmarked-fill-color, $marked-stroke-color, $marked-fill-color, $generate-keyframes)
+  @include mdc-checkbox-container-colors($BLUE_DARK, white, $BLUE_DARK, white);
+  @include mdc-checkbox-ink-color($BLUE_DARK);
+}
+
+
+.mdc-text-field {
+  width: 100%;
+  @include mdc-text-field-fill-color($GREY_LIGHT);
+  &:first-child {
+    margin: 0 24px 0 0;
+  }
+}
+
+.google-map{
+  width: 100%;
 }

@@ -18,8 +18,40 @@
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
       <div class="page__copy">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.5868944466683!2d-111.90902508475776!3d33.61602154803881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b744d1dabcb55%3A0x3cdd50c03ea4d344!2s8080+E+Gelding+Dr+%23102%2C+Scottsdale%2C+AZ+85260%2C+USA!5e0!3m2!1sen!2sua!4v1551672541860" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        <p class="hours">
+        <div class="name-fields">
+          <div id="first-name-field" class="mdc-text-field">
+            <input class="mdc-text-field__input">
+            <div class="mdc-line-ripple"></div>
+            <label class="mdc-floating-label">First Name</label>
+          </div>
+          <div id="last-name-field" class="mdc-text-field">
+            <input class="mdc-text-field__input">
+            <div class="mdc-line-ripple"></div>
+            <label class="mdc-floating-label">Last Name</label>
+          </div>
+        </div>
+        <div id="email-field" class="mdc-text-field">
+          <input class="mdc-text-field__input">
+          <div class="mdc-line-ripple"></div>
+          <label class="mdc-floating-label">Your Email</label>
+        </div>
+        <div class="mdc-form-field">
+          <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-1"/>
+            <div class="mdc-checkbox__background">
+              <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                <path class="mdc-checkbox__checkmark-path"
+                      fill="none"
+                      d="M1.73,12.91 8.1,19.28 22.79,4.59">
+                </path>
+              </svg>
+              <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+          </div>
+          <label for="checkbox-1">Send Infinity Spine's blog posts to my email.</label>
+        </div>
+        <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.5868944466683!2d-111.90902508475776!3d33.61602154803881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b744d1dabcb55%3A0x3cdd50c03ea4d344!2s8080+E+Gelding+Dr+%23102%2C+Scottsdale%2C+AZ+85260%2C+USA!5e0!3m2!1sen!2sua!4v1551672541860" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <div class="hours">
           <h2>hours of operation</h2>
           <table>
             <tr>
@@ -43,7 +75,7 @@
               <td>8:00am - 12:30am and 1:30pm - 6:00pm</td>
             </tr>
           </table>
-        </p>
+        </div>
       </div>
     </div>
   </div>

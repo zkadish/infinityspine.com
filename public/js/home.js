@@ -2152,10 +2152,20 @@ function getRouteContent(newRoute, anchor) {
       body.appendChild(script);
       testimonialTags(_constants__WEBPACK_IMPORTED_MODULE_1__["REVIEWS_ONE"]).forEach(function (node) {
         return reviews.appendChild(node);
-      }); // window.location.hash = '#home';
+      });
 
       if (!anchor) {
         window.history.replaceState({}, '', '#home');
+      }
+    }
+
+    if (page === 'contact') {
+      script.setAttribute('src', 'js/contact.js'); // insert page specific javascript
+
+      body.appendChild(script);
+
+      if (!anchor) {
+        window.history.replaceState({}, '', '#contact');
       }
     }
 
