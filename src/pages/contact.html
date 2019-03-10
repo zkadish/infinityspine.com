@@ -19,21 +19,39 @@
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-7 mdc-layout-grid__cell--span-8-pho480">
       <div class="page__copy">
         <div class="name-fields">
-          <div id="first-name-field" class="mdc-text-field">
-            <input class="mdc-text-field__input">
-            <div class="mdc-line-ripple"></div>
-            <label class="mdc-floating-label">First Name</label>
+          <div id="first-name-field" class="mdc-text-field text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="first-name-input">
+            <!-- <div class="mdc-line-ripple"></div> -->
+            <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                <label class="mdc-floating-label" for="first-name-input">First Name</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
           </div>
-          <div id="last-name-field" class="mdc-text-field">
-            <input class="mdc-text-field__input">
-            <div class="mdc-line-ripple"></div>
-            <label class="mdc-floating-label">Last Name</label>
+          <div id="last-name-field" class="mdc-text-field text-field mdc-text-field--outlined">
+            <input class="mdc-text-field__input" id="last-name-input">
+            <!-- <div class="mdc-line-ripple"></div> -->
+            <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                <label class="mdc-floating-label" for="last-name-input">Last Name</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
           </div>
         </div>
-        <div id="email-field" class="mdc-text-field">
-          <input class="mdc-text-field__input">
-          <div class="mdc-line-ripple"></div>
-          <label class="mdc-floating-label">Your Email</label>
+        <div id="email-field" class="mdc-text-field text-field mdc-text-field--outlined">
+          <input class="mdc-text-field__input" id="email-input">
+          <!-- <div class="mdc-line-ripple"></div> -->
+          <div class="mdc-notched-outline mdc-notched-outline--upgraded">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label class="mdc-floating-label" for="email-input">Your Email</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
         </div>
         <div class="mdc-form-field">
           <div class="mdc-checkbox">
@@ -50,29 +68,46 @@
           </div>
           <label for="checkbox-1">Send Infinity Spine's blog posts to my email.</label>
         </div>
+        <div id="message-field" style="width: 100%;"
+          class="mdc-text-field mdc-text-field--textarea"
+        >
+          <textarea id="textarea" class="mdc-text-field__input" rows="8" cols="80"></textarea>
+          <div class="mdc-notched-outline">
+            <div class="mdc-notched-outline__leading"></div>
+            <div class="mdc-notched-outline__notch">
+              <label for="textarea" class="mdc-floating-label">Let us know what your thinking...</label>
+            </div>
+            <div class="mdc-notched-outline__trailing"></div>
+          </div>
+        </div>
         <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.5868944466683!2d-111.90902508475776!3d33.61602154803881!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872b744d1dabcb55%3A0x3cdd50c03ea4d344!2s8080+E+Gelding+Dr+%23102%2C+Scottsdale%2C+AZ+85260%2C+USA!5e0!3m2!1sen!2sua!4v1551672541860" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
         <div class="hours">
           <h2>hours of operation</h2>
           <table>
             <tr>
-              <td class="hours__day">Monday:</td>
-              <td>8:00am - 12:30am and 1:30pm - 6:00pm</td>
+              <td class="hours__day">Monday<span>:</span></td>
+              <td style="text-align: right">8:00am - </td>
+              <td>12:30am and 1:30pm - 6:00pm</td>
             </tr>
             <tr>
-              <td class="hours__day">Tuesday:</td>
-              <td>12:00am - 4:30pm (red light therapy only)</td>
+              <td class="hours__day">Tuesday<span>:</span></td>
+              <td>12:00am - </td>
+              <td>4:30pm (red light therapy only)</td>
             </tr>
             <tr>
-              <td class="hours__day">Wednesday:</td>
-              <td>8:00am - 12:30pm and 1:30pm - 7:00pm</td>
+              <td class="hours__day">Wednesday<span>:</span></td>
+              <td style="text-align: right">8:00am - </td>
+              <td>12:30pm and 1:30pm - 7:00pm</td>
             </tr>
             <tr>
-              <td class="hours__day">Thursday:</td>
-              <td>12:00am - 4:30pm (red light therapy only)</td>
+              <td class="hours__day">Thursday<span>:</span></td>
+              <td>12:00am - </td>
+              <td>4:30pm (red light therapy only)</td>
             </tr>
             <tr>
-              <td class="hours__day">Friday:</td>
-              <td>8:00am - 12:30am and 1:30pm - 6:00pm</td>
+              <td class="hours__day">Friday<span>:</span></td>
+              <td style="text-align: right">8:00am - </td>
+              <td>12:30am and 1:30pm - 6:00pm</td>
             </tr>
           </table>
         </div>

@@ -3,7 +3,10 @@
   &__day {
     min-width: 120px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    span {
+      margin: 0 0 0 2px;
+    }
   }
 }
 
@@ -13,29 +16,38 @@
 }
 
 #email-field {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 }
 
-.mdc-form-field {
-  color: var(--mdc-theme-text-primary-on-background, $BLUE_DARK);
-  margin: 0 0 24px;
+.mdc-text-field {
+  width: 100%;
 }
-
+    
 .mdc-checkbox {
   // variable names ($unmarked-stroke-color, $unmarked-fill-color, $marked-stroke-color, $marked-fill-color, $generate-keyframes)
   @include mdc-checkbox-container-colors($BLUE_DARK, white, $BLUE_DARK, white);
   @include mdc-checkbox-ink-color($BLUE_DARK);
 }
 
-
-.mdc-text-field {
-  width: 100%;
-  @include mdc-text-field-fill-color($GREY_LIGHT);
-  &:first-child {
-    margin: 0 24px 0 0;
-  }
+.mdc-form-field {
+  color: var(--mdc-theme-text-primary-on-background, $BLUE_DARK);
+  margin: 0 0 12px;
 }
 
-.google-map{
+.mdc-text-field {
+  @include mdc-text-field-fill-color(white);
+  @include mdc-text-field-ink-color($BLUE_DARK);
+  @include mdc-text-field-label-color($BLUE_DARK);
+  @include mdc-text-field-outline-color($BLUE_DARK);
+  @include mdc-text-field-hover-outline-color($BLUE_DARK);
+  @include mdc-text-field-textarea-stroke-color($BLUE_DARK);
+  // width: 100%;
+}
+
+#message-field {
+  margin: 0 0 24px;
+}
+
+.google-map {
   width: 100%;
 }

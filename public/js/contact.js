@@ -4809,13 +4809,26 @@ function __importDefault(mod) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_textfield__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material/textfield */ "./node_modules/@material/textfield/index.js");
- // import { MDCFloatingLabel } from '@material/floating-label';
-// console.log(document);
-// debugger;
 
-var firstNameField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#first-name-field'));
-var lastNameField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#last-name-field'));
-var emailField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#email-field')); // const firstNameLabel = new MDCFloatingLabel(document.querySelector('.first-name-label'));
+var firstNameField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#first-name-field')); // eslint-disable-line
+
+var lastNameField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#last-name-field')); // eslint-disable-line
+
+var emailField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#email-field')); // eslint-disable-line
+
+var messageField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#message-field')); // eslint-disable-line
+// fixes issue with material textarea label getting cut off
+// by the inlined overflow value being applied by material-ui
+
+var message = document.querySelector('#message-field');
+
+function onMousedownHandler() {
+  setTimeout(function () {
+    message.style = 'width: auto';
+  }, 0);
+}
+
+message.onmousedown = onMousedownHandler;
 
 /***/ })
 
