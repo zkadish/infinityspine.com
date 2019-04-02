@@ -28,6 +28,8 @@ import '../forms/Insurance-Intake-form.pdf';
 
 // reset the home link href url so that the path
 // is correct for in local and live production
+// TODO: set this up so that its a template
+// literal string html template
 const logoHomeLink = document.querySelector('#logo-home-link');
 if (window.location.pathname === '/infinity-spine/public/') {
   logoHomeLink.setAttribute('href', '/infinity-spine/public/');
