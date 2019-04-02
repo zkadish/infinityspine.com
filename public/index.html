@@ -24,7 +24,7 @@
             <button class="header__logo--mobile-nav mdc-fab">
               <i class="fas fa-bars"></i>
             </button>
-            <a href="/" data-route="#home">
+            <a id="logo-home-link" href="/" data-route="#home">
               <img alt="infinity-spine" src="img/logo-only.png" />
               <div class="header__logo--copy">INFINITY SPINE CENTER</div>
             </a>
@@ -102,7 +102,7 @@
                 class="new-patient mdc-fab mdc-fab--extended"
                 aria-label="new patient"
                 type="submit"
-                onclick="console.log('test');window.open('forms/infinity-spine-new-patient-form.pdf')"
+                onclick="window.open('forms/infinity-spine-new-patient-form.pdf')"
               >
                 <i class="fab fa-pagelines"></i>&nbsp
                 <span class="mdc-fab__label">New Patient Form</span>
@@ -147,9 +147,9 @@
     <div class="footer-header call-to-action mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-          <div class="call-to-action__copy">
+          <a class="call-to-action__copy" href="tel:1-480-656-6200">
             <h1>Call today for your personal consultation 480.656.6200</h1>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -179,11 +179,12 @@
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4 mdc-layout-grid__cell--span-6-tab864 mdc-layout-grid__cell--span-8-pho480">
           <div class="footer__content">
             <h2>Contact Information</h2>
-            Infinity Spine Center<br />
+            <a class="a-link" href=""><i class="fas fa-map-marker-alt"></i>Infinity Spine Center</a>
             8080 E Gelding Dr, Suite 102<br />
             Scottsdale, AZ 85260<br />
-            <a class="a-link" href="tel:1-480-656-6200">(480) 656-6200</a><br />
-            <a class="a-link" href="mailto:drthoma@infinityspine.com">drthoma@infinityspine.com</a><br />
+            p: <a class="a-link" href="tel:1-480-656-6200">(480) 656-6200</a><br />
+            f: (480) 656-6200<br /><!-- todo: replace with fax number -->
+            e: <a class="a-link" href="mailto:drthoma@infinityspine.com">drthoma@infinityspine.com</a><br />
             <i class="fab fa-facebook-square"></i>
             <i class="fab fa-instagram"></i>
             <i class="fab fa-twitter-square"></i>

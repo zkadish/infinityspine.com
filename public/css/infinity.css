@@ -8474,6 +8474,8 @@ body {
 .a-link {
   color: inherit;
   text-decoration: none; }
+  .a-link:hover {
+    text-decoration: underline; }
 
 .vertical-rule {
   width: 1px;
@@ -8491,6 +8493,13 @@ body {
 
 .display-flex {
   display: flex; }
+
+.hours__day {
+  min-width: 120px;
+  font-weight: bold;
+  letter-spacing: 2px; }
+  .hours__day span {
+    margin: 0 0 0 2px; }
 
 .mdc-button {
   font-family: Roboto, sans-serif;
@@ -9235,26 +9244,105 @@ body {
     margin: 0;
     border-left: 1px solid #ccc; }
 
-.hours {
-  margin: 24px 0 0; }
-  .hours__day {
-    min-width: 120px;
-    font-weight: bold;
-    letter-spacing: 1px; }
-
 .name-fields {
   display: flex;
   margin: 0 0 24px; }
 
 #email-field {
-  margin: 0 0 24px; }
+  margin: 0 0 12px; }
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate) ~ .mdc-checkbox__background {
+  border-color: #2c3384;
+  background-color: white; }
+
+.mdc-checkbox .mdc-checkbox__native-control:enabled:checked ~ .mdc-checkbox__background,
+.mdc-checkbox .mdc-checkbox__native-control:enabled:indeterminate ~ .mdc-checkbox__background {
+  border-color: #2c3384;
+  background-color: white; }
+
+@-webkit-keyframes mdc-checkbox-fade-in-background-1 {
+  0% {
+    border-color: #2c3384;
+    background-color: white; }
+  50% {
+    border-color: #2c3384;
+    background-color: white; } }
+
+@keyframes mdc-checkbox-fade-in-background-1 {
+  0% {
+    border-color: #2c3384;
+    background-color: white; }
+  50% {
+    border-color: #2c3384;
+    background-color: white; } }
+
+@-webkit-keyframes mdc-checkbox-fade-out-background-1 {
+  0%,
+  80% {
+    border-color: #2c3384;
+    background-color: white; }
+  100% {
+    border-color: #2c3384;
+    background-color: white; } }
+
+@keyframes mdc-checkbox-fade-out-background-1 {
+  0%,
+  80% {
+    border-color: #2c3384;
+    background-color: white; }
+  100% {
+    border-color: #2c3384;
+    background-color: white; } }
+
+.mdc-checkbox.mdc-checkbox--anim-unchecked-checked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background, .mdc-checkbox.mdc-checkbox--anim-unchecked-indeterminate .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background {
+  -webkit-animation-name: mdc-checkbox-fade-in-background-1;
+          animation-name: mdc-checkbox-fade-in-background-1; }
+
+.mdc-checkbox.mdc-checkbox--anim-checked-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background, .mdc-checkbox.mdc-checkbox--anim-indeterminate-unchecked .mdc-checkbox__native-control:enabled ~ .mdc-checkbox__background {
+  -webkit-animation-name: mdc-checkbox-fade-out-background-1;
+          animation-name: mdc-checkbox-fade-out-background-1; }
+
+.mdc-checkbox .mdc-checkbox__checkmark {
+  color: #2c3384; }
+
+.mdc-checkbox .mdc-checkbox__mixedmark {
+  border-color: #2c3384; }
+
+.mdc-form-field {
+  color: var(--mdc-theme-text-primary-on-background, #2c3384);
+  margin: 0 0 12px; }
 
 .mdc-text-field {
   width: 100%; }
   .mdc-text-field:not(.mdc-text-field--disabled) {
-    background-color: #cbcaca; }
+    background-color: white; }
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: #2c3384; }
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #2c3384; }
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: #2c3384; }
+  .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__leading,
+  .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__notch,
+  .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing,
+  .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__leading,
+  .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__notch,
+  .mdc-text-field:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover ~ .mdc-notched-outline .mdc-notched-outline__trailing {
+    border-color: #2c3384; }
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+  .mdc-text-field:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: #2c3384; }
   .mdc-text-field:first-child {
     margin: 0 24px 0 0; }
+
+#message-field {
+  margin: 0 0 24px; }
+
+.submit-btn {
+  margin: 0 0 24px; }
 
 .google-map {
   width: 100%; }

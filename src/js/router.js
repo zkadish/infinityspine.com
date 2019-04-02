@@ -1,8 +1,18 @@
 import axios from 'axios';
 import { REVIEWS_ONE, REVIEWS_TWO } from './constants';
 
+const { origin, pathname } = window.location;
 const body = document.querySelector('body');
 const container = document.querySelector('.container');
+const path = '/infinity-spine/public/';
+let root = '/';
+// let htmlPath = '/';
+
+if (pathname === '/infinity-spine/public/') {
+  // htmlPath = path;
+  root = path;
+}
+
 export const routes = [
   '#nucca-chiropractic',
   '#sports-physiotherapy',
@@ -19,6 +29,7 @@ export const routes = [
   '#faqs',
   '#more-testimonials',
   '#contact',
+  '#directions',
   '#home',
 ];
 
@@ -46,7 +57,7 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor) {
-  axios.get(`../pages/${newRoute}.html`)
+  axios.get(`${origin}${root}pages/${newRoute}.html`)
     .then((response) => {
       // remove javascript page <script></script> if it exists
       const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
@@ -107,11 +118,14 @@ function getRouteContent(newRoute, anchor) {
 export function onRouterEventHandler(e) {
   if (e) e.preventDefault();
 
-  const { pathname } = window.location;
+  // const { pathname } = window.location;
   let { hash } = window.location;
-  if (pathname === '/' && hash === '') {
+
+  if (pathname === root && hash === '') {
     hash = '#home';
   }
+  // console.log('pathname');
+  // debugger;
 
   // if hash is in routes[]
   if (routes.includes(hash)) {

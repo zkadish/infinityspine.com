@@ -26,6 +26,13 @@ import '../forms/Insurance-Intake-form.pdf';
 
 // console.log('PRODUCTION', PRODUCTION); // eslint-disable-line
 
+// reset the home link href url so that the path
+// is correct for in local and live production
+const logoHomeLink = document.querySelector('#logo-home-link');
+if (window.location.pathname === '/infinity-spine/public/') {
+  logoHomeLink.setAttribute('href', '/infinity-spine/public/');
+}
+
 const mobileNavBtn = document.querySelector('.header__logo--mobile-nav');
 const mobileNavMenu = document.querySelector('.mobile-nav');
 // const mobileNavBtnRipple = new MDCRipple(mobileNavBtn); // eslint-disable-line

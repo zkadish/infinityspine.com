@@ -2107,9 +2107,20 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 
 
+var _window$location = window.location,
+    origin = _window$location.origin,
+    pathname = _window$location.pathname;
 var body = document.querySelector('body');
 var container = document.querySelector('.container');
-var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#home'];
+var path = '/infinity-spine/public/';
+var root = '/'; // let htmlPath = '/';
+
+if (pathname === '/infinity-spine/public/') {
+  // htmlPath = path;
+  root = path;
+}
+
+var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home'];
 console.log('router loaded!');
 var page = window.location.hash;
 
@@ -2127,7 +2138,7 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor) {
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("../pages/".concat(newRoute, ".html")).then(function (response) {
+  axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(origin).concat(root, "pages/").concat(newRoute, ".html")).then(function (response) {
     // remove javascript page <script></script> if it exists
     var pageScript = document.querySelectorAll("[src=\"js/".concat(page.replace('#', ''), ".js\"]"));
 
@@ -2189,13 +2200,15 @@ function getRouteContent(newRoute, anchor) {
 
 
 function onRouterEventHandler(e) {
-  if (e) e.preventDefault();
-  var pathname = window.location.pathname;
+  if (e) e.preventDefault(); // const { pathname } = window.location;
+
   var hash = window.location.hash;
 
-  if (pathname === '/' && hash === '') {
+  if (pathname === root && hash === '') {
     hash = '#home';
-  } // if hash is in routes[]
+  } // console.log('pathname');
+  // debugger;
+  // if hash is in routes[]
 
 
   if (routes.includes(hash)) {
