@@ -9023,7 +9023,9 @@ body {
     height: 150px;
     color: white;
     letter-spacing: 3px;
-    font-family: "robotothin", Arial, Helvetica, sans-serif; }
+    font-family: "robotothin", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer; }
 
 .selling-points {
   padding-top: 96px;
@@ -9138,7 +9140,9 @@ body {
     height: 150px;
     color: #2c3384;
     letter-spacing: 3px;
-    font-family: "robotothin", Arial, Helvetica, sans-serif; }
+    font-family: "robotothin", Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    cursor: pointer; }
 
 .blog-header {
   background: #cbcaca;
