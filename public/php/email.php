@@ -10,6 +10,6 @@
   function myFunction() {
     // echo "You clicked the buttonz";
     // admin@infinityspine.com
-    mail('zachkadish@gmail.com', 'test', 'test');
+    mail('zachkadish@gmail.com', 'testx', 'testz');
   }
 ?>

@@ -1,5 +1,5 @@
 import { MDCTextField } from '@material/textfield';
-import axios from 'axios';
+// import axios from 'axios';
 
 const firstNameMDCTextField = new MDCTextField(document.querySelector('#first-name-field')); // eslint-disable-line
 const lastNameMDCTextField = new MDCTextField(document.querySelector('#last-name-field')); // eslint-disable-line
@@ -47,15 +47,28 @@ function textFieldHandler(e) {
   if (!testInput) e.preventDefault();
 }
 
-function invalidEmail() {
+function invalidEmail(invalid) {
   const borderElements = emailInput.parentElement.children[1].children;
-  emailInput.style.color = 'red';
-  borderElements[1].children[0].style.color = 'red';
-  borderElements[1].children[0].innerHTML = 'You must enter a valid email';
+
+  if (invalid) {
+    emailInput.style.color = 'red';
+    borderElements[1].children[0].style.color = 'red';
+    borderElements[1].children[0].innerHTML = 'You must enter a valid email';
+    for (let i = 0; i < 3; i += 1) {
+      borderElements[i].style['border-color'] = 'red';
+    }
+    emailInput.focus();
+    return;
+  }
+
+  emailInput.style.color = null;
+  borderElements[1].children[0].style.color = null;
+  borderElements[1].children[0].innerHTML = 'Your Email';
   for (let i = 0; i < 3; i += 1) {
-    borderElements[i].style['border-color'] = 'red';
+    borderElements[i].style['border-color'] = null;
   }
   emailInput.focus();
+  emailInput.blur();
 }
 
 firstNameInput.onkeypress = textFieldHandler;
@@ -65,8 +78,8 @@ lastNameInput.onkeypress = textFieldHandler;
 function sendEmail() {
   console.log('sendEmail');
   const { origin } = window.location;
-  axios.get(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
-  // fetch(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
+  // axios.get(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
+  fetch(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
     .then((response) => {
       const runPhp = document.querySelector('#run-php');
       console.log('response', response);
@@ -86,12 +99,14 @@ submit.onclick = () => {
   const validEmail = regxTest('email', emailInput.value);
   if (validEmail) {
     formData['email-field'] = emailInput.value;
+    invalidEmail(false);
   } else {
     console.log('not a valid email');
-    invalidEmail();
+    invalidEmail(true);
     return;
   }
 
   submit.classList.add('submit-btn--disabled');
+  submit.setAttribute('disabled', '');
   sendEmail();
 };
