@@ -76,22 +76,22 @@ function initMobileNavButtons() {
 
 function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
-    console.log('index.js - desk1920');
+    // console.log('index.js - desk1920');
     initMainNavButtons();
   }
 
   if (window.matchMedia('(max-width: 1919px) and (min-width: 1600px)').matches) {
-    console.log('index.js - desk1600');
+    // console.log('index.js - desk1600');
     initMainNavButtons();
   }
 
   if (window.matchMedia('(max-width: 1599px) and (min-width: 1440px)').matches) {
-    console.log('index.js - desk1440');
+    // console.log('index.js - desk1440');
     initMainNavButtons();
   }
 
   if (window.matchMedia('(max-width: 1439px) and (min-width: 1280px)').matches) {
-    console.log('index.js - desk1280');
+    // console.log('index.js - desk1280');
     initMainNavButtons();
   }
 
@@ -101,17 +101,17 @@ function matchMedia() {
   }
 
   if (window.matchMedia('(max-width: 1023px) and (min-width: 864px)').matches) {
-    console.log('index.js - tab864');
+    // console.log('index.js - tab864');
     initMainNavButtons();
   }
 
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
-    console.log('index.js - pho480');
+    // console.log('index.js - pho480');
     initMobileNavButtons();
   }
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
-    console.log('index.js - phone');
+    // console.log('index.js - phone');
     initMobileNavButtons();
   }
 }

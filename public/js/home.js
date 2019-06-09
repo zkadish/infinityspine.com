@@ -2012,13 +2012,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./src/js/router.js");
 
 var treatmentRoutes = _router__WEBPACK_IMPORTED_MODULE_0__["routes"].slice(0, 4);
-var treatmentsBtn = document.querySelectorAll('.treatments__btn');
-console.log('home loaded!');
+var treatmentsBtn = document.querySelectorAll('.treatments__btn'); // console.log('home loaded!');
+
 fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
   return response.json();
 }).then(function (data) {
-  console.log(data);
-  debugger;
+  return console.log(data);
 }); // treatments read-more buttons
 
 treatmentsBtn.forEach(function (btn, i) {
@@ -2033,50 +2032,50 @@ var splash01 = document.querySelector('#splash-01');
 
 function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
-    console.log('home.js - desk1920'); // initMainNavButtons();
-
+    // console.log('home.js - desk1920');
+    // initMainNavButtons();
     splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1919px) and (min-width: 1600px)').matches) {
-    console.log('home.js - desk1600'); // initMainNavButtons();
-
+    // console.log('home.js - desk1600');
+    // initMainNavButtons();
     splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1599px) and (min-width: 1440px)').matches) {
-    console.log('home.js - desk1440'); // initMainNavButtons();
-
+    // console.log('home.js - desk1440');
+    // initMainNavButtons();
     splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1439px) and (min-width: 1280px)').matches) {
-    console.log('home.js - desk1280'); // initMainNavButtons();
-
+    // console.log('home.js - desk1280');
+    // initMainNavButtons();
     splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1279px) and (min-width: 1024px)').matches) {
-    console.log('home.js - desk1024'); // initMainNavButtons();
-
+    // console.log('home.js - desk1024');
+    // initMainNavButtons();
     splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 1023px) and (min-width: 864px)').matches) {
-    console.log('home.js - tab864'); // initMainNavButtons();
-
+    // console.log('home.js - tab864');
+    // initMainNavButtons();
     splash01.setAttribute('src', 'img/splash-01.png');
   }
 
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
-    console.log('home.js - pho480'); // initMobileNavButtons();
-
+    // console.log('home.js - pho480');
+    // initMobileNavButtons();
     splash01.setAttribute('src', 'img/splash-01-pho480.png');
   }
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
-    console.log('home.js - phone'); // initMobileNavButtons();
-
+    // console.log('home.js - phone');
+    // initMobileNavButtons();
     splash01.setAttribute('src', 'img/splash-01-pho480.png');
   }
 }
@@ -2126,8 +2125,8 @@ if (pathname === '/infinity-spine/public/') {
   root = path;
 }
 
-var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home'];
-console.log('router loaded!');
+var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home']; // console.log('router loaded!');
+
 var page = window.location.hash;
 
 function testimonialTags(token) {
@@ -2252,7 +2251,7 @@ function onRouterEventHandler(e) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 window.addEventListener('load', function (e) {
-  console.log('load event');
+  // console.log('load event');
   onRouterEventHandler(e, window.location.hash);
 }, false);
 window.addEventListener('hashchange', function () {

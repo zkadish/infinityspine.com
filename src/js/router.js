@@ -33,7 +33,7 @@ export const routes = [
   '#home',
 ];
 
-console.log('router loaded!');
+// console.log('router loaded!');
 
 let page = window.location.hash;
 
@@ -160,7 +160,7 @@ export function onRouterEventHandler(e) {
 }
 
 window.addEventListener('load', (e) => {
-  console.log('load event');
+  // console.log('load event');
   onRouterEventHandler(e, window.location.hash);
 }, false);
 
