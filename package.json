@@ -52,7 +52,6 @@
     "@material/layout-grid": "^0.41.0",
     "@material/ripple": "^1.0.0",
     "@material/textfield": "^1.0.0",
-    "autoprefixer": "^9.4.3",
-    "axios": "^0.18.0"
+    "autoprefixer": "^9.4.3"
   }
 }

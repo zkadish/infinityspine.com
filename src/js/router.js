@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { REVIEWS_ONE, REVIEWS_TWO } from './constants';
 
 const { origin, pathname } = window.location;
@@ -57,7 +56,8 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor) {
-  axios.get(`${origin}${root}pages/${newRoute}.html`)
+  fetch(`${origin}${root}pages/${newRoute}.html`)
+    .then(response => response.text())
     .then((response) => {
       // remove javascript page <script></script> if it exists
       const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
@@ -70,7 +70,7 @@ function getRouteContent(newRoute, anchor) {
       // reset page
       page = newRoute;
       // update "master page"
-      container.innerHTML = response.data;
+      container.innerHTML = response;
     }).then(() => {
       const script = document.createElement('script');
       script.setAttribute('id', page);
