@@ -4809,7 +4809,6 @@ function __importDefault(mod) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_textfield__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @material/textfield */ "./node_modules/@material/textfield/index.js");
- // import axios from 'axios';
 
 var firstNameMDCTextField = new _material_textfield__WEBPACK_IMPORTED_MODULE_0__["MDCTextField"](document.querySelector('#first-name-field')); // eslint-disable-line
 
@@ -4892,8 +4891,7 @@ lastNameInput.onkeypress = textFieldHandler; // emailInput.onkeypress = textFiel
 
 function sendEmail() {
   console.log('sendEmail');
-  var origin = window.location.origin; // axios.get(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
-
+  var origin = window.location.origin;
   fetch("".concat(origin, "/infinity-spine/public/php/email.php?firstname=zach")).then(function (response) {
     var runPhp = document.querySelector('#run-php');
     console.log('response', response);
