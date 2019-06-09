@@ -5,6 +5,14 @@ const treatmentsBtn = document.querySelectorAll('.treatments__btn');
 
 console.log('home loaded!');
 
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1')
+  .then((response) => {
+    return response.json();
+  }).then(data => {
+    console.log(data);
+    debugger;
+  });
+
 // treatments read-more buttons
 treatmentsBtn.forEach((btn, i) => {
   function treatmentsBtnClickHandler() {

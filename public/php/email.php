@@ -8,7 +8,8 @@
   }
 
   function myFunction() {
-    echo "You clicked the buttonz";
+    // echo "You clicked the buttonz";
+    // admin@infinityspine.com
     mail('zachkadish@gmail.com', 'test', 'test');
   }
 ?>

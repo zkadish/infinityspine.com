@@ -54,13 +54,13 @@ lastNameInput.onkeypress = textFieldHandler;
 function sendEmail() {
   console.log(window.location);
   const { origin } = window.location;
-  axios.get(
-    `${origin}/infinity-spine/public/php/email.php?firstname=zach`,
-  ).then((response) => {
-    const runPhp = document.querySelector('#run-php');
-    console.log('response', response);
-    runPhp.innerHTML = response.data;
-  });
+  axios.get(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
+  // fetch(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
+    .then((response) => {
+      const runPhp = document.querySelector('#run-php');
+      console.log('response', response);
+      runPhp.innerHTML = response.data;
+    });
 }
 
 submit.onclick = () => {
