@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack",
+    "production": "NODE_ENV=production webpack",
+    "postproduction": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
+    "build": "NODE_ENV=development webpack",
     "postbuild": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
     "prestart": "NODE_ENV=development webpack",
     "start": "NODE_ENV=development webpack-dev-server",

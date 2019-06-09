@@ -2126,8 +2126,8 @@ if (pathname === '/infinity-spine/public/') {
   root = path;
 }
 
-var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home'];
-console.log('router loaded!');
+var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home']; // console.log('router loaded!');
+
 var page = window.location.hash;
 
 function testimonialTags(token) {
@@ -2252,7 +2252,7 @@ function onRouterEventHandler(e) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 window.addEventListener('load', function (e) {
-  console.log('load event');
+  // console.log('load event');
   onRouterEventHandler(e, window.location.hash);
 }, false);
 window.addEventListener('hashchange', function () {

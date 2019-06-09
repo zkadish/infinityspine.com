@@ -47,12 +47,23 @@ function textFieldHandler(e) {
   if (!testInput) e.preventDefault();
 }
 
+function invalidEmail() {
+  const borderElements = emailInput.parentElement.children[1].children;
+  emailInput.style.color = 'red';
+  borderElements[1].children[0].style.color = 'red';
+  borderElements[1].children[0].innerHTML = 'You must enter a valid email';
+  for (let i = 0; i < 3; i += 1) {
+    borderElements[i].style['border-color'] = 'red';
+  }
+  emailInput.focus();
+}
+
 firstNameInput.onkeypress = textFieldHandler;
 lastNameInput.onkeypress = textFieldHandler;
 // emailInput.onkeypress = textFieldHandler;
 
 function sendEmail() {
-  console.log(window.location);
+  console.log('sendEmail');
   const { origin } = window.location;
   axios.get(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
   // fetch(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
@@ -64,18 +75,23 @@ function sendEmail() {
 }
 
 submit.onclick = () => {
-  sendEmail();
+  console.log('submit.onclick');
+  // debugger;
+  formData['name-first-input'] = firstNameInput.value;
+  formData['name-last-input'] = lastNameInput.value;
+  formData.checkbox = checkbox.value;
+  formData.message = textArea.value;
+
   // validate email
   const validEmail = regxTest('email', emailInput.value);
   if (validEmail) {
     formData['email-field'] = emailInput.value;
   } else {
     console.log('not a valid email');
+    invalidEmail();
     return;
   }
 
-  formData['name-first-input'] = firstNameInput.value;
-  formData['name-last-input'] = lastNameInput.value;
-  formData.checkbox = checkbox.value;
-  formData.message = textArea.value;
+  submit.classList.add('submit-btn--disabled');
+  sendEmail();
 };

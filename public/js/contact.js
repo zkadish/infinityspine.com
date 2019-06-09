@@ -6756,11 +6756,24 @@ function textFieldHandler(e) {
   if (!testInput) e.preventDefault();
 }
 
+function invalidEmail() {
+  var borderElements = emailInput.parentElement.children[1].children;
+  emailInput.style.color = 'red';
+  borderElements[1].children[0].style.color = 'red';
+  borderElements[1].children[0].innerHTML = 'You must enter a valid email';
+
+  for (var i = 0; i < 3; i += 1) {
+    borderElements[i].style['border-color'] = 'red';
+  }
+
+  emailInput.focus();
+}
+
 firstNameInput.onkeypress = textFieldHandler;
 lastNameInput.onkeypress = textFieldHandler; // emailInput.onkeypress = textFieldHandler;
 
 function sendEmail() {
-  console.log(window.location);
+  console.log('sendEmail');
   var origin = window.location.origin;
   axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(origin, "/infinity-spine/public/php/email.php?firstname=zach")) // fetch(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
   .then(function (response) {
@@ -6771,7 +6784,12 @@ function sendEmail() {
 }
 
 submit.onclick = function () {
-  sendEmail(); // validate email
+  console.log('submit.onclick'); // debugger;
+
+  formData['name-first-input'] = firstNameInput.value;
+  formData['name-last-input'] = lastNameInput.value;
+  formData.checkbox = checkbox.value;
+  formData.message = textArea.value; // validate email
 
   var validEmail = regxTest('email', emailInput.value);
 
@@ -6779,13 +6797,12 @@ submit.onclick = function () {
     formData['email-field'] = emailInput.value;
   } else {
     console.log('not a valid email');
+    invalidEmail();
     return;
   }
 
-  formData['name-first-input'] = firstNameInput.value;
-  formData['name-last-input'] = lastNameInput.value;
-  formData.checkbox = checkbox.value;
-  formData.message = textArea.value;
+  submit.classList.add('submit-btn--disabled');
+  sendEmail();
 };
 
 /***/ })
