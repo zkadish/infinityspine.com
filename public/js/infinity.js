@@ -4468,7 +4468,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // console.log('PRODUCTION', PRODUCTION); // eslint-disable-line
 // reset the home link href url so that the path
-// is correct for in local and live production
+// is correct for local and live production
 // TODO: set this up so that its a template
 // literal string html template
 

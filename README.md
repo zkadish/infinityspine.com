@@ -29,4 +29,10 @@ var review_target = 'review-container';
 </script> 
 <script src="https://reviewsonmywebsite.com/js/embed.js?v=7" type="text/javascript"></script> 
 <div id="review-container"></div>
+
 ```
+
+# future main menu 
+- focus on primary and secondary personas
+- new patients, scheduling, treatments, articles 
+- move about to the footer

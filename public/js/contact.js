@@ -6762,7 +6762,8 @@ lastNameInput.onkeypress = textFieldHandler; // emailInput.onkeypress = textFiel
 function sendEmail() {
   console.log(window.location);
   var origin = window.location.origin;
-  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(origin, "/infinity-spine/public/php/email.php?firstname=zach")).then(function (response) {
+  axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(origin, "/infinity-spine/public/php/email.php?firstname=zach")) // fetch(`${origin}/infinity-spine/public/php/email.php?firstname=zach`)
+  .then(function (response) {
     var runPhp = document.querySelector('#run-php');
     console.log('response', response);
     runPhp.innerHTML = response.data;

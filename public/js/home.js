@@ -2013,7 +2013,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var treatmentRoutes = _router__WEBPACK_IMPORTED_MODULE_0__["routes"].slice(0, 4);
 var treatmentsBtn = document.querySelectorAll('.treatments__btn');
-console.log('home loaded!'); // treatments read-more buttons
+console.log('home loaded!');
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
+  return response.json();
+}).then(function (data) {
+  console.log(data);
+  debugger;
+}); // treatments read-more buttons
 
 treatmentsBtn.forEach(function (btn, i) {
   function treatmentsBtnClickHandler() {
