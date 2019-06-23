@@ -21,7 +21,7 @@ export const routes = [
   '#performance-exercise',
   '#customized-nutrition',
   '#welcome',
-  '#dr-thoma-blog',
+  '#dr-thoma-articles',
   '#new-patient-forms',
   '#faqs',
   '#more-testimonials',

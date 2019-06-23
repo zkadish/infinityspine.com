@@ -269,7 +269,7 @@ if (pathname === '/infinity-spine/public/') {
   root = path;
 }
 
-var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home'];
+var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-articles', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home'];
 var page = window.location.hash;
 
 function testimonialTags(token) {

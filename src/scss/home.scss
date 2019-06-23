@@ -283,8 +283,10 @@
   &__btn {
     padding: 16px 24px;
     margin: 16px 0 0;
+    cursor: pointer;
     font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: .75rem;
+    outline: none;
   }
 }
 
@@ -341,7 +343,7 @@
 }
 
 // Blog
-.blog-header {
+.articles-header {
   background: $GREY_LIGHT;
   border-bottom: 1px solid $GREY_LIGHT;
 
@@ -356,7 +358,7 @@
   }
 }
 
-.blog-preview {
+.articles-preview {
   padding: 96px 0 48px;
 
   .mdc-layout-grid__cell {
@@ -379,7 +381,7 @@
     }
   }
 
-  .blog-preview-image {
+  .articles-preview-image {
     width: 360px;
     height: 190px;
     overflow: hidden;
@@ -406,8 +408,10 @@
     text-align: center;
     button {
       padding: 16px 24px;
+      cursor: pointer;
       font-family: "robotothin", Arial, Helvetica, sans-serif;
       font-size: .75rem;
+      outline: none;
     }
   }
 }
