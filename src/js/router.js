@@ -5,10 +5,8 @@ const body = document.querySelector('body');
 const container = document.querySelector('.container');
 const path = '/infinity-spine/public/';
 let root = '/';
-// let htmlPath = '/';
 
 if (pathname === '/infinity-spine/public/') {
-  // htmlPath = path;
   root = path;
 }
 
@@ -31,8 +29,6 @@ export const routes = [
   '#directions',
   '#home',
 ];
-
-// console.log('router loaded!');
 
 let page = window.location.hash;
 
@@ -108,7 +104,8 @@ function getRouteContent(newRoute, anchor) {
 
       // replay the anchor tag...
       document.location = window.location.hash;
-    }).catch((error) => {
+    })
+    .catch((error) => {
       // TODO: route to 404 error page
       console.error('Error:', error); // eslint-disable-line
     });
@@ -118,14 +115,11 @@ function getRouteContent(newRoute, anchor) {
 export function onRouterEventHandler(e) {
   if (e) e.preventDefault();
 
-  // const { pathname } = window.location;
   let { hash } = window.location;
 
   if (pathname === root && hash === '') {
     hash = '#home';
   }
-  // console.log('pathname');
-  // debugger;
 
   // if hash is in routes[]
   if (routes.includes(hash)) {
@@ -137,7 +131,6 @@ export function onRouterEventHandler(e) {
   const dataRoutes = [...document.querySelectorAll('[data-route]')]
     .map(r => r.dataset.route.replace('#', ''));
 
-  // let isAnchor = false;
   const ids = [...document.querySelectorAll('[id]')]
     .map(id => id.id);
 
@@ -155,12 +148,12 @@ export function onRouterEventHandler(e) {
     window.location = 'pages/404.html';
     return;
   }
+
   // if hash is an anchor on the home page
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 
 window.addEventListener('load', (e) => {
-  // console.log('load event');
   onRouterEventHandler(e, window.location.hash);
 }, false);
 
@@ -181,19 +174,19 @@ window.addEventListener('hashchange', () => {
     onRouterEventHandler();
   }
 }, false);
-window.addEventListener('beforeunload', () => {
-  // e.preventDefault();
-  // window.location = '/';
-  // debugger;
-  // console.log('beforeunload');
-  // return false;
-}, false);
+
+// window.addEventListener('beforeunload', () => {
+//   console.log('beforeunload');
+// }, false);
+
 // window.addEventListener('unload', () => {
 //   console.log('unload event');
 // }, false);
+
 // window.addEventListener('loadstart', () => {
 //   console.log('loadstart event');
 // }, false);
+
 window.addEventListener('error', () => {
-  console.log('error event');
+  console.log('error event'); // eslint-disable-line
 }, false);

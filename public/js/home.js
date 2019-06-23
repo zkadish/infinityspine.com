@@ -117,7 +117,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./src/js/router.js");
 
 var treatmentRoutes = _router__WEBPACK_IMPORTED_MODULE_0__["routes"].slice(0, 4);
-var treatmentsBtn = document.querySelectorAll('.treatments__btn');
+var treatmentBtns = document.querySelectorAll('.treatments__btn');
+var testimonialsBtn = document.querySelector('.testimonials__btn button');
+var blogPreviewBtns = document.querySelectorAll('.blog-preview__btn');
 var blogPreviewImages = document.querySelectorAll('.blog-preview-image img');
 var blogPreviewTitles = document.querySelectorAll('.blog-preview__post h2');
 var blogPreviewExcerpts = document.querySelectorAll('.blog-preview__excerpt');
@@ -159,14 +161,21 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (
   });
 }); // treatments read-more buttons
 
-treatmentsBtn.forEach(function (btn, i) {
-  function treatmentsBtnClickHandler() {
+treatmentBtns.forEach(function (btn, i) {
+  function treatmentBtnsClickHandler() {
     window.history.pushState(null, null, treatmentRoutes[i]);
     Object(_router__WEBPACK_IMPORTED_MODULE_0__["onRouterEventHandler"])();
   }
 
-  btn.addEventListener('click', treatmentsBtnClickHandler);
+  btn.addEventListener('click', treatmentBtnsClickHandler);
 });
+
+function testimonialsBtnClickHandler() {
+  window.history.pushState(null, null, '#more-testimonials');
+  Object(_router__WEBPACK_IMPORTED_MODULE_0__["onRouterEventHandler"])();
+}
+
+testimonialsBtn.addEventListener('click', testimonialsBtnClickHandler);
 var splash01 = document.querySelector('#splash-01');
 
 function matchMedia() {
@@ -254,15 +263,13 @@ var _window$location = window.location,
 var body = document.querySelector('body');
 var container = document.querySelector('.container');
 var path = '/infinity-spine/public/';
-var root = '/'; // let htmlPath = '/';
+var root = '/';
 
 if (pathname === '/infinity-spine/public/') {
-  // htmlPath = path;
   root = path;
 }
 
-var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home']; // console.log('router loaded!');
-
+var routes = ['#nucca-chiropractic', '#sports-physiotherapy', '#functional-medicine', '#red-near-infrared-therapy', '#mission-vision', '#about-dr-thoma', '#corrective-exercises', '#performance-exercise', '#customized-nutrition', '#welcome', '#dr-thoma-blog', '#new-patient-forms', '#faqs', '#more-testimonials', '#contact', '#directions', '#home'];
 var page = window.location.hash;
 
 function testimonialTags(token) {
@@ -343,15 +350,12 @@ function getRouteContent(newRoute, anchor) {
 
 
 function onRouterEventHandler(e) {
-  if (e) e.preventDefault(); // const { pathname } = window.location;
-
+  if (e) e.preventDefault();
   var hash = window.location.hash;
 
   if (pathname === root && hash === '') {
     hash = '#home';
-  } // console.log('pathname');
-  // debugger;
-  // if hash is in routes[]
+  } // if hash is in routes[]
 
 
   if (routes.includes(hash)) {
@@ -361,8 +365,7 @@ function onRouterEventHandler(e) {
 
   var dataRoutes = _toConsumableArray(document.querySelectorAll('[data-route]')).map(function (r) {
     return r.dataset.route.replace('#', '');
-  }); // let isAnchor = false;
-
+  });
 
   var ids = _toConsumableArray(document.querySelectorAll('[id]')).map(function (id) {
     return id.id;
@@ -389,7 +392,6 @@ function onRouterEventHandler(e) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 window.addEventListener('load', function (e) {
-  // console.log('load event');
   onRouterEventHandler(e, window.location.hash);
 }, false);
 window.addEventListener('hashchange', function () {
@@ -410,13 +412,10 @@ window.addEventListener('hashchange', function () {
     ids = [];
     onRouterEventHandler();
   }
-}, false);
-window.addEventListener('beforeunload', function () {// e.preventDefault();
-  // window.location = '/';
-  // debugger;
-  // console.log('beforeunload');
-  // return false;
-}, false); // window.addEventListener('unload', () => {
+}, false); // window.addEventListener('beforeunload', () => {
+//   console.log('beforeunload');
+// }, false);
+// window.addEventListener('unload', () => {
 //   console.log('unload event');
 // }, false);
 // window.addEventListener('loadstart', () => {
@@ -424,7 +423,7 @@ window.addEventListener('beforeunload', function () {// e.preventDefault();
 // }, false);
 
 window.addEventListener('error', function () {
-  console.log('error event');
+  console.log('error event'); // eslint-disable-line
 }, false);
 
 /***/ })

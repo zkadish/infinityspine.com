@@ -1,7 +1,9 @@
 import { routes, onRouterEventHandler } from './router';
 
 const treatmentRoutes = routes.slice(0, 4);
-const treatmentsBtn = document.querySelectorAll('.treatments__btn');
+const treatmentBtns = document.querySelectorAll('.treatments__btn');
+const testimonialsBtn = document.querySelector('.testimonials__btn button');
+const blogPreviewBtns = document.querySelectorAll('.blog-preview__btn');
 const blogPreviewImages = document.querySelectorAll('.blog-preview-image img');
 const blogPreviewTitles = document.querySelectorAll('.blog-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.blog-preview__excerpt');
@@ -40,13 +42,20 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1')
   });
 
 // treatments read-more buttons
-treatmentsBtn.forEach((btn, i) => {
-  function treatmentsBtnClickHandler() {
+treatmentBtns.forEach((btn, i) => {
+  function treatmentBtnsClickHandler() {
     window.history.pushState(null, null, treatmentRoutes[i]);
     onRouterEventHandler();
   }
-  btn.addEventListener('click', treatmentsBtnClickHandler);
+  btn.addEventListener('click', treatmentBtnsClickHandler);
 });
+
+function testimonialsBtnClickHandler() {
+  window.history.pushState(null, null, '#more-testimonials');
+  onRouterEventHandler();
+}
+
+testimonialsBtn.addEventListener('click', testimonialsBtnClickHandler);
 
 const splash01 = document.querySelector('#splash-01');
 

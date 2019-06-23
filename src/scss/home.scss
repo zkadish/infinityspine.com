@@ -1,5 +1,3 @@
-// @import "./variables";
-
 @import "@material/button/mdc-button";
 @import "@material/fab/mdc-fab";
 
@@ -308,6 +306,19 @@
 
 .testimonials {
   padding: 72px 96px 24px;
+  &__btn {
+    text-align: center;
+    button {
+      padding: 16px 24px;
+      margin: 40px 0 0;
+      cursor: pointer;
+      font-family: "robotothin", Arial, Helvetica, sans-serif;
+      font-size: .75rem;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
 }
 
 // call to action
