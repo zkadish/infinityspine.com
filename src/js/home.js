@@ -2,11 +2,42 @@ import { routes, onRouterEventHandler } from './router';
 
 const treatmentRoutes = routes.slice(0, 4);
 const treatmentsBtn = document.querySelectorAll('.treatments__btn');
-
-// console.log('home loaded!');
+const blogPreviewImages = document.querySelectorAll('.blog-preview-image img');
+const blogPreviewTitles = document.querySelectorAll('.blog-preview__post h2');
+const blogPreviewExcerpts = document.querySelectorAll('.blog-preview__excerpt');
 
 fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1')
-  .then(response => response.json()).then(data => console.log(data));
+  .then(response => response.json())
+  .then((posts) => {
+    const featuredMedia = posts.map(post => post.featured_media);
+    const blogTitles = posts.map(post => post.title.rendered);
+    const blogExcerpt = posts.map(post => post.excerpt.rendered);
+
+    blogPreviewTitles.forEach((t, i) => {
+      const title = t;
+      if (!blogTitles[i]) return;
+      title.innerHTML = blogTitles[i];
+    });
+
+    blogPreviewExcerpts.forEach((e, i) => {
+      const excerpt = e;
+      if (!blogExcerpt[i]) return;
+      const index = blogExcerpt[i].indexOf('</p>');
+      const html = `${blogExcerpt[i].slice(0, index)}</p>`;
+      excerpt.innerHTML = html;
+    });
+
+    Promise.all(
+      featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
+        .then(response => response.json())
+        .then(data => data.media_details.sizes.large)),
+    ).then((arr) => {
+      blogPreviewImages.forEach((img, i) => {
+        if (!arr[i]) return undefined;
+        return img.setAttribute('src', arr[i].source_url);
+      });
+    });
+  });
 
 // treatments read-more buttons
 treatmentsBtn.forEach((btn, i) => {

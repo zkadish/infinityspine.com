@@ -117,12 +117,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./router */ "./src/js/router.js");
 
 var treatmentRoutes = _router__WEBPACK_IMPORTED_MODULE_0__["routes"].slice(0, 4);
-var treatmentsBtn = document.querySelectorAll('.treatments__btn'); // console.log('home loaded!');
-
+var treatmentsBtn = document.querySelectorAll('.treatments__btn');
+var blogPreviewImages = document.querySelectorAll('.blog-preview-image img');
+var blogPreviewTitles = document.querySelectorAll('.blog-preview__post h2');
+var blogPreviewExcerpts = document.querySelectorAll('.blog-preview__excerpt');
 fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
   return response.json();
-}).then(function (data) {
-  return console.log(data);
+}).then(function (posts) {
+  var featuredMedia = posts.map(function (post) {
+    return post.featured_media;
+  });
+  var blogTitles = posts.map(function (post) {
+    return post.title.rendered;
+  });
+  var blogExcerpt = posts.map(function (post) {
+    return post.excerpt.rendered;
+  });
+  blogPreviewTitles.forEach(function (t, i) {
+    var title = t;
+    if (!blogTitles[i]) return;
+    title.innerHTML = blogTitles[i];
+  });
+  blogPreviewExcerpts.forEach(function (e, i) {
+    var excerpt = e;
+    if (!blogExcerpt[i]) return;
+    var index = blogExcerpt[i].indexOf('</p>');
+    var html = "".concat(blogExcerpt[i].slice(0, index), "</p>");
+    excerpt.innerHTML = html;
+  });
+  Promise.all(featuredMedia.map(function (media) {
+    return fetch("http://infinityspine.com/wp-json/wp/v2/media/".concat(media)).then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return data.media_details.sizes.large;
+    });
+  })).then(function (arr) {
+    blogPreviewImages.forEach(function (img, i) {
+      if (!arr[i]) return undefined;
+      return img.setAttribute('src', arr[i].source_url);
+    });
+  });
 }); // treatments read-more buttons
 
 treatmentsBtn.forEach(function (btn, i) {
