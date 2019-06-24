@@ -94,6 +94,16 @@ function getRouteContent(newRoute, anchor) {
         }
       }
 
+      if (page === 'dr-thoma-articles') {
+        script.setAttribute('src', 'js/dr-thoma-articles.js');
+        // insert page specific javascript
+        body.appendChild(script);
+
+        if (!anchor) {
+          window.history.replaceState({}, '', '#dr-thoma-articles');
+        }
+      }
+
       if (page === 'more-testimonials') {
         const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
         testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));

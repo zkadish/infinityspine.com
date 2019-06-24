@@ -119,10 +119,10 @@ __webpack_require__.r(__webpack_exports__);
 var treatmentRoutes = _router__WEBPACK_IMPORTED_MODULE_0__["routes"].slice(0, 4);
 var treatmentBtns = document.querySelectorAll('.treatments__btn');
 var testimonialsBtn = document.querySelector('.testimonials__btn button');
-var blogPreviewBtns = document.querySelectorAll('.blog-preview__btn');
-var blogPreviewImages = document.querySelectorAll('.blog-preview-image img');
-var blogPreviewTitles = document.querySelectorAll('.blog-preview__post h2');
-var blogPreviewExcerpts = document.querySelectorAll('.blog-preview__excerpt');
+var blogPreviewBtns = document.querySelectorAll('.articles-preview__btn');
+var blogPreviewImages = document.querySelectorAll('.articles-preview-image img');
+var blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
+var blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
 fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
   return response.json();
 }).then(function (posts) {
@@ -327,6 +327,16 @@ function getRouteContent(newRoute, anchor) {
 
       if (!anchor) {
         window.history.replaceState({}, '', '#contact');
+      }
+    }
+
+    if (page === 'dr-thoma-articles') {
+      script.setAttribute('src', 'js/dr-thoma-articles.js'); // insert page specific javascript
+
+      body.appendChild(script);
+
+      if (!anchor) {
+        window.history.replaceState({}, '', '#dr-thoma-articles');
       }
     }
 
