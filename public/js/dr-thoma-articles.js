@@ -93,7 +93,15 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-console.log('dr-thoma-articles.js');
+var articleTitle = document.querySelector('.article-title h1');
+var thomaArticle = document.querySelector('.thoma-articles'); // debugger;
+
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
+  return response.json();
+}).then(function (posts) {
+  thomaArticle.innerHTML = posts[0].content.rendered;
+  articleTitle.innerHTML = posts[0].title.rendered;
+});
 
 /***/ })
 
