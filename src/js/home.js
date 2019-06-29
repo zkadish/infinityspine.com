@@ -11,16 +11,25 @@ const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerp
 fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1')
   .then(response => response.json())
   .then((posts) => {
+    // const featuredMedia = posts[1].featured_media;
     const featuredMedia = posts.map(post => post.featured_media);
+    // debugger;
+
+    // const blogTitles = posts[1].title.rendered;
     const blogTitles = posts.map(post => post.title.rendered);
+    // const blogExcerpt = posts[1].excerpt.rendered;
     const blogExcerpt = posts.map(post => post.excerpt.rendered);
 
+    // blogPreviewTitles[0].innerHTML = blogTitles;
     blogPreviewTitles.forEach((t, i) => {
       const title = t;
       if (!blogTitles[i]) return;
       title.innerHTML = blogTitles[i];
     });
 
+    // const index = blogExcerpt.indexOf('</p>');
+    // const html = `${blogExcerpt.slice(0, index)}</p>`;
+    // blogPreviewExcerpts[0].innerHTML = html;
     blogPreviewExcerpts.forEach((e, i) => {
       const excerpt = e;
       if (!blogExcerpt[i]) return;
@@ -28,6 +37,24 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1')
       const html = `${blogExcerpt[i].slice(0, index)}</p>`;
       excerpt.innerHTML = html;
     });
+
+    // Promise.all(
+    //   featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
+    //     .then(response => response.json())
+    //     .then(data => data.media_details.sizes.large)),
+    // ).then((arr) => {
+    //   blogPreviewImages.forEach((img, i) => {
+    //     if (!arr[i]) return undefined;
+    //     return img.setAttribute('src', arr[i].source_url);
+    //   });
+    // });
+
+    // fetch(`http://infinityspine.com/wp-json/wp/v2/media/${featuredMedia}`)
+    //   .then(response => response.json())
+    //   .then(data => data.media_details.sizes.large)
+    //   .then((url) => {
+    //     blogPreviewImages[0].setAttribute('src', url.source_url);
+    //   });
 
     Promise.all(
       featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
@@ -50,11 +77,19 @@ treatmentBtns.forEach((btn, i) => {
   btn.addEventListener('click', treatmentBtnsClickHandler);
 });
 
+blogPreviewBtns.forEach((btn, i) => {
+  function blogPreviewBtnsClickHandler() {
+    window.history.pushState(null, null, '#dr-thoma-articles');
+    onRouterEventHandler(i);
+  }
+  btn.addEventListener('click', blogPreviewBtnsClickHandler);
+});
+
+// testimonials more button
 function testimonialsBtnClickHandler() {
   window.history.pushState(null, null, '#more-testimonials');
   onRouterEventHandler();
 }
-
 testimonialsBtn.addEventListener('click', testimonialsBtnClickHandler);
 
 const splash01 = document.querySelector('#splash-01');

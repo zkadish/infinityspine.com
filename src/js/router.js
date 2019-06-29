@@ -4,10 +4,16 @@ const { origin, pathname } = window.location;
 const body = document.querySelector('body');
 const container = document.querySelector('.container');
 const path = '/infinity-spine/public/';
+const newSite = '/infinity-spine/new/public/';
 let root = '/';
-
+// debugger
 if (pathname === '/infinity-spine/public/') {
+  debugger
   root = path;
+}
+if (pathname === '/infinity-spine/new/public/') {
+  debugger
+  root = newSite;
 }
 
 export const routes = [
@@ -122,7 +128,10 @@ function getRouteContent(newRoute, anchor) {
 }
 
 // get route
-export function onRouterEventHandler(e) {
+export function onRouterEventHandler(e, blog) {
+  // console.log(blog);
+  // debugger;
+
   if (e) e.preventDefault();
 
   let { hash } = window.location;

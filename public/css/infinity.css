@@ -9112,8 +9112,10 @@ body {
   .treatments__btn {
     padding: 16px 24px;
     margin: 16px 0 0;
+    cursor: pointer;
     font-family: "robotothin", Arial, Helvetica, sans-serif;
-    font-size: .75rem; }
+    font-size: .75rem;
+    outline: none; }
 
 .testimonials-header {
   background: #2c3384;
@@ -9129,6 +9131,16 @@ body {
 
 .testimonials {
   padding: 72px 96px 24px; }
+  .testimonials__btn {
+    text-align: center; }
+    .testimonials__btn button {
+      padding: 16px 24px;
+      margin: 40px 0 0;
+      cursor: pointer;
+      font-family: "robotothin", Arial, Helvetica, sans-serif;
+      font-size: .75rem; }
+      .testimonials__btn button:focus {
+        outline: none; }
 
 .testimonials-footer {
   background: white;
@@ -9144,10 +9156,10 @@ body {
     text-decoration: none;
     cursor: pointer; }
 
-.blog-header {
+.articles-header {
   background: #cbcaca;
   border-bottom: 1px solid #cbcaca; }
-  .blog-header__copy {
+  .articles-header__copy {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9156,29 +9168,43 @@ body {
     letter-spacing: 3px;
     font-family: "robotothin", Arial, Helvetica, sans-serif; }
 
-.blog-preview {
+.articles-preview {
   padding: 96px 0 48px; }
-  .blog-preview .mdc-layout-grid__cell {
+  .articles-preview .mdc-layout-grid__cell {
     position: relative;
     color: #2c3384;
     font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: 1.175rem; }
-    .blog-preview .mdc-layout-grid__cell:nth-child(1) {
+    .articles-preview .mdc-layout-grid__cell:nth-child(1) {
       display: flex;
       justify-content: flex-end; }
-    .blog-preview .mdc-layout-grid__cell:nth-child(2) {
+    .articles-preview .mdc-layout-grid__cell:nth-child(2) {
       display: flex;
       justify-content: center; }
-    .blog-preview .mdc-layout-grid__cell:nth-child(3) {
+    .articles-preview .mdc-layout-grid__cell:nth-child(3) {
       display: flex;
       justify-content: flex-start; }
-  .blog-preview img {
+  .articles-preview .articles-preview-image {
+    width: 360px;
+    height: 190px;
+    overflow: hidden; }
+  .articles-preview img {
     width: 100%;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
-  .blog-preview h2 {
+  .articles-preview h2 {
     margin: 24px 0; }
-  .blog-preview__post {
+  .articles-preview__post {
     width: 360px; }
+  .articles-preview__excerpt {
+    height: 260px; }
+  .articles-preview__btn {
+    text-align: center; }
+    .articles-preview__btn button {
+      padding: 16px 24px;
+      cursor: pointer;
+      font-family: "robotothin", Arial, Helvetica, sans-serif;
+      font-size: .75rem;
+      outline: none; }
 
 .bullets {
   padding: 24px 0;
@@ -9373,6 +9399,34 @@ body {
   .page img {
     width: 300px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
+  .page .article-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .page .article-title h1 {
+      max-width: 600px;
+      padding: 0 20px; }
+  .page .thoma-articles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px; }
+    .page .thoma-articles .wp-block-image {
+      -webkit-margin-before: 0;
+              margin-block-start: 0;
+      -webkit-margin-after: 0;
+              margin-block-end: 0;
+      -webkit-margin-start: 0;
+              margin-inline-start: 0;
+      -webkit-margin-end: 0;
+              margin-inline-end: 0;
+      max-width: 600px; }
+      .page .thoma-articles .wp-block-image img {
+        width: 100%;
+        margin: 40px 0;
+        box-shadow: none; }
+    .page .thoma-articles .wp-block-table {
+      max-width: 600px; }
 
 @media (max-width: 1279px) and (min-width: 1024px) {
   body {
@@ -9604,6 +9658,10 @@ body {
       width: 48px; }
     .splash__content--social .fab, .splash__content--social .fas {
       font-size: 1.7rem; }
+  .splash__content .article-title h1 {
+    max-width: 600px;
+    padding: 0 20px;
+    font-size: 1.35rem; }
   .splash__content .mobile-call {
     bottom: -33px;
     height: 60px;
