@@ -3,17 +3,18 @@ import { REVIEWS_ONE, REVIEWS_TWO } from './constants';
 const { origin, pathname } = window.location;
 const body = document.querySelector('body');
 const container = document.querySelector('.container');
-const path = '/infinity-spine/public/';
-const newSite = '/infinity-spine/new/public/';
+
+// live site at infinityspine.com
 let root = '/';
-// debugger
+
+// localhost apache server
 if (pathname === '/infinity-spine/public/') {
-  debugger
-  root = path;
+  root = '/infinity-spine/public/';
 }
-if (pathname === '/infinity-spine/new/public/') {
-  debugger
-  root = newSite;
+
+// infinityspine.com/new
+if (pathname === '/new/') {
+  root = '/new/';
 }
 
 export const routes = [

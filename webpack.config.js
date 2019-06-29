@@ -126,6 +126,7 @@ module.exports = {
       javascript: '<script src="js/infinity.js"></script>',
       styles: '<link rel="stylesheet" href="css/infinity.css">',
     }),
+    // css extraction is production build only
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
