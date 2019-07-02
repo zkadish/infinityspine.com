@@ -25,6 +25,7 @@ module.exports = {
     infinity: './src/index.js',
     home: './src/js/home.js',
     contact: './src/js/contact.js',
+    'dr-thoma-articles': './src/js/dr-thoma-articles.js',
   },
   output: {
     filename: '[name].js',
@@ -125,6 +126,7 @@ module.exports = {
       javascript: '<script src="js/infinity.js"></script>',
       styles: '<link rel="stylesheet" href="css/infinity.css">',
     }),
+    // css extraction is production build only
     new MiniCssExtractPlugin({
       filename: '[name].css',
     }),
