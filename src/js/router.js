@@ -58,7 +58,10 @@ function testimonialTags(token) {
   return [scriptToken, scriptReview, reviewContainer];
 }
 
-function getRouteContent(newRoute, anchor) {
+function getRouteContent(newRoute, anchor, article) {
+  // const route = newRoute.split('?')[0];
+  // console.log(newRoute, anchor, article);
+
   fetch(`${origin}${root}pages/${newRoute}.html`)
     .then(response => response.text())
     .then((response) => {
@@ -107,7 +110,7 @@ function getRouteContent(newRoute, anchor) {
         body.appendChild(script);
 
         if (!anchor) {
-          window.history.replaceState({}, '', '#dr-thoma-articles');
+          window.history.replaceState({}, '', `#dr-thoma-articles?article=${article}`);
         }
       }
 
@@ -129,24 +132,23 @@ function getRouteContent(newRoute, anchor) {
 }
 
 // get route
-export function onRouterEventHandler(e, blog) {
-  // console.log(blog);
-  // debugger;
-
+export function onRouterEventHandler(e, article) {
+  // NOTE: if route gets here with params do something with params...
   if (e) e.preventDefault();
-
-  let { hash } = window.location;
-
+  let hash = window.location.hash.split('?')[0];
   if (pathname === root && hash === '') {
     hash = '#home';
   }
 
   // if hash is in routes[]
   if (routes.includes(hash)) {
-    getRouteContent(hash.replace(/#/g, ''));
+    const route = hash.replace(/#/g, '').split('?')[0];
+    // const params = hash.split('?')[1] || null;
+    // console.log(article);
+    // getRouteContent(hash.replace(/#/g, ''));
+    getRouteContent(route, '', article);
     return;
   }
-
 
   const dataRoutes = [...document.querySelectorAll('[data-route]')]
     .map(r => r.dataset.route.replace('#', ''));
@@ -174,17 +176,32 @@ export function onRouterEventHandler(e, blog) {
 }
 
 window.addEventListener('load', (e) => {
-  onRouterEventHandler(e, window.location.hash);
+  let article = null;
+  const { hash } = window.location;
+  if (hash.includes('article')) {
+    article = hash.slice(hash.indexOf('?article') + 9);
+  }
+
+  // const hash = window.location.hash.split('?')[0];
+  // onRouterEventHandler(e, hash.split('?')[0]);
+  onRouterEventHandler(e, article);
 }, false);
 
-window.addEventListener('hashchange', () => {
+window.addEventListener('hashchange', (e) => {
+  let article = null;
+  const { hash } = window.location;
+  if (hash.includes('article')) {
+    article = hash.slice(hash.indexOf('?article') + 9);
+  }
+
+  // const hash = window.location.hash.split('?')[0];
   // if hash is in routes
-  if (routes.includes(window.location.hash)) {
-    onRouterEventHandler();
+  if (routes.includes(hash.split('?')[0])) {
+    onRouterEventHandler(e, article);
     return;
   }
 
-  const { hash } = window.location;
+  // const { hash } = window.location;
   const idTags = document.querySelectorAll('[id]');
   let ids = [];
   idTags.forEach(tag => ids.push(`#${tag.id}`));
