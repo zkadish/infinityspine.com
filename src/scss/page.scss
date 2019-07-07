@@ -57,9 +57,20 @@
         margin: 40px 0;
         box-shadow: none;
       }
+      figcaption {
+        position: relative;
+        top: -15px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+      }
     }
     .wp-block-table {
       max-width: 600px;
+    }
+    p {
+      max-width: 600px;
+      width: 100%;
     }
   }
 }

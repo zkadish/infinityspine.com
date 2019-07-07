@@ -8,7 +8,7 @@ const blogPreviewImages = document.querySelectorAll('.articles-preview-image img
 const blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
 
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=2')
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
   .then(response => response.json())
   .then((posts) => {
     const featuredMedia = posts.map(post => post.featured_media);

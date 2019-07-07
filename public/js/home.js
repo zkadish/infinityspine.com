@@ -123,7 +123,7 @@ var blogPreviewBtns = document.querySelectorAll('.articles-preview__btn');
 var blogPreviewImages = document.querySelectorAll('.articles-preview-image img');
 var blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 var blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=2').then(function (response) {
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3').then(function (response) {
   return response.json();
 }).then(function (posts) {
   var featuredMedia = posts.map(function (post) {
