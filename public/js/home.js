@@ -123,51 +123,39 @@ var blogPreviewBtns = document.querySelectorAll('.articles-preview__btn');
 var blogPreviewImages = document.querySelectorAll('.articles-preview-image img');
 var blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 var blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3').then(function (response) {
   return response.json();
 }).then(function (posts) {
-  // const featuredMedia = posts[1].featured_media;
   var featuredMedia = posts.map(function (post) {
     return post.featured_media;
-  }); // debugger;
-  // const blogTitles = posts[1].title.rendered;
-
+  });
   var blogTitles = posts.map(function (post) {
     return post.title.rendered;
-  }); // const blogExcerpt = posts[1].excerpt.rendered;
-
+  });
   var blogExcerpt = posts.map(function (post) {
     return post.excerpt.rendered;
-  }); // blogPreviewTitles[0].innerHTML = blogTitles;
-
+  });
   blogPreviewTitles.forEach(function (t, i) {
     var title = t;
     if (!blogTitles[i]) return;
     title.innerHTML = blogTitles[i];
-  }); // const index = blogExcerpt.indexOf('</p>');
-  // const html = `${blogExcerpt.slice(0, index)}</p>`;
-  // blogPreviewExcerpts[0].innerHTML = html;
-
+  });
   blogPreviewExcerpts.forEach(function (e, i) {
     var excerpt = e;
     if (!blogExcerpt[i]) return;
     var index = blogExcerpt[i].indexOf('</p>');
     var html = "".concat(blogExcerpt[i].slice(0, index), "</p>");
     excerpt.innerHTML = html;
-  }); // fetch(`http://infinityspine.com/wp-json/wp/v2/media/${featuredMedia}`)
-  //   .then(response => response.json())
-  //   .then(data => data.media_details.sizes.large)
-  //   .then((url) => {
-  //     blogPreviewImages[0].setAttribute('src', url.source_url);
-  //   });
+  }); // debugger
 
   Promise.all(featuredMedia.map(function (media) {
     return fetch("http://infinityspine.com/wp-json/wp/v2/media/".concat(media)).then(function (response) {
       return response.json();
     }).then(function (data) {
-      return data.media_details.sizes.large;
+      return data.media_details.sizes.medium;
     });
   })).then(function (arr) {
+    // debugger
     blogPreviewImages.forEach(function (img, i) {
       if (!arr[i]) return undefined;
       return img.setAttribute('src', arr[i].source_url);

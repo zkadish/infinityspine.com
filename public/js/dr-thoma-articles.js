@@ -95,11 +95,15 @@
 
 var articleTitle = document.querySelector('.article-title h1');
 var thomaArticle = document.querySelector('.thoma-articles');
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=1').then(function (response) {
+fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=10').then(function (response) {
   return response.json();
 }).then(function (posts) {
-  thomaArticle.innerHTML = posts[0].content.rendered;
-  articleTitle.innerHTML = posts[0].title.rendered;
+  var hash = window.location.hash;
+  var params = hash.split('?')[1];
+  var articleNum = params.slice(params.indexOf('article') + 8);
+  thomaArticle.innerHTML = posts[articleNum].content.rendered;
+  articleTitle.innerHTML = posts[articleNum].title.rendered;
+  return posts;
 });
 
 /***/ })
