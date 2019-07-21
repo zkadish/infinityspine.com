@@ -9410,7 +9410,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px; }
+    padding: 0 20px;
+    font-family: "robotolight", Arial, Helvetica, sans-serif; }
     .page .thoma-articles .wp-block-image {
       -webkit-margin-before: 0;
               margin-block-start: 0;
@@ -9421,12 +9422,26 @@ body {
       -webkit-margin-end: 0;
               margin-inline-end: 0;
       max-width: 600px; }
+      .page .thoma-articles .wp-block-image figure {
+        margin: 0; }
       .page .thoma-articles .wp-block-image img {
         width: 100%;
-        margin: 40px 0;
+        margin: 20px 0;
         box-shadow: none; }
+      .page .thoma-articles .wp-block-image figcaption {
+        position: relative;
+        top: 0;
+        margin: 10px 0 0;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center; }
     .page .thoma-articles .wp-block-table {
       max-width: 600px; }
+    .page .thoma-articles p {
+      max-width: 600px;
+      width: 100%; }
+    .page .thoma-articles ol {
+      width: 600px; }
 
 @media (max-width: 1279px) and (min-width: 1024px) {
   body {
