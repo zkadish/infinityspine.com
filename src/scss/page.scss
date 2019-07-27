@@ -1,6 +1,7 @@
 .page {
   padding-top: 48px;
   padding-bottom: 48px;
+  font-family: "robotolight", Arial, Helvetica, sans-serif;
 
   .mdc-button--unelevated:not(:disabled) {
     background-color: var(--mdc-theme-primary, $BLUE_MEDIUM);
@@ -9,8 +10,34 @@
   .mdc-layout-grid__cell {
     position: relative;
     color: $BLUE_DARK;
-    font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
+  }
+
+  &__article-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 600px;
+    i {
+      position: relative;
+      top: 2px;
+    }
+    &--btn {
+      outline: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      &:first-child {
+        margin: 0 0 0 5px;
+      }
+      &:last-child {
+        margin: 0 5px 0 0;
+      }
+    }
+    .btn-disabled {
+      cursor: default;
+      opacity: 0;
+    }
   }
 
   &__img {
@@ -46,7 +73,6 @@
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
-    font-family: "robotolight", Arial, Helvetica, sans-serif;
     .wp-block-image {
       margin-block-start: 0;
       margin-block-end: 0;
@@ -63,8 +89,7 @@
       }
       figcaption {
         position: relative;
-        top: 0;
-        margin: 10px 0 0;
+        top: -10px;
         font-size: 1rem;
         font-weight: bold;
         text-align: center;

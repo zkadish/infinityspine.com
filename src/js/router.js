@@ -59,7 +59,6 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor, article) {
-  // const route = newRoute.split('?')[0];
   // console.log(newRoute, anchor, article);
 
   fetch(`${origin}${root}pages/${newRoute}.html`)
@@ -133,7 +132,6 @@ function getRouteContent(newRoute, anchor, article) {
 
 // get route
 export function onRouterEventHandler(e, article) {
-  // NOTE: if route gets here with params do something with params...
   if (e) e.preventDefault();
   let hash = window.location.hash.split('?')[0];
   if (pathname === root && hash === '') {
@@ -143,13 +141,11 @@ export function onRouterEventHandler(e, article) {
   // if hash is in routes[]
   if (routes.includes(hash)) {
     const route = hash.replace(/#/g, '').split('?')[0];
-    // const params = hash.split('?')[1] || null;
-    // console.log(article);
-    // getRouteContent(hash.replace(/#/g, ''));
     getRouteContent(route, '', article);
     return;
   }
 
+  // below code handles anchor hrefs
   const dataRoutes = [...document.querySelectorAll('[data-route]')]
     .map(r => r.dataset.route.replace('#', ''));
 

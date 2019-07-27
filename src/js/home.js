@@ -1,3 +1,4 @@
+
 import { routes, onRouterEventHandler } from './router';
 
 const treatmentRoutes = routes.slice(0, 4);
@@ -56,7 +57,12 @@ treatmentBtns.forEach((btn, i) => {
 blogPreviewBtns.forEach((btn, i) => {
   function blogPreviewBtnsClickHandler(e) {
     window.history.pushState(null, null, '#dr-thoma-articles');
-    onRouterEventHandler(e, i);
+    /**
+     * onRouterEventHandler()
+     * @param [{object}, number] - event object, article uri param value '?article=1'
+     */
+    const articleNum = i + 1;
+    onRouterEventHandler(e, articleNum);
   }
   btn.addEventListener('click', blogPreviewBtnsClickHandler);
 });

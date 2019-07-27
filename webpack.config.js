@@ -120,11 +120,11 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      inject: false,
+      inject: mode === 'production' || false,
       template: path.resolve(__dirname, 'src/index.html'),
       title: 'Infinity Spine',
       javascript: '<script src="js/infinity.js"></script>',
-      styles: '<link rel="stylesheet" href="css/infinity.css">',
+      styles: mode === 'production' ? '<link rel="stylesheet" href="css/infinity.css">' : '',
     }),
     // css extraction is production build only
     new MiniCssExtractPlugin({
