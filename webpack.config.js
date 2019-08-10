@@ -113,7 +113,6 @@ module.exports = {
       },
     ],
   },
-  devtool: 'cheap-module-source-map',
   plugins: [
     new webpack.DefinePlugin({
       PRODUCTION: JSON.stringify(process.env.NODE_ENV === 'production'),
@@ -131,6 +130,7 @@ module.exports = {
       filename: '[name].css',
     }),
   ],
+  devtool: 'eval-source-map',
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     // quiet: true,

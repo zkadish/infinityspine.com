@@ -5,7 +5,6 @@ const thomaArticle = document.querySelector('.thoma-articles');
 const nextArticleBtns = document.querySelectorAll('.next');
 const previousArticleBtns = document.querySelectorAll('.previous');
 const articleDate = document.querySelector('.page__article-nav--date');
-// let page = 1;
 
 const getArticleNum = () => {
   const { hash } = window.location;
@@ -59,6 +58,9 @@ const getArticles = () => {
       let articleNum = getArticleNum();
       let articleIndex = getArticleIndex();
       if (articleIndex + 1 >= posts.length) {
+        previousArticleBtns.forEach((btn) => {
+          btn.classList.add('btn-disabled');
+        });
         articleNum -= 1;
         articleIndex -= 1;
         window.history.replaceState({}, '', `#dr-thoma-articles?article=${articleNum}`);
@@ -68,32 +70,32 @@ const getArticles = () => {
       thomaArticle.innerHTML = posts[articleIndex].content.rendered;
       articleTitle.innerHTML = posts[articleIndex].title.rendered;
     })
-    .catch((err) => {
-      console.log(err);
-      debugger
+    .catch(() => {
+      window.location = 'pages/404.html';
     });
 };
 getArticles();
 
-previousArticleBtns.forEach((btn) => {
-  function blogPreviewBtnsClickHandler(e) {
-    // increment articleNum
-    const articleValue = getArticleValue() + 1;
-    let page = getPage();
+function blogPreviewBtnsClickHandler(e) {
+  // increment articleNum
+  const articleValue = getArticleValue() + 1;
+  let page = getPage();
 
-    if (articleValue >= (page * 10) + 1) {
-      page += 1;
-      getArticles();
-    }
-
-    window.history.pushState(null, null, '#dr-thoma-articles');
-    onRouterEventHandler(e, articleValue);
+  if (articleValue >= (page * 10) + 1) {
+    page += 1;
+    getArticles();
   }
 
+  window.history.pushState(null, null, '#dr-thoma-articles');
+  onRouterEventHandler(e, articleValue);
+}
+
+previousArticleBtns.forEach((btn) => {
   btn.addEventListener('click', blogPreviewBtnsClickHandler);
 });
 
-function blogPreviewBtnsClickHandler(e) {
+function blogNextBtnsClickHandler(e) {
+  // decrement articleNum
   let articleValue = getArticleValue() - 1;
   let page = getPage();
 
@@ -112,5 +114,5 @@ function blogPreviewBtnsClickHandler(e) {
 }
 
 nextArticleBtns.forEach((btn) => {
-  btn.addEventListener('click', blogPreviewBtnsClickHandler);
+  btn.addEventListener('click', blogNextBtnsClickHandler);
 });

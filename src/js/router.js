@@ -126,7 +126,8 @@ function getRouteContent(newRoute, anchor, article) {
     })
     .catch((error) => {
       // TODO: route to 404 error page
-      console.error('Error:', error); // eslint-disable-line
+      // console.error('Error:', error); // eslint-disable-line
+      window.location = 'pages/404.html';
     });
 }
 
@@ -233,7 +234,7 @@ window.addEventListener('hashchange', (e) => {
 //   console.log('loadstart event');
 // }, false);
 
-window.addEventListener('error', () => {
-  debugger;
-  console.log('error event'); // eslint-disable-line
+window.addEventListener('error', (err) => {
+  // debugger;
+  // console.error('error event', err); // eslint-disable-line
 }, false);
