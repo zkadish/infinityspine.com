@@ -147,8 +147,7 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3').then(function (
     var index = blogExcerpt[i].indexOf('</p>');
     var html = "".concat(blogExcerpt[i].slice(0, index), "</p>");
     excerpt.innerHTML = html;
-  }); // debugger
-
+  });
   Promise.all(featuredMedia.map(function (media) {
     return fetch("http://infinityspine.com/wp-json/wp/v2/media/".concat(media)).then(function (response) {
       return response.json();
@@ -156,7 +155,6 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3').then(function (
       return data.media_details.sizes.medium;
     });
   })).then(function (arr) {
-    // debugger
     blogPreviewImages.forEach(function (img, i) {
       if (!arr[i]) return undefined;
       return img.setAttribute('src', arr[i].source_url);
@@ -284,7 +282,8 @@ var root = '/'; // localhost apache server
 
 if (pathname === '/infinity-spine/public/') {
   root = '/infinity-spine/public/';
-} // infinityspine.com/new
+} // when site runs on new.infinityspine.com
+// folder is public_html/new/
 
 
 if (pathname === '/new/') {
@@ -308,7 +307,6 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor, article) {
-  // console.log(newRoute, anchor, article);
   fetch("".concat(origin).concat(root, "pages/").concat(newRoute, ".html")).then(function (response) {
     return response.text();
   }).then(function (response) {
@@ -388,8 +386,7 @@ function onRouterEventHandler(e, article) {
 
   if (pathname === root && hash === '') {
     hash = '#home';
-  } // if hash is in routes[]
-
+  }
 
   if (routes.includes(hash)) {
     var route = hash.replace(/#/g, '').split('?')[0];
@@ -418,7 +415,6 @@ function onRouterEventHandler(e, article) {
   });
 
   if (!isAnchor) {
-    // getRouteContent('404', window.location.hash.replace(/#/g, ''));
     window.location = 'pages/404.html';
     return;
   } // if hash is an anchor on the home page
@@ -426,32 +422,44 @@ function onRouterEventHandler(e, article) {
 
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
+/**
+ * When user refreshes the browser
+ * onLoad event listener
+ * Handler - anonymous function
+ * @param {object} - event
+ */
+
 window.addEventListener('load', function (e) {
   var article = null;
   var hash = window.location.hash;
 
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
-  } // const hash = window.location.hash.split('?')[0];
-  // onRouterEventHandler(e, hash.split('?')[0]);
-
+  }
 
   onRouterEventHandler(e, article);
 }, false);
+/**
+ * When user changes the URL
+ * onHashchange event listener
+ * Handler - anonymous function
+ * @param {object} - event
+ */
+
 window.addEventListener('hashchange', function (e) {
   var article = null;
-  var hash = window.location.hash;
+  var hash = window.location.hash; // TODO: use articleNum() from dr-thoma-articles.js
+  // get article num
 
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
-  } // const hash = window.location.hash.split('?')[0];
-  // if hash is in routes
+  } // if hash is in routes
 
 
   if (routes.includes(hash.split('?')[0])) {
     onRouterEventHandler(e, article);
     return;
-  } // const { hash } = window.location;
+  } // select all dom elements with id attributes
 
 
   var idTags = document.querySelectorAll('[id]');
@@ -459,12 +467,14 @@ window.addEventListener('hashchange', function (e) {
   idTags.forEach(function (tag) {
     return ids.push("#".concat(tag.id));
   }); // if hash has a matching id on the page its an anchor link
+  // execute the onRouterEventHandler
 
   if (!ids.includes(hash)) {
     ids = [];
     onRouterEventHandler();
   }
-}, false); // window.addEventListener('beforeunload', () => {
+}, false); // these events might get used in a refactor of the router
+// window.addEventListener('beforeunload', () => {
 //   console.log('beforeunload');
 // }, false);
 // window.addEventListener('unload', () => {
@@ -475,6 +485,7 @@ window.addEventListener('hashchange', function (e) {
 // }, false);
 
 window.addEventListener('error', function () {
+  debugger;
   console.log('error event'); // eslint-disable-line
 }, false);
 

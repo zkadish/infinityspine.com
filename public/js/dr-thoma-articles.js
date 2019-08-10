@@ -119,8 +119,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var articleTitle = document.querySelector('.article-title h1');
 var thomaArticle = document.querySelector('.thoma-articles');
-var previousArticleBtns = document.querySelectorAll('.previous');
 var nextArticleBtns = document.querySelectorAll('.next');
+var previousArticleBtns = document.querySelectorAll('.previous');
+var articleDate = document.querySelector('.page__article-nav--date'); // let page = 1;
 
 var getArticleNum = function getArticleNum() {
   var hash = window.location.hash;
@@ -131,10 +132,29 @@ var getArticleNum = function getArticleNum() {
 
 var getArticleValue = function getArticleValue() {
   var hash = window.location.hash;
-  var articleValue = Number(hash.split('=')[1]);
-  return articleValue;
-}; // debugger
+  var articleValue = Number(hash.split('article=')[1]);
+  return Number(articleValue);
+}; // get the page number from the article number
 
+
+var getPage = function getPage() {
+  var page = 1;
+  var pageIndex = 0;
+  var articleNum = getArticleNum();
+  var articleAsIndex = (articleNum - 1).toString();
+  if (articleAsIndex.length === 1) return page;
+  pageIndex = Number(articleAsIndex.toString().slice(0, 1));
+  page = pageIndex + 1;
+  return page;
+}; // get article index of page array
+
+
+var getArticleIndex = function getArticleIndex() {
+  var articleValue = getArticleValue();
+  var pageIndex = getPage() - 1;
+  var articleIndex = articleValue - pageIndex * 10 - 1;
+  return articleIndex;
+};
 
 if (getArticleNum() === 1) {
   nextArticleBtns.forEach(function (btn) {
@@ -142,26 +162,44 @@ if (getArticleNum() === 1) {
   });
 }
 
-if (getArticleNum() === 10) {
-  previousArticleBtns.forEach(function (btn) {
-    btn.classList.add('btn-disabled');
-  });
-}
+var getArticles = function getArticles() {
+  var page = getPage();
+  fetch("http://infinityspine.com/wp-json/wp/v2/posts?page=".concat(page, "&per_page=10")).then(function (response) {
+    if (!response.ok) {
+      throw new Error('response.error');
+    }
 
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?page=1&per_page=10').then(function (response) {
-  return response.json();
-}).then(function (posts) {
-  var articleIndex = getArticleNum() - 1;
-  thomaArticle.innerHTML = posts[articleIndex].content.rendered;
-  articleTitle.innerHTML = posts[articleIndex].title.rendered;
-});
+    return response.json();
+  }).then(function (posts) {
+    var articleNum = getArticleNum();
+    var articleIndex = getArticleIndex();
+
+    if (articleIndex + 1 >= posts.length) {
+      articleNum -= 1;
+      articleIndex -= 1;
+      window.history.replaceState({}, '', "#dr-thoma-articles?article=".concat(articleNum));
+    }
+
+    var date = posts[articleIndex].date.split('T')[0];
+    articleDate.innerHTML = date;
+    thomaArticle.innerHTML = posts[articleIndex].content.rendered;
+    articleTitle.innerHTML = posts[articleIndex].title.rendered;
+  }).catch(function (err) {
+    console.log(err);
+    debugger;
+  });
+};
+
+getArticles();
 previousArticleBtns.forEach(function (btn) {
   function blogPreviewBtnsClickHandler(e) {
+    // increment articleNum
     var articleValue = getArticleValue() + 1;
+    var page = getPage();
 
-    if (articleValue >= 11) {
-      articleValue = 10;
-      return;
+    if (articleValue >= page * 10 + 1) {
+      page += 1;
+      getArticles();
     }
 
     window.history.pushState(null, null, '#dr-thoma-articles');
@@ -170,20 +208,26 @@ previousArticleBtns.forEach(function (btn) {
 
   btn.addEventListener('click', blogPreviewBtnsClickHandler);
 });
-nextArticleBtns.forEach(function (btn) {
-  function blogPreviewBtnsClickHandler(e) {
-    var articleValue = getArticleValue() - 1;
 
-    if (articleValue <= 0) {
-      articleValue = 1;
-      return;
-    } // btn.classList.remove('btn-disabled');
+function blogPreviewBtnsClickHandler(e) {
+  var articleValue = getArticleValue() - 1;
+  var page = getPage();
 
-
-    window.history.pushState(null, null, '#dr-thoma-articles');
-    Object(_router__WEBPACK_IMPORTED_MODULE_0__["onRouterEventHandler"])(e, articleValue);
+  if (articleValue <= 0) {
+    articleValue = 1;
+    return;
   }
 
+  if (articleValue <= page * 10 - 1) {
+    page -= 1;
+    getArticles();
+  }
+
+  window.history.pushState(null, null, '#dr-thoma-articles');
+  Object(_router__WEBPACK_IMPORTED_MODULE_0__["onRouterEventHandler"])(e, articleValue);
+}
+
+nextArticleBtns.forEach(function (btn) {
   btn.addEventListener('click', blogPreviewBtnsClickHandler);
 });
 
@@ -220,7 +264,8 @@ var root = '/'; // localhost apache server
 
 if (pathname === '/infinity-spine/public/') {
   root = '/infinity-spine/public/';
-} // infinityspine.com/new
+} // when site runs on new.infinityspine.com
+// folder is public_html/new/
 
 
 if (pathname === '/new/') {
@@ -244,7 +289,6 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor, article) {
-  // console.log(newRoute, anchor, article);
   fetch("".concat(origin).concat(root, "pages/").concat(newRoute, ".html")).then(function (response) {
     return response.text();
   }).then(function (response) {
@@ -324,8 +368,7 @@ function onRouterEventHandler(e, article) {
 
   if (pathname === root && hash === '') {
     hash = '#home';
-  } // if hash is in routes[]
-
+  }
 
   if (routes.includes(hash)) {
     var route = hash.replace(/#/g, '').split('?')[0];
@@ -354,7 +397,6 @@ function onRouterEventHandler(e, article) {
   });
 
   if (!isAnchor) {
-    // getRouteContent('404', window.location.hash.replace(/#/g, ''));
     window.location = 'pages/404.html';
     return;
   } // if hash is an anchor on the home page
@@ -362,32 +404,44 @@ function onRouterEventHandler(e, article) {
 
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
+/**
+ * When user refreshes the browser
+ * onLoad event listener
+ * Handler - anonymous function
+ * @param {object} - event
+ */
+
 window.addEventListener('load', function (e) {
   var article = null;
   var hash = window.location.hash;
 
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
-  } // const hash = window.location.hash.split('?')[0];
-  // onRouterEventHandler(e, hash.split('?')[0]);
-
+  }
 
   onRouterEventHandler(e, article);
 }, false);
+/**
+ * When user changes the URL
+ * onHashchange event listener
+ * Handler - anonymous function
+ * @param {object} - event
+ */
+
 window.addEventListener('hashchange', function (e) {
   var article = null;
-  var hash = window.location.hash;
+  var hash = window.location.hash; // TODO: use articleNum() from dr-thoma-articles.js
+  // get article num
 
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
-  } // const hash = window.location.hash.split('?')[0];
-  // if hash is in routes
+  } // if hash is in routes
 
 
   if (routes.includes(hash.split('?')[0])) {
     onRouterEventHandler(e, article);
     return;
-  } // const { hash } = window.location;
+  } // select all dom elements with id attributes
 
 
   var idTags = document.querySelectorAll('[id]');
@@ -395,12 +449,14 @@ window.addEventListener('hashchange', function (e) {
   idTags.forEach(function (tag) {
     return ids.push("#".concat(tag.id));
   }); // if hash has a matching id on the page its an anchor link
+  // execute the onRouterEventHandler
 
   if (!ids.includes(hash)) {
     ids = [];
     onRouterEventHandler();
   }
-}, false); // window.addEventListener('beforeunload', () => {
+}, false); // these events might get used in a refactor of the router
+// window.addEventListener('beforeunload', () => {
 //   console.log('beforeunload');
 // }, false);
 // window.addEventListener('unload', () => {
@@ -411,6 +467,7 @@ window.addEventListener('hashchange', function (e) {
 // }, false);
 
 window.addEventListener('error', function () {
+  debugger;
   console.log('error event'); // eslint-disable-line
 }, false);
 

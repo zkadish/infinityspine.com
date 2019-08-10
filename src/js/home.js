@@ -30,14 +30,12 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
       const html = `${blogExcerpt[i].slice(0, index)}</p>`;
       excerpt.innerHTML = html;
     });
-    // debugger
 
     Promise.all(
       featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
         .then(response => response.json())
         .then(data => data.media_details.sizes.medium)),
     ).then((arr) => {
-      // debugger
       blogPreviewImages.forEach((img, i) => {
         if (!arr[i]) return undefined;
         return img.setAttribute('src', arr[i].source_url);

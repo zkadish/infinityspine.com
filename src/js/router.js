@@ -12,7 +12,8 @@ if (pathname === '/infinity-spine/public/') {
   root = '/infinity-spine/public/';
 }
 
-// infinityspine.com/new
+// when site runs on new.infinityspine.com
+// folder is public_html/new/
 if (pathname === '/new/') {
   root = '/new/';
 }
@@ -59,7 +60,6 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor, article) {
-  // console.log(newRoute, anchor, article);
 
   fetch(`${origin}${root}pages/${newRoute}.html`)
     .then(response => response.text())
@@ -138,7 +138,6 @@ export function onRouterEventHandler(e, article) {
     hash = '#home';
   }
 
-  // if hash is in routes[]
   if (routes.includes(hash)) {
     const route = hash.replace(/#/g, '').split('?')[0];
     getRouteContent(route, '', article);
@@ -162,7 +161,6 @@ export function onRouterEventHandler(e, article) {
   const isAnchor = routesAll.some(route => route === hash.replace('#', ''));
 
   if (!isAnchor) {
-    // getRouteContent('404', window.location.hash.replace(/#/g, ''));
     window.location = 'pages/404.html';
     return;
   }
@@ -171,6 +169,12 @@ export function onRouterEventHandler(e, article) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 
+/**
+ * When user refreshes the browser
+ * onLoad event listener
+ * Handler - anonymous function
+ * @param {object} - event
+ */
 window.addEventListener('load', (e) => {
   let article = null;
   const { hash } = window.location;
@@ -178,36 +182,45 @@ window.addEventListener('load', (e) => {
     article = hash.slice(hash.indexOf('?article') + 9);
   }
 
-  // const hash = window.location.hash.split('?')[0];
-  // onRouterEventHandler(e, hash.split('?')[0]);
   onRouterEventHandler(e, article);
 }, false);
 
+/**
+ * When user changes the URL
+ * onHashchange event listener
+ * Handler - anonymous function
+ * @param {object} - event
+ */
 window.addEventListener('hashchange', (e) => {
   let article = null;
   const { hash } = window.location;
+
+  // TODO: use articleNum() from dr-thoma-articles.js
+  // get article num
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
   }
 
-  // const hash = window.location.hash.split('?')[0];
   // if hash is in routes
   if (routes.includes(hash.split('?')[0])) {
     onRouterEventHandler(e, article);
     return;
   }
 
-  // const { hash } = window.location;
+  // select all dom elements with id attributes
   const idTags = document.querySelectorAll('[id]');
   let ids = [];
   idTags.forEach(tag => ids.push(`#${tag.id}`));
+
   // if hash has a matching id on the page its an anchor link
+  // execute the onRouterEventHandler
   if (!ids.includes(hash)) {
     ids = [];
     onRouterEventHandler();
   }
 }, false);
 
+// these events might get used in a refactor of the router
 // window.addEventListener('beforeunload', () => {
 //   console.log('beforeunload');
 // }, false);
@@ -221,5 +234,6 @@ window.addEventListener('hashchange', (e) => {
 // }, false);
 
 window.addEventListener('error', () => {
+  debugger;
   console.log('error event'); // eslint-disable-line
 }, false);
