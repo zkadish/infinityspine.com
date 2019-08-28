@@ -96,7 +96,7 @@ function matchMedia() {
   }
 
   if (window.matchMedia('(max-width: 1279px) and (min-width: 1024px)').matches) {
-    console.log('index.js - desk1024');
+    // console.log('index.js - desk1024');
     initMainNavButtons();
   }
 

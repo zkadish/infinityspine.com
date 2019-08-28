@@ -1,3 +1,4 @@
+
 import { routes, onRouterEventHandler } from './router';
 
 const treatmentRoutes = routes.slice(0, 4);
@@ -29,14 +30,12 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
       const html = `${blogExcerpt[i].slice(0, index)}</p>`;
       excerpt.innerHTML = html;
     });
-    // debugger
 
     Promise.all(
       featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
         .then(response => response.json())
         .then(data => data.media_details.sizes.medium)),
     ).then((arr) => {
-      // debugger
       blogPreviewImages.forEach((img, i) => {
         if (!arr[i]) return undefined;
         return img.setAttribute('src', arr[i].source_url);
@@ -56,7 +55,12 @@ treatmentBtns.forEach((btn, i) => {
 blogPreviewBtns.forEach((btn, i) => {
   function blogPreviewBtnsClickHandler(e) {
     window.history.pushState(null, null, '#dr-thoma-articles');
-    onRouterEventHandler(e, i);
+    /**
+     * onRouterEventHandler()
+     * @param [{object}, number] - event object, article uri param value '?article=1'
+     */
+    const articleNum = i + 1;
+    onRouterEventHandler(e, articleNum);
   }
   btn.addEventListener('click', blogPreviewBtnsClickHandler);
 });

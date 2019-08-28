@@ -290,7 +290,7 @@
     padding: 16px 24px;
     margin: 16px 0 0;
     cursor: pointer;
-    font-family: "robotothin", Arial, Helvetica, sans-serif;
+    font-family: "robotoregular", Arial, Helvetica, sans-serif;
     font-size: .75rem;
     outline: none;
   }
@@ -320,13 +320,18 @@
 
 .testimonials {
   padding: 72px 96px 24px;
+
+  .mdc-button--unelevated:not(:disabled) {
+    background-color: var(--mdc-theme-primary, $BLUE_MEDIUM);
+  }
+
   &__btn {
     text-align: center;
     button {
       padding: 16px 24px;
       margin: 40px 0 0;
       cursor: pointer;
-      font-family: "robotothin", Arial, Helvetica, sans-serif;
+      font-family: "robotoregular", Arial, Helvetica, sans-serif;
       font-size: .75rem;
       &:focus {
         outline: none;
@@ -381,6 +386,10 @@
   // top: -354px;
   padding: 96px 0 48px;
 
+  .mdc-button--unelevated:not(:disabled) {
+    background-color: var(--mdc-theme-primary, $BLUE_MEDIUM);
+  }
+
   .mdc-layout-grid__cell {
     position: relative;
     color: $BLUE_DARK;
@@ -429,7 +438,7 @@
     button {
       padding: 16px 24px;
       cursor: pointer;
-      font-family: "robotothin", Arial, Helvetica, sans-serif;
+      font-family: "robotoregular", Arial, Helvetica, sans-serif;
       font-size: .75rem;
       outline: none;
     }

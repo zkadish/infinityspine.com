@@ -9383,14 +9383,31 @@ body {
 
 .page {
   padding-top: 48px;
-  padding-bottom: 48px; }
+  padding-bottom: 48px;
+  font-family: "robotolight", Arial, Helvetica, sans-serif; }
   .page .mdc-button--unelevated:not(:disabled) {
     background-color: var(--mdc-theme-primary, #3658a8); }
   .page .mdc-layout-grid__cell {
     position: relative;
     color: #2c3384;
-    font-family: "robotothin", Arial, Helvetica, sans-serif;
     font-size: 1.2rem; }
+  .page__article-nav {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 600px; }
+    .page__article-nav i {
+      position: relative;
+      top: 2px; }
+    .page__article-nav--btn {
+      outline: none;
+      background: none;
+      border: none;
+      cursor: pointer; }
+      .page__article-nav--btn:first-child {
+        margin: 0 0 0 5px; }
+      .page__article-nav--btn:last-child {
+        margin: 0 5px 0 0; }
   .page__img {
     position: absolute;
     right: 48px; }
@@ -9412,8 +9429,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
-    font-family: "robotolight", Arial, Helvetica, sans-serif; }
+    padding: 0 20px; }
     .page .thoma-articles .wp-block-image {
       -webkit-margin-before: 0;
               margin-block-start: 0;
@@ -9432,8 +9448,7 @@ body {
         box-shadow: none; }
       .page .thoma-articles .wp-block-image figcaption {
         position: relative;
-        top: 0;
-        margin: 10px 0 0;
+        top: -10px;
         font-size: 1rem;
         font-weight: bold;
         text-align: center; }
