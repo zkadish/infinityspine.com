@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     &:nth-child(1) {
-      margin: 24px 0;
+      margin: 16px 0;
     }
     
     &:nth-child(2) {
@@ -35,7 +35,7 @@
     }
 
     img {
-      width: 116px;
+      width: 70px;
     }
 
     &--mobile-nav {
@@ -67,6 +67,7 @@
   position: relative;
 
   &__images {
+    flex: none;
     overflow: hidden;
 
     img {
@@ -77,60 +78,90 @@
   &__content {
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
+    bottom: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    width: 100%;
     border-bottom: 1px solid $GREY_LIGHT;
 
-    .mdc-card {
-      padding: 24px;
-      width: 720px;
-      background: $TRANSPARENT_WHITE;
-      color: $BLUE_DARK;
-      font-size: 2.2rem;
-      text-align: center;
+    &--left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40%;
+      // border: 1px solid red;
+
+      .mdc-card {
+        max-width: 450px;
+        color: $BLUE_DARK;
+        font-size: 1.5rem;
+
+        .list-header {
+          font-size: 1.25rem;
+        }
+
+        ul {
+          font-size: 1rem;
+        }
+      }
     }
 
-    .new-patient {
-      height: inherit;
-      padding: 16px;
-      border-radius: 5px;
-      font-size: 1.5rem;
-    }
+    &--right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 60%;
+      // border: 1px solid red;
 
-    // &--social {
-    //   position: absolute;
-    //   top: 20%;
-    //   left: 5%;
-    //   display: flex;
-    //   flex-direction: column;
+      .mdc-card {
+        padding: 24px;
+        max-width: 720px;
+        color: $BLUE_DARK;
+        font-size: 2.75rem;
+        font-weight: 900;
+        text-align: center;
+      }
 
-    //   button {
-    //     margin: 0 0 20px;
-    //   }
+      .new-patient {
+        height: inherit;
+        padding: 12px 16px;
+        border-radius: 5px;
+        font-size: 1.5rem;
+      }
 
-    //   .fab, .fas {
-    //     font-size: 2rem;
-    //   }
-    // }
+      // &--social {
+      //   position: absolute;
+      //   top: 20%;
+      //   left: 5%;
+      //   display: flex;
+      //   flex-direction: column;
 
-    .mobile-call {
-      position: absolute;
-      bottom: -43px;
-      height: 80px;
-      width: 80px;
-      background-color: $BLUE_DARK;
-      border: none;
-      border-radius: 50%;
-      .fas {
-        position: relative;
-        top: 3px;
-        color: white;
-        font-size: 2.5rem;
+      //   button {
+      //     margin: 0 0 20px;
+      //   }
+
+      //   .fab, .fas {
+      //     font-size: 2rem;
+      //   }
+      // }
+
+      .mobile-call {
+        position: absolute;
+        bottom: -43px;
+        left: calc(50% - 40px);
+        height: 80px;
+        width: 80px;
+        background-color: $BLUE_DARK;
+        border: none;
+        border-radius: 50%;
+        .fas {
+          position: relative;
+          top: 3px;
+          color: white;
+          font-size: 2.5rem;
+        }
       }
     }
   }
@@ -382,8 +413,6 @@
 }
 
 .articles-preview {
-  // position: relative;
-  // top: -354px;
   padding: 96px 0 48px;
 
   .mdc-button--unelevated:not(:disabled) {
@@ -411,7 +440,7 @@
   }
 
   .articles-preview-image {
-    width: 360px;
+    max-width: 360px;
     height: 190px;
     overflow: hidden;
   }

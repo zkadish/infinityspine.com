@@ -3,9 +3,9 @@
   .header {
     padding: 0 48px;
     &__logo {
-      img {
-        width: 102px;
-      }
+      // img {
+      //   width: 102px;
+      // }
       &--copy {
         font-size: 1.1rem;
       }
@@ -13,6 +13,25 @@
   }
   .vertical-rule {
     margin: 0 .5em;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1024px) {
+  .splash {
+    &__content {
+      &--left {
+        padding: 24px;
+        .mdc-card {
+          font-size: 1.25rem;
+        }
+      }
+      &--right {
+        .mdc-card {
+          padding: 48px;
+          font-size: 2rem;
+        }
+      }
+    }
   }
 }
 
@@ -54,9 +73,17 @@
 
   .splash {
     &__content {
-      .mdc-card {
-        width: 680px;
-        font-size: 1.8rem;
+      &--left {
+        padding: 24px;
+        .mdc-card {
+          font-size: 1.25rem;
+        }
+      }
+      &--right {
+        .mdc-card {
+          padding: 48px;
+          font-size: 1.8rem;
+        }
       }
 
       .mobile-call {
