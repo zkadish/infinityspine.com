@@ -9217,11 +9217,12 @@ body {
     width: 100%;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }
   .articles-preview h2 {
-    margin: 24px 0; }
+    margin: 24px 0;
+    min-height: 80px; }
   .articles-preview__post {
     width: 360px; }
   .articles-preview__excerpt {
-    height: 260px; }
+    min-height: 300px; }
   .articles-preview__btn {
     text-align: center; }
     .articles-preview__btn button {
@@ -9488,8 +9489,6 @@ body {
       width: 600px; }
 
 @media (max-width: 1279px) and (min-width: 1024px) {
-  body {
-    border: 1px dashed green; }
   .header {
     padding: 0 48px; }
     .header__logo--copy {
@@ -9504,7 +9503,9 @@ body {
       font-size: 1.25rem; }
   .splash__content--right .mdc-card {
     padding: 48px;
-    font-size: 2rem; } }
+    font-size: 2rem; }
+  .articles-preview__post {
+    width: 280px; } }
 
 @media (max-width: 1023px) and (min-width: 864px) {
   h1 {
@@ -9525,9 +9526,9 @@ body {
     .header .main-nav {
       top: 0; }
   .splash__content--left {
-    padding: 24px; }
+    padding: 0 36px; }
     .splash__content--left .mdc-card {
-      font-size: 1.25rem; }
+      font-size: .85rem; }
   .splash__content--right .mdc-card {
     padding: 48px;
     font-size: 1.8rem; }
@@ -9547,14 +9548,18 @@ body {
     padding: 16px 16px 24px 32px; }
     .sub-nav .mdc-layout-grid__cell:nth-child(4) {
       font-size: .75rem; }
-  .treatments__img {
-    right: 24px; }
-  .blog-preview .mdc-layout-grid__cell:nth-child(1) {
-    justify-content: flex-end; }
-  .blog-preview .mdc-layout-grid__cell:nth-child(2) {
-    justify-content: flex-start; }
-  .blog-preview .mdc-layout-grid__cell:nth-child(3) {
-    justify-content: flex-end; }
+  .treatments {
+    padding: 40px 40px 0; }
+    .treatments__img {
+      right: 24px; }
+  .articles-preview {
+    padding: 48px 0 0; }
+    .articles-preview .mdc-layout-grid__cell:nth-child(1) {
+      justify-content: flex-end; }
+    .articles-preview .mdc-layout-grid__cell:nth-child(2) {
+      justify-content: flex-start; }
+    .articles-preview .mdc-layout-grid__cell:nth-child(3) {
+      justify-content: flex-end; }
   .footer .mdc-layout-grid__cell:nth-child(1) h2 {
     font-size: 1rem; } }
 
@@ -9660,14 +9665,16 @@ body {
     text-align: center; }
     .testimonials-footer__copy h1 {
       font-size: 1.7rem; }
-  .blog-preview .mdc-layout-grid__cell:nth-child(1) {
-    justify-content: center; }
-  .blog-preview .mdc-layout-grid__cell:nth-child(2) {
-    padding: 48px 0; }
-  .blog-preview .mdc-layout-grid__cell:nth-child(3) {
-    justify-content: center; }
-  .blog-preview h2 {
-    margin: 24px 0 0; }
+  .articles-preview {
+    padding: 48px 0 0; }
+    .articles-preview .mdc-layout-grid__cell:nth-child(1) {
+      justify-content: center; }
+    .articles-preview .mdc-layout-grid__cell:nth-child(2) {
+      padding: 48px 0; }
+    .articles-preview .mdc-layout-grid__cell:nth-child(3) {
+      justify-content: center; }
+    .articles-preview h2 {
+      margin: 24px 0 0; }
   .footer .mdc-layout-grid__cell:nth-child(2) {
     padding: 48px; }
   .footer .mdc-layout-grid__cell .fab {
@@ -9798,22 +9805,22 @@ body {
     text-align: center; }
     .testimonials-footer__copy h1 {
       font-size: 1.35rem; }
-  .blog-header__copy h1 {
+  .articles-header__copy h1 {
     font-size: 1.5rem; }
-  .blog-preview {
+  .articles-preview {
     padding: 48px 0 0; }
-    .blog-preview .mdc-layout-grid__cell {
+    .articles-preview .mdc-layout-grid__cell {
       margin: 0 0 24px; }
-      .blog-preview .mdc-layout-grid__cell:nth-child(1) {
+      .articles-preview .mdc-layout-grid__cell:nth-child(1) {
         justify-content: center; }
-      .blog-preview .mdc-layout-grid__cell:nth-child(2) {
+      .articles-preview .mdc-layout-grid__cell:nth-child(2) {
         justify-content: center; }
-      .blog-preview .mdc-layout-grid__cell:nth-child(3) {
+      .articles-preview .mdc-layout-grid__cell:nth-child(3) {
         justify-content: center;
         margin: 0; }
-    .blog-preview h2 {
+    .articles-preview h2 {
       margin: 24px 0 0; }
-    .blog-preview__post {
+    .articles-preview__post {
       width: 260px; }
   .footer {
     padding: 48px 16px; }

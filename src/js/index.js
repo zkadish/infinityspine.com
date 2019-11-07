@@ -9,7 +9,7 @@ import '../img/logo-only.png';
 import '../img/splash-01.png';
 import '../img/splash-01-pho480.png';
 import '../img/runners.png';
-import '../img/scoliosis.png';
+import '../';
 import '../img/adjustment.png';
 import '../img/sports.png';
 import '../img/functional.png';
