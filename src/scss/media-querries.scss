@@ -1,11 +1,11 @@
 @media (max-width: 1279px) and (min-width: 1024px) {
-  body { border: 1px dashed green; }
+  // body { border: 1px dashed green; }
   .header {
     padding: 0 48px;
     &__logo {
-      img {
-        width: 102px;
-      }
+      // img {
+      //   width: 102px;
+      // }
       &--copy {
         font-size: 1.1rem;
       }
@@ -13,6 +13,45 @@
   }
   .vertical-rule {
     margin: 0 .5em;
+  }
+}
+
+@media (max-width: 1260px) and (min-width: 1024px) {
+  .splash {
+    &__content {
+      &--left {
+        padding: 24px;
+        .mdc-card {
+          font-size: 1.25rem;
+        }
+      }
+      &--right {
+        .mdc-card {
+          padding: 48px;
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  .articles-preview {
+    // padding: 48px 0 0;
+    &__post {
+      width: 280px;
+    }
+    
+    // .mdc-layout-grid__cell {
+      
+    //   &:nth-child(1) {
+    //     justify-content: flex-end;
+    //   }
+    //   &:nth-child(2) {
+    //     justify-content: flex-start;
+    //   }
+    //   &:nth-child(3) {
+    //     justify-content: flex-end;
+    //   }
+    // }
   }
 }
 
@@ -54,9 +93,19 @@
 
   .splash {
     &__content {
-      .mdc-card {
-        width: 680px;
-        font-size: 1.8rem;
+      &--left {
+        // border: 1px solid red;
+        padding: 0 36px;
+        .mdc-card {
+          // padding: 48px 0 0;
+          font-size: .85rem;
+        }
+      }
+      &--right {
+        .mdc-card {
+          padding: 48px;
+          font-size: 1.8rem;
+        }
       }
 
       .mobile-call {
@@ -96,12 +145,15 @@
   }
 
   .treatments {
+    padding: 40px 40px 0;
     &__img {
       right: 24px;
     }
   }
 
-  .blog-preview {
+  .articles-preview {
+    padding: 48px 0 0;
+
     .mdc-layout-grid__cell {
       
       &:nth-child(1) {
@@ -317,7 +369,9 @@
     }
   }
 
-  .blog-preview {
+  .articles-preview {
+    padding: 48px 0 0;
+
     .mdc-layout-grid__cell {
       &:nth-child(1) {
         justify-content: center;
@@ -568,7 +622,7 @@
     }
   }
 
-  .blog-header {
+  .articles-header {
     &__copy {
       h1 {
         font-size: 1.5rem;
@@ -576,7 +630,7 @@
     }
   }
 
-  .blog-preview {
+  .articles-preview {
     padding: 48px 0 0;
 
     .mdc-layout-grid__cell {

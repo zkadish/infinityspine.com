@@ -40,6 +40,11 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
         if (!arr[i]) return undefined;
         return img.setAttribute('src', arr[i].source_url);
       });
+    }).catch((err) => {
+      console.log(err); // eslint-disable-line
+      // blogPreviewImages.forEach((img) => {
+      //   img.setAttribute('src', 'img/article-stand-in.png');
+      // });
     });
   });
 

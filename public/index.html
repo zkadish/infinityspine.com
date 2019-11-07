@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    
+    <link rel="stylesheet" href="css/infinity.css">
   </head>
   <body>
     <!--[if lte IE 9]>
@@ -92,11 +92,35 @@
             <div class="splash__images">
               <img id="splash-01" alt="back-pain" src="img/splash-01.png" />
             </div>
-            <div class="splash__content">
+            <div class="splash__content--left">
+              <div class="mdc-card">
+                  Dr. Thoma first evaluates and then treats all types of 
+                  skeletal damage from auto accident injuries, age related 
+                  degenerative conditions and high impact ports injuries. 
+                  He also has experience with treating different types of 
+                  patients from the elderly to professional athletes.<br /><br />
+              </div>
+              <div class="mdc-card">
+                <div class="list-header">
+                  Dr. Thoma's Chiropractic practice includes:
+                </div>
+                <ul>
+                  <li>NUCCS therapy technics</li>
+                  <li>Sports Physiotherapy</li>
+                  <li>Acupuncture dry needling and electric current</li>
+                  <li>Acupressure message therapy</li>
+                  <li>Functional medicine</li>
+                  <li>Light therapy red and near infrared</li>
+                  <li>Dietary prescriptions</li>
+                  <li>Lifestyle changes</li>
+                </ul>
+              </div>
+            </div>
+            <div class="splash__content--right">
               <div class="mdc-card">
                 The decisions you make about your health,
                 will be some of the most important
-                choices you make in your life!
+                choices you make in life!
               </div>
               <button
                 class="new-patient mdc-fab mdc-fab--extended"
@@ -104,7 +128,7 @@
                 type="submit"
                 onclick="window.open('forms/infinity-spine-new-patient-form.pdf')"
               >
-                <i class="fab fa-pagelines"></i>&nbsp
+                <!-- <i class="fab fa-pagelines"></i>&nbsp -->
                 <span class="mdc-fab__label">New Patient Form</span>
               </button>
               <!-- <div class="splash__content--social">

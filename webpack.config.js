@@ -17,6 +17,7 @@ const mode = process.env.NODE_ENV;
 // TODO: add styleLint: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
 
 console.log('devMode:', devMode);
+console.log('mode:', mode);
 // console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
 
 module.exports = {
@@ -119,7 +120,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      inject: mode === 'production' || false,
+      inject: false,
       template: path.resolve(__dirname, 'src/index.html'),
       title: 'Infinity Spine',
       javascript: '<script src="js/infinity.js"></script>',
