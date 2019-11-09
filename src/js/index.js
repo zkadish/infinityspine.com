@@ -24,6 +24,13 @@ import '../forms/nucca-new-patient-form.pdf';
 import '../forms/functional-medicine-form.pdf';
 import '../forms/Insurance-Intake-form.pdf';
 
+// fetch('http://infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
+//   .then(response => response.json())
+//   .then((navMenu) => {
+//     console.log(navMenu);
+//     debugger
+//   });
+
 // console.log('PRODUCTION', PRODUCTION); // eslint-disable-line
 
 // reset the home link href url so that the path
