@@ -1,5 +1,5 @@
 import { MDCRipple } from '@material/ripple';
-import { MAIN_NAV } from './constants';
+import { WP_MAIN_NAV, MAIN_NAV } from './constants';
 
 import './router';
 
@@ -24,14 +24,48 @@ import '../forms/nucca-new-patient-form.pdf';
 import '../forms/functional-medicine-form.pdf';
 import '../forms/Insurance-Intake-form.pdf';
 
-// fetch('http://infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
-//   .then(response => response.json())
-//   .then((navMenu) => {
-//     console.log(navMenu);
-//     debugger
-//   });
+// set up localstorage
+if (!localStorage.getItem('wpRoutes')) {
+  localStorage.setItem('wpRoutes', JSON.stringify([]));
+}
 
-// console.log('PRODUCTION', PRODUCTION); // eslint-disable-line
+const mainNav = document.querySelector('.main-nav');
+
+const createMainNav = (wpBtns = []) => {
+  const button = document.createElement('button');
+  const hr = document.createElement('hr');
+  hr.classList.add('vertical-rule');
+
+  let additionalBtns = [];
+  wpBtns.forEach((btn) => {
+    const btnSlug = btn.object_slug.replace('-1', '');
+    localStorage.setItem('wpRoutes', JSON.stringify([{
+      slug: `#${btnSlug}`,
+      pageId: btn.object_id,
+    }]));
+
+    button.classList.add(`main-nav__${btnSlug}`, 'mdc-button');
+    button.setAttribute('data-route', `#${btnSlug}`);
+    button.setAttribute('onclick', `document.location="#${btnSlug}"`);
+    button.innerHTML = btnSlug.split('-').join(' ');
+    additionalBtns = [...additionalBtns, button, hr];
+  });
+
+  const nav = [...additionalBtns, ...mainNav.children];
+  mainNav.innerHTML = '';
+  nav.forEach((node) => {
+    mainNav.appendChild(node);
+  });
+};
+
+// get wp menu items
+fetch('http://infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
+  .then(response => response.json())
+  .then((res) => {
+    const { items } = res;
+    const wpMainNav = items.find(item => item.object_slug === WP_MAIN_NAV[0]);
+    createMainNav([wpMainNav]);
+  });
 
 // reset the home link href url so that the path
 // is correct for local and live production

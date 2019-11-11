@@ -59,8 +59,7 @@ function testimonialTags(token) {
   return [scriptToken, scriptReview, reviewContainer];
 }
 
-function getRouteContent(newRoute, anchor, article) {
-
+function getRouteContent(newRoute, anchor, article, pageId) {
   fetch(`${origin}${root}pages/${newRoute}.html`)
     .then(response => response.text())
     .then((response) => {
@@ -72,7 +71,7 @@ function getRouteContent(newRoute, anchor, article) {
         });
       }
 
-      // reset page
+      // reset page, why?
       page = newRoute;
       // update "master page"
       container.innerHTML = response;
@@ -81,41 +80,97 @@ function getRouteContent(newRoute, anchor, article) {
       script.setAttribute('id', page);
 
       // route specific HTML and Javascript
-      if (page === 'home' || page === '') {
-        const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-        script.setAttribute('src', 'js/home.js');
-        // insert page specific javascript
-        body.appendChild(script);
-        testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
+      // if (page === 'home' || page === '') {
+      //   const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
+      //   script.setAttribute('src', 'js/home.js');
+      //   // insert page specific javascript
+      //   body.appendChild(script);
+      //   testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
 
-        if (!anchor) {
-          window.history.replaceState({}, '', '#home');
+      //   if (!anchor) {
+      //     window.history.replaceState({}, '', '#home');
+      //   }
+      // }
+
+      // if (page === 'contact') {
+      //   script.setAttribute('src', 'js/contact.js');
+      //   // insert page specific javascript
+      //   body.appendChild(script);
+
+      //   if (!anchor) {
+      //     window.history.replaceState({}, '', '#contact');
+      //   }
+      // }
+
+      // if (page === 'dr-thoma-articles') {
+      //   script.setAttribute('src', 'js/dr-thoma-articles.js');
+      //   // insert page specific javascript
+      //   body.appendChild(script);
+
+      //   if (!anchor) {
+      //     window.history.replaceState({}, '', `#dr-thoma-articles?article=${article}`);
+      //   }
+      // }
+
+      // if (page === 'more-testimonials') {
+      //   const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
+      //   testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
+      // }
+
+      switch (page) {
+        case 'home' || '': {
+          const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
+          script.setAttribute('src', 'js/home.js');
+          // insert page specific javascript
+          body.appendChild(script);
+          testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#home');
+          }
+          break;
         }
-      }
+        case 'contact': {
+          script.setAttribute('src', 'js/contact.js');
+          // insert page specific javascript
+          body.appendChild(script);
 
-      if (page === 'contact') {
-        script.setAttribute('src', 'js/contact.js');
-        // insert page specific javascript
-        body.appendChild(script);
-
-        if (!anchor) {
-          window.history.replaceState({}, '', '#contact');
+          if (!anchor) {
+            window.history.replaceState({}, '', '#contact');
+          }
+          break;
         }
-      }
+        case 'dr-thoma-articles': {
+          script.setAttribute('src', 'js/dr-thoma-articles.js');
+          // insert page specific javascript
+          body.appendChild(script);
 
-      if (page === 'dr-thoma-articles') {
-        script.setAttribute('src', 'js/dr-thoma-articles.js');
-        // insert page specific javascript
-        body.appendChild(script);
-
-        if (!anchor) {
-          window.history.replaceState({}, '', `#dr-thoma-articles?article=${article}`);
+          if (!anchor) {
+            window.history.replaceState({}, '', `#dr-thoma-articles?article=${article}`);
+          }
+          break;
         }
-      }
-
-      if (page === 'more-testimonials') {
-        const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-        testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
+        case 'more-testimonials': {
+          const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
+          testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
+          break;
+        }
+        case 'default-page':
+          script.setAttribute('src', 'js/default-page.js');
+          // insert page specific javascript
+          body.appendChild(script);
+          if (!anchor) {
+            window.history.replaceState({}, '', `#infinite-mind-retreat?page=${pageId}`);
+          }
+          break;
+        default:
+          // script.setAttribute('src', 'js/default-page.js');
+          // // insert page specific javascript
+          // body.appendChild(script);
+          // if (!anchor) {
+          //   window.history.replaceState({}, '', '#infinite-mind-retreat');
+          // }
+          break;
       }
 
       // make sure loaded content starts at the top...
@@ -125,8 +180,7 @@ function getRouteContent(newRoute, anchor, article) {
       document.location = window.location.hash;
     })
     .catch((error) => {
-      // TODO: route to 404 error page
-      // console.error('Error:', error); // eslint-disable-line
+      console.error('Error:', error); // eslint-disable-line
       window.location = 'pages/404.html';
     });
 }
@@ -135,6 +189,9 @@ function getRouteContent(newRoute, anchor, article) {
 export function onRouterEventHandler(e, article) {
   if (e) e.preventDefault();
   let hash = window.location.hash.split('?')[0];
+  const wpRoutes = JSON.parse(localStorage.wpRoutes).map(r => r.slug);
+  const wpPageIds = JSON.parse(localStorage.wpRoutes).map(r => r.pageId);
+
   if (pathname === root && hash === '') {
     hash = '#home';
   }
@@ -145,7 +202,13 @@ export function onRouterEventHandler(e, article) {
     return;
   }
 
-  // below code handles anchor hrefs
+  if (wpRoutes.includes(hash.replace('-1', ''))) {
+    const index = wpRoutes.findIndex(r => r === hash);
+    getRouteContent('default-page', '', article, wpPageIds[index]);
+    return;
+  }
+
+  // handle anchor hrefs
   const dataRoutes = [...document.querySelectorAll('[data-route]')]
     .map(r => r.dataset.route.replace('#', ''));
 
@@ -235,6 +298,5 @@ window.addEventListener('hashchange', (e) => {
 // }, false);
 
 window.addEventListener('error', (err) => {
-  // debugger;
-  // console.error('error event', err); // eslint-disable-line
+  console.error('error event', err); // eslint-disable-line
 }, false);

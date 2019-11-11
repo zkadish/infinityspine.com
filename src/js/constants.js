@@ -1,4 +1,4 @@
-// const MAIN_NAV = ['about', 'treatments', 'testimonials', 'blog', 'forms', 'contact'];
+export const WP_MAIN_NAV = ['infinite-mind-retreat-1'];
 const MAIN_NAV = [
   'treatments',
   'testimonials',
