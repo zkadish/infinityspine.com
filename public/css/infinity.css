@@ -9405,6 +9405,9 @@ body {
 .google-map {
   width: 100%; }
 
+.default-page .call-to-action__title {
+  text-transform: capitalize; }
+
 .page {
   padding-top: 48px;
   padding-bottom: 48px;

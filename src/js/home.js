@@ -9,7 +9,7 @@ const blogPreviewImages = document.querySelectorAll('.articles-preview-image img
 const blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
 
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
   .then(response => response.json())
   .then((posts) => {
     const featuredMedia = posts.map(post => post.featured_media);
@@ -32,7 +32,7 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
     });
 
     Promise.all(
-      featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
+      featuredMedia.map(media => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
         .then(response => response.json())
         .then(data => data.media_details.sizes.medium)),
     ).then((arr) => {

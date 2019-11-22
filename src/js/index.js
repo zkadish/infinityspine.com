@@ -30,13 +30,18 @@ if (!localStorage.getItem('wpRoutes')) {
 }
 
 const mainNav = document.querySelector('.main-nav');
+const mobileNav = document.querySelector('.mobile-nav');
 
 const createMainNav = (wpBtns = []) => {
-  const button = document.createElement('button');
-  const hr = document.createElement('hr');
-  hr.classList.add('vertical-rule');
+  const mainNavBtn = document.createElement('button');
+  const mobileNavBtn = document.createElement('button');
+  const vHr = document.createElement('hr');
+  const hHr = document.createElement('hr');
+  vHr.classList.add('vertical-rule');
+  hHr.classList.add('horizontal-rule');
 
-  let additionalBtns = [];
+  let additionalMainNavBtns = [];
+  let additionalMobileNavBtns = [];
   wpBtns.forEach((btn) => {
     const btnSlug = btn.object_slug.replace('-1', '');
     localStorage.setItem('wpRoutes', JSON.stringify([{
@@ -44,22 +49,32 @@ const createMainNav = (wpBtns = []) => {
       pageId: btn.object_id,
     }]));
 
-    button.classList.add(`main-nav__${btnSlug}`, 'mdc-button');
-    button.setAttribute('data-route', `#${btnSlug}`);
-    button.setAttribute('onclick', `document.location="#${btnSlug}"`);
-    button.innerHTML = btnSlug.split('-').join(' ');
-    additionalBtns = [...additionalBtns, button, hr];
+    mainNavBtn.classList.add(`main-nav__${btnSlug}`, 'mdc-button');
+    mobileNavBtn.classList.add(`mobile-nav__${btnSlug}`, 'mdc-button');
+    mainNavBtn.setAttribute('data-route', `#${btnSlug}`);
+    mobileNavBtn.setAttribute('data-route', `#${btnSlug}`);
+    mainNavBtn.setAttribute('onclick', `document.location="#${btnSlug}"`);
+    mobileNavBtn.setAttribute('onclick', `document.location="#${btnSlug}"`);
+    mainNavBtn.innerHTML = btnSlug.split('-').join(' ');
+    mobileNavBtn.innerHTML = btnSlug.split('-').join(' ');
+    additionalMainNavBtns = [...additionalMainNavBtns, mainNavBtn, vHr];
+    additionalMobileNavBtns = [...additionalMobileNavBtns, mainNavBtn, hHr];
   });
 
-  const nav = [...additionalBtns, ...mainNav.children];
+  const main = [...additionalMainNavBtns, ...mainNav.children];
+  const mobile = [...additionalMobileNavBtns, ...mobileNav.children];
   mainNav.innerHTML = '';
-  nav.forEach((node) => {
+  mobileNav.innerHTML = '';
+  main.forEach((node) => {
     mainNav.appendChild(node);
+  });
+  mobile.forEach((node) => {
+    mobileNav.appendChild(node);
   });
 };
 
 // get wp menu items
-fetch('http://infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
+fetch('http://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
   .then(response => response.json())
   .then((res) => {
     const { items } = res;
@@ -77,18 +92,20 @@ if (window.location.pathname === '/infinity-spine/public/') {
 }
 
 const mobileNavBtn = document.querySelector('.header__logo--mobile-nav');
-const mobileNavMenu = document.querySelector('.mobile-nav');
+// const mobileNavMenu = document.querySelector('.mobile-nav');
+// debugger
 // const mobileNavBtnRipple = new MDCRipple(mobileNavBtn); // eslint-disable-line
 
 function mobileNavBtnClickHandler() {
-  mobileNavMenu.classList.toggle('display-none');
+  debugger
+  mobileNav.classList.toggle('display-none');
 }
 
 // Init Buttons
 function initMainNavButtons() {
   // hide mobile menu
-  if (!mobileNavMenu.classList.contains('display-none')) {
-    mobileNavMenu.classList.add('display-none');
+  if (!mobileNav.classList.contains('display-none')) {
+    mobileNav.classList.add('display-none');
   }
 
   const obj = {};
@@ -98,13 +115,15 @@ function initMainNavButtons() {
 }
 
 function initMobileNavButtons() {
-  mobileNavBtn.removeEventListener('click', mobileNavBtnClickHandler);
+  // console.log(mobileNavBtn)
+  // debugger
+  // mobileNavBtn.removeEventListener('click', mobileNavBtnClickHandler);
   mobileNavBtn.addEventListener('click', mobileNavBtnClickHandler);
 
-  const obj = {};
-  MAIN_NAV.forEach((btn) => {
-    obj[btn] = new MDCRipple(document.querySelector(`.mobile-nav__${btn}`));
-  });
+  // const obj = {};
+  // MAIN_NAV.forEach((btn) => {
+  //   obj[btn] = new MDCRipple(document.querySelector(`.mobile-nav__${btn}`));
+  // });
 }
 
 // const facebook = new MDCRipple(document.querySelector('.social')); // eslint-disable-line
