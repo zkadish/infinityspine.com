@@ -29,6 +29,7 @@ if (!localStorage.getItem('wpRoutes')) {
   localStorage.setItem('wpRoutes', JSON.stringify([]));
 }
 
+const mobileNavMenuBtn = document.querySelector('.header__logo--mobile-nav');
 const mainNav = document.querySelector('.main-nav');
 const mobileNav = document.querySelector('.mobile-nav');
 
@@ -42,23 +43,48 @@ const createMainNav = (wpBtns = []) => {
 
   let additionalMainNavBtns = [];
   let additionalMobileNavBtns = [];
+
+  // process btns from wp
   wpBtns.forEach((btn) => {
+    // todo: remove when wp gets cleaned up
     const btnSlug = btn.object_slug.replace('-1', '');
+    // put btn and page btn goes to in localStorage
     localStorage.setItem('wpRoutes', JSON.stringify([{
       slug: `#${btnSlug}`,
       pageId: btn.object_id,
     }]));
-
+    // click handler for wp btns
+    const mobileNavBtnClickHandler = () => {
+      document.location = `#${btnSlug}`;
+      mobileNav.classList.toggle('display-none');
+    };
+    // add btn class
     mainNavBtn.classList.add(`main-nav__${btnSlug}`, 'mdc-button');
     mobileNavBtn.classList.add(`mobile-nav__${btnSlug}`, 'mdc-button');
+    // add data route
     mainNavBtn.setAttribute('data-route', `#${btnSlug}`);
     mobileNavBtn.setAttribute('data-route', `#${btnSlug}`);
+    // add onclick event
     mainNavBtn.setAttribute('onclick', `document.location="#${btnSlug}"`);
-    mobileNavBtn.setAttribute('onclick', `document.location="#${btnSlug}"`);
+    mobileNavBtn.addEventListener('click', mobileNavBtnClickHandler);
+    // clear menu container
     mainNavBtn.innerHTML = btnSlug.split('-').join(' ');
     mobileNavBtn.innerHTML = btnSlug.split('-').join(' ');
+    // add btns from wp to main navs
     additionalMainNavBtns = [...additionalMainNavBtns, mainNavBtn, vHr];
-    additionalMobileNavBtns = [...additionalMobileNavBtns, mainNavBtn, hHr];
+    additionalMobileNavBtns = [...additionalMobileNavBtns, mobileNavBtn, hHr];
+  });
+
+  const mobileNavChildren = [...mobileNav.children];
+  mobileNavChildren.forEach((nav) => {
+    if (nav.className.includes('mobile-nav')) {
+      const route = nav.getAttribute('data-route');
+      const clickHandler = () => {
+        document.location = route;
+        mobileNav.classList.toggle('display-none');
+      };
+      nav.addEventListener('click', clickHandler);
+    }
   });
 
   const main = [...additionalMainNavBtns, ...mainNav.children];
@@ -69,6 +95,7 @@ const createMainNav = (wpBtns = []) => {
     mainNav.appendChild(node);
   });
   mobile.forEach((node) => {
+    // node.addEventListener('click', mobileNavBtnClickHandler);
     mobileNav.appendChild(node);
   });
 };
@@ -91,16 +118,6 @@ if (window.location.pathname === '/infinity-spine/public/') {
   logoHomeLink.setAttribute('href', '/infinity-spine/public/');
 }
 
-const mobileNavBtn = document.querySelector('.header__logo--mobile-nav');
-// const mobileNavMenu = document.querySelector('.mobile-nav');
-// debugger
-// const mobileNavBtnRipple = new MDCRipple(mobileNavBtn); // eslint-disable-line
-
-function mobileNavBtnClickHandler() {
-  debugger
-  mobileNav.classList.toggle('display-none');
-}
-
 // Init Buttons
 function initMainNavButtons() {
   // hide mobile menu
@@ -114,11 +131,12 @@ function initMainNavButtons() {
   });
 }
 
+function mobileNavMenuBtnClickHandler() {
+  mobileNav.classList.toggle('display-none');
+}
+
 function initMobileNavButtons() {
-  // console.log(mobileNavBtn)
-  // debugger
-  // mobileNavBtn.removeEventListener('click', mobileNavBtnClickHandler);
-  mobileNavBtn.addEventListener('click', mobileNavBtnClickHandler);
+  mobileNavMenuBtn.addEventListener('click', mobileNavMenuBtnClickHandler);
 
   // const obj = {};
   // MAIN_NAV.forEach((btn) => {
@@ -131,8 +149,9 @@ function initMobileNavButtons() {
 // const twitter = new MDCRipple(document.querySelectorAll('.social')[2]); // eslint-disable-line
 // const blog = new MDCRipple(document.querySelectorAll('.social')[3]); // eslint-disable-line
 // const email = new MDCRipple(document.querySelectorAll('.social')[4]); // eslint-disable-line
-
 // const newPatient = new MDCRipple(document.querySelector('.new-patient')); // eslint-disable-line
+
+const splash01 = document.getElementById('splash-01');
 
 function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
@@ -167,6 +186,7 @@ function matchMedia() {
 
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
     // console.log('index.js - pho480');
+    splash01.setAttribute('src', 'img/pho490/splash-01-pho480.png');
     initMobileNavButtons();
   }
 

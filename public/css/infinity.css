@@ -9281,7 +9281,7 @@ body {
       letter-spacing: 4px; }
 
 .mobile-nav {
-  position: absolute;
+  position: fixed;
   top: 158px;
   width: 50%;
   left: 0;
@@ -9590,19 +9590,31 @@ body {
         width: 102px; }
       .header__logo--copy {
         font-size: 1.1rem; }
-  .splash__content .mdc-card {
-    display: none; }
-  .splash__content .new-patient {
-    position: relative;
-    top: 50px;
-    justify-content: flex-end; }
-  .splash__content--social {
-    left: 10%;
-    right: 10%;
-    flex-direction: row;
-    justify-content: space-between; }
-    .splash__content--social button {
-      margin: 0; }
+  .splash__images {
+    height: 500px; }
+  .splash__content {
+    flex-wrap: wrap; }
+    .splash__content--left {
+      padding: 0 36px;
+      width: 100%; }
+      .splash__content--left .mdc-card {
+        font-size: .85rem; }
+    .splash__content--right {
+      width: 100%; }
+      .splash__content--right .mdc-card {
+        display: none;
+        padding: 48px;
+        font-size: 1.8rem; }
+    .splash__content .mobile-call {
+      bottom: -33px;
+      height: 60px;
+      width: 60px; }
+      .splash__content .mobile-call .fas {
+        font-size: 2rem; }
+    .splash__content .new-patient {
+      position: relative;
+      top: -30px;
+      justify-content: flex-end; }
   .call-to-action__copy {
     text-align: center; }
     .call-to-action__copy h1 {
@@ -9715,40 +9727,37 @@ body {
         width: 70px; }
       .header__logo--copy {
         font-size: .75rem; }
-  .splash__content .mdc-card {
-    display: none; }
-  .splash__content .new-patient {
-    position: relative;
-    top: 25px;
-    justify-content: flex-end;
-    padding: 8px 16px 8px 8px;
-    font-size: 1.2rem; }
-    .splash__content .new-patient .fab {
-      display: none; }
-  .splash__content--social {
-    top: 10%;
-    left: 5%;
-    right: 5%;
-    flex-direction: row;
-    justify-content: space-between; }
-    .splash__content--social button {
-      margin: 0; }
-    .splash__content--social .mdc-fab {
-      height: 48px;
-      width: 48px; }
-    .splash__content--social .fab, .splash__content--social .fas {
-      font-size: 1.7rem; }
-  .splash__content .article-title h1 {
-    max-width: 600px;
-    padding: 0 20px;
-    font-size: 1.35rem; }
-  .splash__content .mobile-call {
-    bottom: -33px;
-    height: 60px;
-    width: 60px; }
-    .splash__content .mobile-call .fas {
-      top: 0;
-      font-size: 2rem; }
+  .splash__images {
+    height: 650px; }
+  .splash__content {
+    flex-wrap: wrap; }
+    .splash__content--left {
+      padding: 0 36px;
+      width: 100%; }
+      .splash__content--left .mdc-card {
+        font-size: .85rem; }
+    .splash__content--right {
+      width: 100%; }
+      .splash__content--right .mdc-card {
+        display: none;
+        padding: 48px;
+        font-size: 1.8rem; }
+    .splash__content .new-patient {
+      position: relative;
+      top: -30px;
+      padding: 6px 16px;
+      font-size: 1.25rem; }
+    .splash__content .article-title h1 {
+      max-width: 600px;
+      padding: 0 20px;
+      font-size: 1.35rem; }
+    .splash__content .mobile-call {
+      bottom: -33px;
+      height: 60px;
+      width: 60px; }
+      .splash__content .mobile-call .fas {
+        top: 0;
+        font-size: 2rem; }
   .call-to-action__copy {
     height: 125px;
     text-align: center; }

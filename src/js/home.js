@@ -119,13 +119,13 @@ function matchMedia() {
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
     // console.log('home.js - pho480');
     // initMobileNavButtons();
-    splash01.setAttribute('src', 'img/splash-01-pho480.png');
+    splash01.setAttribute('src', 'img/pho480/splash-01-pho480.png');
   }
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
     // console.log('home.js - phone');
     // initMobileNavButtons();
-    splash01.setAttribute('src', 'img/splash-01-pho480.png');
+    splash01.setAttribute('src', 'img/phone/splash-01-phone.png');
   }
 }
 matchMedia();

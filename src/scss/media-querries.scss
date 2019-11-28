@@ -94,7 +94,6 @@
   .splash {
     &__content {
       &--left {
-        // border: 1px solid red;
         padding: 0 36px;
         .mdc-card {
           // padding: 48px 0 0;
@@ -226,27 +225,60 @@
   }
 
   .splash {
+    &__images {
+      height: 500px;
+    }
+
     &__content {
-      .mdc-card {
-        display: none;
+      flex-wrap: wrap;
+
+      &--left {
+        padding: 0 36px;
+        width: 100%;
+        .mdc-card {
+          // padding: 48px 0 0;
+          font-size: .85rem;
+        }
       }
+
+      &--right {
+        // display: none;
+        width: 100%;
+        .mdc-card {
+          display: none;
+          padding: 48px;
+          font-size: 1.8rem;
+        }
+      }
+
+      .mobile-call {
+        bottom: -33px;
+        height: 60px;
+        width: 60px;
+        .fas {
+          font-size: 2rem;
+        }
+      }
+      // .mdc-card {
+      //   display: none;
+      // }
 
       .new-patient {
         position: relative;
-        top: 50px;
+        top: -30px;
         justify-content: flex-end;
       }
 
-      &--social {
-        left: 10%;
-        right: 10%;
-        flex-direction: row;
-        justify-content: space-between;
+      // &--social {
+      //   left: 10%;
+      //   right: 10%;
+      //   flex-direction: row;
+      //   justify-content: space-between;
 
-        button {
-          margin: 0;
-        }
-      }
+      //   button {
+      //     margin: 0;
+      //   }
+      // }
     }
   }
 
@@ -461,43 +493,75 @@
   }
 
   .splash {
+    &__images {
+      height: 650px;
+    }
+
     &__content {
-      .mdc-card {
-        display: none;
+      flex-wrap: wrap;
+      // .mdc-card {
+      //   display: none;
+      // }
+
+      &--left {
+        padding: 0 36px;
+        width: 100%;
+        .mdc-card {
+          // padding: 48px 0 0;
+          font-size: .85rem;
+        }
+      }
+
+      &--right {
+        // display: none;
+        width: 100%;
+        .mdc-card {
+          display: none;
+          padding: 48px;
+          font-size: 1.8rem;
+        }
       }
 
       .new-patient {
         position: relative;
-        top: 25px;
-        justify-content: flex-end;
-        padding: 8px 16px 8px 8px;
-        font-size: 1.2rem;
-
-        .fab {
-          display: none;
-        }
+        top: -30px;
+        padding: 6px 16px;
+        font-size: 1.25rem;
+        // justify-content: flex-end;
       }
 
-      &--social {
-        top: 10%;
-        left: 5%;
-        right: 5%;
-        flex-direction: row;
-        justify-content: space-between;
+      // .new-patient {
+      //   position: relative;
+      //   top: 25px;
+      //   justify-content: flex-end;
+      //   padding: 8px 16px 8px 8px;
+      //   font-size: 1.2rem;
 
-        button {
-          margin: 0;
-        }
+      //   .fab {
+      //     display: none;
+      //   }
+      // }
 
-        .mdc-fab {
-          height: 48px;
-          width: 48px;
-        }
+      // &--social {
+      //   top: 10%;
+      //   left: 5%;
+      //   right: 5%;
+      //   flex-direction: row;
+      //   justify-content: space-between;
 
-        .fab, .fas {
-          font-size: 1.7rem;
-        }
-      }
+      //   button {
+      //     margin: 0;
+      //   }
+
+      //   .mdc-fab {
+      //     height: 48px;
+      //     width: 48px;
+      //   }
+
+      //   .fab, .fas {
+      //     font-size: 1.7rem;
+      //   }
+      // }
 
       .article-title {
         h1 {
