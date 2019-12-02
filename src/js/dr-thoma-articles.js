@@ -47,7 +47,7 @@ if (getArticleNum() === 1) {
 
 const getArticles = () => {
   const page = getPage();
-  fetch(`http://infinityspine.com/wp-json/wp/v2/posts?page=${page}&per_page=10`)
+  fetch(`http://wp.infinityspine.com/wp-json/wp/v2/posts?page=${page}&per_page=10`)
     .then((response) => {
       if (!response.ok) {
         throw new Error('response.error');

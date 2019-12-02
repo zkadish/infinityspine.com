@@ -49,13 +49,32 @@ body {
 }
 
 // common page components
-.hours {
-  &__day {
-    min-width: 120px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    span {
-      margin: 0 0 0 2px;
+.schedule {
+  display: flex;
+  flex-wrap: wrap;
+
+  .hours {
+    padding: 8px;
+    min-width: 160px;
+    height: 80px;
+    font-size: 1rem;
+    background: #3658a8;
+    border: 1px solid white;
+    border-width: 0 1px 1px 0;
+    color: white;
+
+    &__day {
+      font-weight: bold;
+    }
+
+    &__time {
+      font-size: .9rem;
+    }
+
+    &:nth-child(2n - 1) {
+      background: #b3d4fc;
+      color: #3658a8;
+      font-weight: bold;
     }
   }
 }

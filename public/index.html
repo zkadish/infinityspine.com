@@ -11,7 +11,7 @@
     <link rel="apple-touch-icon" href="icon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <link rel="stylesheet" href="css/infinity.css">
+    
   </head>
   <body>
     <!--[if lte IE 9]>
@@ -96,7 +96,7 @@
               <div class="mdc-card">
                   Dr. Thoma first evaluates and then treats all types of 
                   skeletal damage from auto accident injuries, age related 
-                  degenerative conditions and high impact ports injuries. 
+                  degenerative conditions and high impact sports injuries. 
                   He also has experience with treating different types of 
                   patients from the elderly to professional athletes.<br /><br />
               </div>
@@ -232,7 +232,7 @@
     </div> -->
 
     <div class="mobile-nav display-none">
-      <button
+      <!-- <button
         class="mobile-nav__home mdc-button"
         data-route="#home"
       >
@@ -244,11 +244,11 @@
         data-route="#about"
       >
         about
-      </button>
-      <hr class="horizontal-rule" />
+      </button> -->
       <button
         class="mobile-nav__treatments mdc-button"
         data-route="#treatments"
+        onclick="document.location='#treatments'"
       >
         treatments
       </button>
@@ -256,20 +256,31 @@
       <button
         class="mobile-nav__testimonials mdc-button"
         data-route="#testimonials"
+        onclick="document.location='#testimonials'"
       >
         testimonials
       </button>
       <hr class="horizontal-rule" />
       <button
         class="mobile-nav__blog mdc-button"
-        data-route="#blog"
+        data-route="#articles"
+        onclick="document.location='#articles'"
       >
-        blog
+        articles
+      </button>
+      <hr class="horizontal-rule" />
+      <button
+        class="mobile-nav__forms mdc-button"
+        data-route="#new-patient-forms"
+        onclick="document.location='#new-patient-forms'"
+      >
+        forms
       </button>
       <hr class="horizontal-rule" />
       <button
         class="mobile-nav__contact mdc-button"
         data-route="#contact"
+        onclick="document.location='#contact'"
       >
         contact
       </button>

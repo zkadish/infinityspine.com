@@ -27,6 +27,7 @@ module.exports = {
     home: './src/js/home.js',
     contact: './src/js/contact.js',
     'dr-thoma-articles': './src/js/dr-thoma-articles.js',
+    'default-page': './src/js/default-page.js',
   },
   output: {
     filename: '[name].js',

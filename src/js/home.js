@@ -9,7 +9,7 @@ const blogPreviewImages = document.querySelectorAll('.articles-preview-image img
 const blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
 
-fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
   .then(response => response.json())
   .then((posts) => {
     const featuredMedia = posts.map(post => post.featured_media);
@@ -32,7 +32,7 @@ fetch('http://infinityspine.com/wp-json/wp/v2/posts?per_page=3')
     });
 
     Promise.all(
-      featuredMedia.map(media => fetch(`http://infinityspine.com/wp-json/wp/v2/media/${media}`)
+      featuredMedia.map(media => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
         .then(response => response.json())
         .then(data => data.media_details.sizes.medium)),
     ).then((arr) => {
@@ -119,13 +119,13 @@ function matchMedia() {
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
     // console.log('home.js - pho480');
     // initMobileNavButtons();
-    splash01.setAttribute('src', 'img/splash-01-pho480.png');
+    splash01.setAttribute('src', 'img/pho480/splash-01-pho480.png');
   }
 
   if (window.matchMedia('(max-width: 479px) and (min-width: 0px)').matches) {
     // console.log('home.js - phone');
     // initMobileNavButtons();
-    splash01.setAttribute('src', 'img/splash-01-pho480.png');
+    splash01.setAttribute('src', 'img/phone/splash-01-phone.png');
   }
 }
 matchMedia();

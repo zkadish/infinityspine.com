@@ -33,6 +33,6 @@ var review_target = 'review-container';
 ```
 
 # future main menu 
-- focus on primary and secondary personas
+- focus on primary and secondary persona
 - new patients, scheduling, treatments, articles 
 - move about to the footer
