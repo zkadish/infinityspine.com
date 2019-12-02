@@ -17,11 +17,13 @@
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    width: 600px;
+    max-width: 600px;
+
     i {
       position: relative;
       top: 2px;
     }
+
     &--btn {
       outline: none;
       background: none;
@@ -35,6 +37,7 @@
         margin: 0 5px 0 0;
       }
     }
+
     .btn-disabled {
       cursor: default;
       opacity: 0;
@@ -42,8 +45,11 @@
   }
 
   &__img {
-    position: absolute;
+    position: relative;
+    top: 48px;
     right: 48px;
+    display: flex;
+    justify-content: center;
   }
 
   &__copy {
@@ -104,7 +110,7 @@
       width: 100%;
     }
     ol {
-      width: 600px;
+      max-width: 600px;
     }
   }
 }

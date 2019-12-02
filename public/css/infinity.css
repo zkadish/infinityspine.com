@@ -8494,12 +8494,26 @@ body {
 .display-flex {
   display: flex; }
 
-.hours__day {
-  min-width: 120px;
-  font-weight: bold;
-  letter-spacing: 2px; }
-  .hours__day span {
-    margin: 0 0 0 2px; }
+.schedule {
+  display: flex;
+  flex-wrap: wrap; }
+  .schedule .hours {
+    padding: 8px;
+    min-width: 160px;
+    height: 80px;
+    font-size: 1rem;
+    background: #3658a8;
+    border: 1px solid white;
+    border-width: 0 1px 1px 0;
+    color: white; }
+    .schedule .hours__day {
+      font-weight: bold; }
+    .schedule .hours__time {
+      font-size: .9rem; }
+    .schedule .hours:nth-child(2n - 1) {
+      background: #b3d4fc;
+      color: #3658a8;
+      font-weight: bold; }
 
 .mdc-button {
   font-family: Roboto, sans-serif;
@@ -9282,8 +9296,7 @@ body {
 
 .mobile-nav {
   position: fixed;
-  top: 158px;
-  width: 50%;
+  top: 142px;
   left: 0;
   background: white;
   border-right: 1px solid #ccc; }
@@ -9422,7 +9435,7 @@ body {
     display: flex;
     justify-content: space-between;
     margin: 0 auto;
-    width: 600px; }
+    max-width: 600px; }
     .page__article-nav i {
       position: relative;
       top: 2px; }
@@ -9440,8 +9453,11 @@ body {
       cursor: default;
       opacity: 0; }
   .page__img {
-    position: absolute;
-    right: 48px; }
+    position: relative;
+    top: 48px;
+    right: 48px;
+    display: flex;
+    justify-content: center; }
   .page__copy {
     max-width: 620px; }
     .page__copy p {
@@ -9489,7 +9505,7 @@ body {
       max-width: 600px;
       width: 100%; }
     .page .thoma-articles ol {
-      width: 600px; }
+      max-width: 600px; }
 
 @media (max-width: 1279px) and (min-width: 1024px) {
   .header {
@@ -9564,7 +9580,10 @@ body {
     .articles-preview .mdc-layout-grid__cell:nth-child(3) {
       justify-content: flex-end; }
   .footer .mdc-layout-grid__cell:nth-child(1) h2 {
-    font-size: 1rem; } }
+    font-size: 1rem; }
+  .page__img {
+    top: 36;
+    right: auto; } }
 
 @media (max-width: 863px) and (min-width: 480px) {
   h1 {
@@ -9615,6 +9634,12 @@ body {
       position: relative;
       top: -30px;
       justify-content: flex-end; }
+  .treatments-header__anchor {
+    top: -142px; }
+  .testimonials-header__anchor {
+    top: -142px; }
+  .articles-header__anchor {
+    top: -142px; }
   .call-to-action__copy {
     text-align: center; }
     .call-to-action__copy h1 {
@@ -9699,7 +9724,13 @@ body {
     margin-right: 16px;
     font-size: 3rem; }
     .footer .mdc-layout-grid__cell .fas:last-child {
-      margin-right: 0; } }
+      margin-right: 0; }
+  .page__img {
+    top: auto;
+    right: auto;
+    margin: 0 0 36px; }
+  .page__copy {
+    margin: 0 32px; } }
 
 @media (max-width: 479px) {
   h1 {
@@ -9856,7 +9887,7 @@ body {
         top: 13px;
         padding: 0; }
   .mobile-nav {
-    top: 110px;
+    top: 94px;
     width: inherit; }
     .mobile-nav .mdc-button {
       display: flex;
@@ -9864,5 +9895,13 @@ body {
       height: 60px;
       width: 100%;
       padding: 0 16px;
-      font-size: 1rem; } }
+      font-size: 1rem; }
+  .page {
+    padding-top: 16px; }
+    .page__img {
+      top: auto;
+      right: auto;
+      margin: 0 0 16px; }
+    .page__copy {
+      margin: 0 16px; } }
 

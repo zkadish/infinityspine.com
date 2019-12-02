@@ -90,7 +90,6 @@
       justify-content: center;
       align-items: center;
       width: 40%;
-      // border: 1px solid red;
 
       .mdc-card {
         max-width: 450px;
@@ -476,8 +475,6 @@
 }
 
 .bullets {
-  // position: relative;
-  // top: -236px;
   padding: 24px 0;
   font-size: .5rem;
   text-align: center;
@@ -491,15 +488,11 @@
 }
 
 .footer-header {
-  // position: relative;
-  // top: -236px;
   background-color: $BLUE_MEDIUM;
   border: none;
 }
 
 .footer {
-  // position: relative;
-  // top: -236px;
   padding: 72px 48px 96px;
   background-color: $BLUE_DARK;
   color: white;
@@ -558,8 +551,7 @@
 
 .mobile-nav {
   position: fixed;
-  top: 158px;
-  width: 50%;
+  top: 142px;
   left: 0;
   background: white;
   border-right: 1px solid #ccc;

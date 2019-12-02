@@ -1,11 +1,7 @@
 @media (max-width: 1279px) and (min-width: 1024px) {
-  // body { border: 1px dashed green; }
   .header {
     padding: 0 48px;
     &__logo {
-      // img {
-      //   width: 102px;
-      // }
       &--copy {
         font-size: 1.1rem;
       }
@@ -96,7 +92,6 @@
       &--left {
         padding: 0 36px;
         .mdc-card {
-          // padding: 48px 0 0;
           font-size: .85rem;
         }
       }
@@ -176,6 +171,13 @@
       }
     }
   }
+
+  .page {
+    &__img {
+      top: 36;
+      right: auto;
+    }
+  }
 }
 
 @media (max-width: 863px) and (min-width: 480px) {
@@ -236,13 +238,11 @@
         padding: 0 36px;
         width: 100%;
         .mdc-card {
-          // padding: 48px 0 0;
           font-size: .85rem;
         }
       }
 
       &--right {
-        // display: none;
         width: 100%;
         .mdc-card {
           display: none;
@@ -259,26 +259,30 @@
           font-size: 2rem;
         }
       }
-      // .mdc-card {
-      //   display: none;
-      // }
 
       .new-patient {
         position: relative;
         top: -30px;
         justify-content: flex-end;
       }
+    }
+  }
 
-      // &--social {
-      //   left: 10%;
-      //   right: 10%;
-      //   flex-direction: row;
-      //   justify-content: space-between;
+  .treatments-header {
+    &__anchor {
+      top: -142px;
+    }
+  }
 
-      //   button {
-      //     margin: 0;
-      //   }
-      // }
+  .testimonials-header {
+    &__anchor {
+      top: -142px;
+    }
+  }
+
+  .articles-header {
+    &__anchor {
+      top: -142px;
     }
   }
 
@@ -442,6 +446,18 @@
       }
     }
   }
+
+  .page {
+    &__img {
+      top: auto;
+      right: auto;
+      margin: 0 0 36px;
+    }
+
+    &__copy {
+      margin: 0 32px;
+    }
+  }
 }
 
 @media (max-width: 479px) {
@@ -499,21 +515,16 @@
 
     &__content {
       flex-wrap: wrap;
-      // .mdc-card {
-      //   display: none;
-      // }
 
       &--left {
         padding: 0 36px;
         width: 100%;
         .mdc-card {
-          // padding: 48px 0 0;
           font-size: .85rem;
         }
       }
 
       &--right {
-        // display: none;
         width: 100%;
         .mdc-card {
           display: none;
@@ -527,20 +538,7 @@
         top: -30px;
         padding: 6px 16px;
         font-size: 1.25rem;
-        // justify-content: flex-end;
       }
-
-      // .new-patient {
-      //   position: relative;
-      //   top: 25px;
-      //   justify-content: flex-end;
-      //   padding: 8px 16px 8px 8px;
-      //   font-size: 1.2rem;
-
-      //   .fab {
-      //     display: none;
-      //   }
-      // }
 
       // &--social {
       //   top: 10%;
@@ -759,7 +757,7 @@
   }
 
   .mobile-nav {
-    top: 110px;
+    top: 94px;
     width: inherit;
     .mdc-button {
       display: flex;
@@ -768,6 +766,20 @@
       width: 100%;
       padding: 0 16px;
       font-size: 1rem;
+    }
+  }
+
+  .page {
+    padding-top: 16px;
+
+    &__img {
+      top: auto;
+      right: auto;
+      margin: 0 0 16px;
+    }
+
+    &__copy {
+      margin: 0 16px;
     }
   }
 }
