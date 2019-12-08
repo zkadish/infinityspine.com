@@ -65,6 +65,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
     .then((response) => {
       // remove javascript page <script></script> if it exists
       const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
+      // debugger
       if (pageScript) {
         pageScript.forEach((script) => {
           body.removeChild(script);
@@ -72,9 +73,15 @@ function getRouteContent(newRoute, anchor, article, pageId) {
       }
 
       // reset page, why?
+      // change page to pageRoute
       page = newRoute;
+
+      const frag = document.createRange().createContextualFragment(response);
+
       // update "master page"
-      container.innerHTML = response;
+      // container.innerHTML = response;
+      container.innerHTML = '';
+      container.appendChild(frag);
     }).then(() => {
       const script = document.createElement('script');
       script.setAttribute('id', page);
@@ -141,7 +148,13 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'dr-thoma-articles': {
+          // const scriptExists = document.querySelector('[src="js/dr-thoma-articles.js"]');
+          // if (!scriptExists) {
+          //   script.setAttribute('src', 'js/dr-thoma-articles.js');
+          // }
           script.setAttribute('src', 'js/dr-thoma-articles.js');
+
+
           // insert page specific javascript
           body.appendChild(script);
 
@@ -155,14 +168,19 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
           break;
         }
-        case 'default-page':
-          script.setAttribute('src', 'js/default-page.js');
+        case 'default-page': {
+          const scriptExists = document.querySelector('[src="js/default-page.js"]');
+          if (!scriptExists) {
+            script.setAttribute('src', 'js/default-page.js');
+          }
+
           // insert page specific javascript
           body.appendChild(script);
           if (!anchor) {
             window.history.replaceState({}, '', `#infinite-mind-retreat?page=${pageId}`);
           }
           break;
+        }
         default:
           // script.setAttribute('src', 'js/default-page.js');
           // // insert page specific javascript
