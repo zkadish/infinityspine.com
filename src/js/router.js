@@ -150,11 +150,12 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'dr-thoma-articles': {
-          // const articlesScript = document.querySelectorAll('[src="js/dr-thoma-articles.js"]');
-          // if (articlesScript.length === 0) {
-          //   script.setAttribute('src', 'js/dr-thoma-articles.js');
-          //   body.appendChild(script);
-          // }
+          const articlesScript = document.querySelectorAll('[src="js/dr-thoma-articles.js"]');
+          if (articlesScript) {
+            articlesScript.forEach((s) => {
+              body.removeChild(s);
+            });
+          }
           script.setAttribute('src', 'js/dr-thoma-articles.js');
           body.appendChild(script);
 
@@ -197,7 +198,6 @@ function getRouteContent(newRoute, anchor, article, pageId) {
       document.location = window.location.hash;
     })
     .catch((error) => {
-      debugger
       console.error('Error:', error); // eslint-disable-line
       window.location = 'pages/404.html';
     });
