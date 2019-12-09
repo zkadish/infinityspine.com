@@ -60,6 +60,7 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor, article, pageId) {
+  // debugger
   fetch(`${origin}${root}pages/${newRoute}.html`)
     .then(response => response.text())
     .then((response) => {
@@ -138,9 +139,13 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'contact': {
-          script.setAttribute('src', 'js/contact.js');
+          debugger
+          const contactScript = document.querySelectorAll('[src="js/contact.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/contact.js');
+            body.appendChild(script);
+          }
           // insert page specific javascript
-          body.appendChild(script);
 
           if (!anchor) {
             window.history.replaceState({}, '', '#contact');
@@ -148,14 +153,12 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'dr-thoma-articles': {
-          // const scriptExists = document.querySelector('[src="js/dr-thoma-articles.js"]');
-          // if (!scriptExists) {
+          // const articlesScript = document.querySelectorAll('[src="js/dr-thoma-articles.js"]');
+          // if (articlesScript.length === 0) {
           //   script.setAttribute('src', 'js/dr-thoma-articles.js');
+          //   body.appendChild(script);
           // }
           script.setAttribute('src', 'js/dr-thoma-articles.js');
-
-
-          // insert page specific javascript
           body.appendChild(script);
 
           if (!anchor) {
@@ -169,13 +172,12 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'default-page': {
-          const scriptExists = document.querySelector('[src="js/default-page.js"]');
-          if (!scriptExists) {
+          const defaultPageScript = document.querySelectorAll('[src="js/default-page.js"]');
+          if (defaultPageScript.length === 0) {
             script.setAttribute('src', 'js/default-page.js');
+            body.appendChild(script);
           }
 
-          // insert page specific javascript
-          body.appendChild(script);
           if (!anchor) {
             window.history.replaceState({}, '', `#infinite-mind-retreat?page=${pageId}`);
           }
@@ -198,6 +200,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
       document.location = window.location.hash;
     })
     .catch((error) => {
+      debugger
       console.error('Error:', error); // eslint-disable-line
       window.location = 'pages/404.html';
     });
@@ -251,6 +254,16 @@ export function onRouterEventHandler(e, article) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 
+// window.addEventListener('onloadstart', () => {
+//   console.log('loadstart event');
+//   debugger
+// }, false);
+
+// window.addEventListener('loadstart', () => {
+//   console.log('loadstart event');
+//   debugger
+// }, false);
+
 /**
  * When user refreshes the browser
  * onLoad event listener
@@ -274,6 +287,7 @@ window.addEventListener('load', (e) => {
  * @param {object} - event
  */
 window.addEventListener('hashchange', (e) => {
+  // debugger
   let article = null;
   const { hash } = window.location;
 
@@ -309,10 +323,6 @@ window.addEventListener('hashchange', (e) => {
 
 // window.addEventListener('unload', () => {
 //   console.log('unload event');
-// }, false);
-
-// window.addEventListener('loadstart', () => {
-//   console.log('loadstart event');
 // }, false);
 
 window.addEventListener('error', (err) => {
