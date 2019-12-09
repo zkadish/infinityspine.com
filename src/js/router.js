@@ -60,13 +60,11 @@ function testimonialTags(token) {
 }
 
 function getRouteContent(newRoute, anchor, article, pageId) {
-  // debugger
   fetch(`${origin}${root}pages/${newRoute}.html`)
     .then(response => response.text())
     .then((response) => {
       // remove javascript page <script></script> if it exists
       const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
-      // debugger
       if (pageScript) {
         pageScript.forEach((script) => {
           body.removeChild(script);
@@ -139,7 +137,6 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'contact': {
-          debugger
           const contactScript = document.querySelectorAll('[src="js/contact.js"]');
           if (contactScript.length === 0) {
             script.setAttribute('src', 'js/contact.js');
@@ -287,7 +284,6 @@ window.addEventListener('load', (e) => {
  * @param {object} - event
  */
 window.addEventListener('hashchange', (e) => {
-  // debugger
   let article = null;
   const { hash } = window.location;
 
