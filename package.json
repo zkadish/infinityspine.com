@@ -55,6 +55,7 @@
     "@material/form-field": "^1.0.0",
     "@material/layout-grid": "^0.41.0",
     "@material/ripple": "^1.0.0",
-    "@material/textfield": "^1.0.0"
+    "@material/textfield": "^1.0.0",
+    "react-script": "^2.0.5"
   }
 }
