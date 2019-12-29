@@ -72,9 +72,15 @@ function getRouteContent(newRoute, anchor, article, pageId) {
       }
 
       // reset page, why?
+      // change page to pageRoute
       page = newRoute;
+
+      const frag = document.createRange().createContextualFragment(response);
+
       // update "master page"
-      container.innerHTML = response;
+      // container.innerHTML = response;
+      container.innerHTML = '';
+      container.appendChild(frag);
     }).then(() => {
       const script = document.createElement('script');
       script.setAttribute('id', page);
@@ -131,9 +137,12 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'contact': {
-          script.setAttribute('src', 'js/contact.js');
+          const contactScript = document.querySelectorAll('[src="js/contact.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/contact.js');
+            body.appendChild(script);
+          }
           // insert page specific javascript
-          body.appendChild(script);
 
           if (!anchor) {
             window.history.replaceState({}, '', '#contact');
@@ -141,8 +150,13 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'dr-thoma-articles': {
+          const articlesScript = document.querySelectorAll('[src="js/dr-thoma-articles.js"]');
+          if (articlesScript) {
+            articlesScript.forEach((s) => {
+              body.removeChild(s);
+            });
+          }
           script.setAttribute('src', 'js/dr-thoma-articles.js');
-          // insert page specific javascript
           body.appendChild(script);
 
           if (!anchor) {
@@ -155,14 +169,18 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
           break;
         }
-        case 'default-page':
-          script.setAttribute('src', 'js/default-page.js');
-          // insert page specific javascript
-          body.appendChild(script);
+        case 'default-page': {
+          const defaultPageScript = document.querySelectorAll('[src="js/default-page.js"]');
+          if (defaultPageScript.length === 0) {
+            script.setAttribute('src', 'js/default-page.js');
+            body.appendChild(script);
+          }
+
           if (!anchor) {
             window.history.replaceState({}, '', `#infinite-mind-retreat?page=${pageId}`);
           }
           break;
+        }
         default:
           // script.setAttribute('src', 'js/default-page.js');
           // // insert page specific javascript
@@ -233,6 +251,16 @@ export function onRouterEventHandler(e, article) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 
+// window.addEventListener('onloadstart', () => {
+//   console.log('loadstart event');
+//   debugger
+// }, false);
+
+// window.addEventListener('loadstart', () => {
+//   console.log('loadstart event');
+//   debugger
+// }, false);
+
 /**
  * When user refreshes the browser
  * onLoad event listener
@@ -291,10 +319,6 @@ window.addEventListener('hashchange', (e) => {
 
 // window.addEventListener('unload', () => {
 //   console.log('unload event');
-// }, false);
-
-// window.addEventListener('loadstart', () => {
-//   console.log('loadstart event');
 // }, false);
 
 window.addEventListener('error', (err) => {
