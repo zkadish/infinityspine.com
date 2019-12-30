@@ -33,6 +33,14 @@ const mobileNavMenuBtn = document.querySelector('.header__logo--mobile-nav');
 const mainNav = document.querySelector('.main-nav');
 const mobileNav = document.querySelector('.mobile-nav');
 
+// window.onload = () => {
+//   console.log('The document has loaded!');
+// };
+
+document.body.onload = () => {
+  console.log('The body has loaded!');
+};
+
 const createMainNav = (wpBtns = []) => {
   const mainNavBtn = document.createElement('button');
   const mobileNavBtn = document.createElement('button');
