@@ -18,7 +18,8 @@ fetch(`http://wp.infinityspine.com/wp-json/wp/v2/pages/${page}`)
   })
   .then((json) => {
     pageCopy.innerHTML = '';
-    const frag = document.createRange().createContextualFragment(json.content.rendered);
+    const { rendered } = json.content;
+    const frag = document.createRange().createContextualFragment(rendered);
 
     const onload = (scripts, message) => {
       // if there are scripts once the last one has loaded

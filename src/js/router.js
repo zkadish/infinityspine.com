@@ -85,44 +85,6 @@ function getRouteContent(newRoute, anchor, article, pageId) {
       const script = document.createElement('script');
       script.setAttribute('id', page);
 
-      // route specific HTML and Javascript
-      // if (page === 'home' || page === '') {
-      //   const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-      //   script.setAttribute('src', 'js/home.js');
-      //   // insert page specific javascript
-      //   body.appendChild(script);
-      //   testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
-
-      //   if (!anchor) {
-      //     window.history.replaceState({}, '', '#home');
-      //   }
-      // }
-
-      // if (page === 'contact') {
-      //   script.setAttribute('src', 'js/contact.js');
-      //   // insert page specific javascript
-      //   body.appendChild(script);
-
-      //   if (!anchor) {
-      //     window.history.replaceState({}, '', '#contact');
-      //   }
-      // }
-
-      // if (page === 'dr-thoma-articles') {
-      //   script.setAttribute('src', 'js/dr-thoma-articles.js');
-      //   // insert page specific javascript
-      //   body.appendChild(script);
-
-      //   if (!anchor) {
-      //     window.history.replaceState({}, '', `#dr-thoma-articles?article=${article}`);
-      //   }
-      // }
-
-      // if (page === 'more-testimonials') {
-      //   const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-      //   testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
-      // }
-
       switch (page) {
         case 'home' || '': {
           const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
@@ -251,16 +213,6 @@ export function onRouterEventHandler(e, article) {
   getRouteContent('home', window.location.hash.replace(/#/g, ''));
 }
 
-// window.addEventListener('onloadstart', () => {
-//   console.log('loadstart event');
-//   debugger
-// }, false);
-
-// window.addEventListener('loadstart', () => {
-//   console.log('loadstart event');
-//   debugger
-// }, false);
-
 /**
  * When user refreshes the browser
  * onLoad event listener
@@ -284,6 +236,11 @@ window.addEventListener('load', (e) => {
  * @param {object} - event
  */
 window.addEventListener('hashchange', (e) => {
+  if (e.oldURL.split('?')[0] === e.newURL) {
+    window.history.replaceState({}, '', `#infinite-mind-retreat?${e.oldURL.split('?')[1]}`);
+    return;
+  }
+
   let article = null;
   const { hash } = window.location;
 
