@@ -8,7 +8,12 @@ const container = document.querySelector('.container');
 let root = '/';
 
 // localhost apache server
-if (pathname === '/infinity-spine/public/') {
+// if (pathname === '/infinity-spine/public/') {
+//   root = '/infinity-spine/public/';
+// }
+
+// localhost apache server
+if (pathname.includes('/infinity-spine/public/')) {
   root = '/infinity-spine/public/';
 }
 
@@ -224,6 +229,16 @@ window.addEventListener('load', (e) => {
   const { hash } = window.location;
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
+  }
+
+  // handle apache dev environment
+  // this should handle all environments
+  let [uriPath] = window.location.pathname.split();
+  [uriPath] = uriPath.replace(root, '').split('/');
+  // handle path names
+  if (uriPath) {
+    window.location = `${root}#${uriPath}`;
+    return;
   }
 
   onRouterEventHandler(e, article);
