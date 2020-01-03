@@ -43,7 +43,10 @@ module.exports = {
       {
         test: /\.(sc|c)ss$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'style-loader',
+          },
+          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           // devMode ? 'style-loader'
           //   : {
           //     loader: MiniCssExtractPlugin.loader,
@@ -70,8 +73,10 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              includePaths: ['./node_modules'],
-              importer: jsonImporter(),
+              sassOptions: {
+                includePaths: ['./node_modules'],
+                importer: jsonImporter(),
+              },
             },
           },
         ],
