@@ -20,3 +20,6 @@
 @import "./page.scss";
 
 @import "./media-querries.scss";
+
+// utils should always come last
+@import "./utils";

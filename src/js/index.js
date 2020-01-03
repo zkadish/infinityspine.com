@@ -24,21 +24,21 @@ import '../forms/nucca-new-patient-form.pdf';
 import '../forms/functional-medicine-form.pdf';
 import '../forms/Insurance-Intake-form.pdf';
 
-// set up localstorage
+// set up localStorage
 if (!localStorage.getItem('wpRoutes')) {
   localStorage.setItem('wpRoutes', JSON.stringify([]));
 }
 
 const mobileNavMenuBtn = document.querySelector('.header__logo--mobile-nav');
+const headerLogo = document.querySelector('.header__logo');
 const mainNav = document.querySelector('.main-nav');
 const mobileNav = document.querySelector('.mobile-nav');
+const pageContainer = document.querySelector('.container');
 
-// window.onload = () => {
-//   console.log('The document has loaded!');
-// };
-
-document.body.onload = () => {
-  console.log('The body has loaded!');
+window.onload = () => {
+  console.log('Page content has loaded!');
+  pageContainer.classList.add('fade-in');
+  headerLogo.classList.add('fade-in');
 };
 
 const createMainNav = (wpBtns = []) => {
@@ -115,6 +115,9 @@ fetch('http://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
     const { items } = res;
     const wpMainNav = items.find(item => item.object_slug === WP_MAIN_NAV[0]);
     createMainNav([wpMainNav]);
+  })
+  .then(() => {
+    mainNav.classList.add('fade-in');
   });
 
 // reset the home link href url so that the path
