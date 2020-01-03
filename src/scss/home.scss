@@ -3,6 +3,8 @@
 
 .container {
   position: relative;
+  min-height: 696px;
+  opacity: 0;
 }
 
 .header {
@@ -29,6 +31,7 @@
 
   &__logo {
     width: 332px;
+    opacity: 0;
     
     a {
       text-decoration: none;
@@ -51,22 +54,28 @@
       font-weight: bold;
     }
   }
+}
 
-  .main-nav {
-    position: relative;
-    top: 20px;
-    display: flex;
-    align-items: center;
-    button {
-      font-size: .8rem;
-    }
+.main-nav {
+  position: relative;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  button {
+    font-size: .8rem;
   }
 }
 
 .splash {
   position: relative;
+  min-height: 696px;
 
   &__images {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // bottom: 0;
     flex: none;
     overflow: hidden;
 
@@ -83,6 +92,7 @@
     display: flex;
     width: 100%;
     border-bottom: 1px solid $GREY_LIGHT;
+    // border: 1px solid red;
 
     &--left {
       display: flex;

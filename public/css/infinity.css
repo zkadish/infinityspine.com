@@ -8932,7 +8932,9 @@ body {
     transition: transform 135ms 0ms cubic-bezier(0.4, 0, 1, 1), -webkit-transform 135ms 0ms cubic-bezier(0.4, 0, 1, 1); }
 
 .container {
-  position: relative; }
+  position: relative;
+  min-height: 696px;
+  opacity: 0; }
 
 .header {
   position: -webkit-sticky;
@@ -8952,7 +8954,8 @@ body {
       align-items: center;
       justify-content: flex-end; }
   .header__logo {
-    width: 332px; }
+    width: 332px;
+    opacity: 0; }
     .header__logo a {
       text-decoration: none; }
     .header__logo img {
@@ -8966,16 +8969,19 @@ body {
       font-family: "sportscenter", Arial, Helvetica, sans-serif;
       font-size: 1.25rem;
       font-weight: bold; }
-  .header .main-nav {
-    position: relative;
-    top: 20px;
-    display: flex;
-    align-items: center; }
-    .header .main-nav button {
-      font-size: .8rem; }
+
+.main-nav {
+  position: relative;
+  top: 20px;
+  display: flex;
+  align-items: center;
+  opacity: 0; }
+  .main-nav button {
+    font-size: .8rem; }
 
 .splash {
-  position: relative; }
+  position: relative;
+  min-height: 696px; }
   .splash__images {
     flex: none;
     overflow: hidden; }
@@ -9904,4 +9910,8 @@ body {
       margin: 0 0 16px; }
     .page__copy {
       margin: 0 16px; } }
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 1s; }
 
