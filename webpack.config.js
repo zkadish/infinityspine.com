@@ -43,10 +43,10 @@ module.exports = {
       {
         test: /\.(sc|c)ss$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
-          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // {
+          //   loader: 'style-loader',
+          // },
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           // devMode ? 'style-loader'
           //   : {
           //     loader: MiniCssExtractPlugin.loader,

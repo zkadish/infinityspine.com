@@ -47,15 +47,15 @@
     "webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
-    "@material/button": "0.42.0",
-    "@material/card": "^0.42.0",
-    "@material/checkbox": "^1.0.0",
-    "@material/fab": "^1.0.0",
-    "@material/floating-label": "^1.0.0",
-    "@material/form-field": "^1.0.0",
-    "@material/layout-grid": "^0.41.0",
-    "@material/ripple": "^1.0.0",
-    "@material/textfield": "^1.0.0",
+    "@material/button": "^4.0.0",
+    "@material/card": "^4.0.0",
+    "@material/checkbox": "^4.0.0",
+    "@material/fab": "^4.0.0",
+    "@material/floating-label": "^4.0.0",
+    "@material/form-field": "^4.0.0",
+    "@material/layout-grid": "^4.0.0",
+    "@material/ripple": "^4.0.0",
+    "@material/textfield": "^4.0.0",
     "react-script": "^2.0.5"
   }
 }

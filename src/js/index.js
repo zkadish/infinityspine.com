@@ -35,6 +35,7 @@ const mainNav = document.querySelector('.main-nav');
 const mobileNav = document.querySelector('.mobile-nav');
 const pageContainer = document.querySelector('.container');
 
+// animation
 window.onload = () => {
   console.log('Page content has loaded!');
   pageContainer.classList.add('fade-in');
@@ -75,8 +76,8 @@ const createMainNav = (wpBtns = []) => {
     // add onclick event
     mainNavBtn.setAttribute('onclick', `document.location="#${btnSlug}"`);
     mobileNavBtn.addEventListener('click', mobileNavBtnClickHandler);
-    // clear menu container
-    mainNavBtn.innerHTML = btnSlug.split('-').join(' ');
+    // add button text
+    mainNavBtn.innerHTML = `<span class="mdc-button__ripple"></span>${btnSlug.split('-').join(' ')}`;
     mobileNavBtn.innerHTML = btnSlug.split('-').join(' ');
     // add btns from wp to main navs
     additionalMainNavBtns = [...additionalMainNavBtns, mainNavBtn, vHr];
@@ -110,10 +111,10 @@ const createMainNav = (wpBtns = []) => {
 
 // get wp menu items
 fetch('http://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
-  .then(response => response.json())
+  .then((response) => response.json())
   .then((res) => {
     const { items } = res;
-    const wpMainNav = items.find(item => item.object_slug === WP_MAIN_NAV[0]);
+    const wpMainNav = items.find((item) => item.object_slug === WP_MAIN_NAV[0]);
     createMainNav([wpMainNav]);
   })
   .then(() => {
@@ -136,19 +137,19 @@ function initMainNavButtons() {
     mobileNav.classList.add('display-none');
   }
 
-  const obj = {};
-  MAIN_NAV.forEach((btn) => {
-    obj[btn] = new MDCRipple(document.querySelector(`.main-nav__${btn}`));
-  });
+  // const obj = {};
+  // MAIN_NAV.forEach((btn) => {
+  //   obj[btn] = new MDCRipple(document.querySelector(`.main-nav__${btn}`));
+  // });
 }
 
-function mobileNavMenuBtnClickHandler() {
+function mobileNavMenuBtnClickHandler(e) {
+  e.preventDefault();
   mobileNav.classList.toggle('display-none');
 }
 
 function initMobileNavButtons() {
   mobileNavMenuBtn.addEventListener('click', mobileNavMenuBtnClickHandler);
-
   // const obj = {};
   // MAIN_NAV.forEach((btn) => {
   //   obj[btn] = new MDCRipple(document.querySelector(`.mobile-nav__${btn}`));
@@ -162,7 +163,7 @@ function initMobileNavButtons() {
 // const email = new MDCRipple(document.querySelectorAll('.social')[4]); // eslint-disable-line
 // const newPatient = new MDCRipple(document.querySelector('.new-patient')); // eslint-disable-line
 
-const splash01 = document.getElementById('splash-01');
+// const splash01 = document.getElementById('splash-01');
 
 function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
@@ -197,7 +198,6 @@ function matchMedia() {
 
   if (window.matchMedia('(max-width: 863px) and (min-width: 480px)').matches) {
     // console.log('index.js - pho480');
-    splash01.setAttribute('src', 'img/pho490/splash-01-pho480.png');
     initMobileNavButtons();
   }
 
