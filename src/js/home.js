@@ -8,14 +8,31 @@ const blogPreviewBtns = document.querySelectorAll('.articles-preview__btn');
 const blogPreviewImages = document.querySelectorAll('.articles-preview-image img');
 const blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
+const splashContentLeft = document.querySelector('.splash__content--left');
+
+// get splash page content
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
+  .then((response) => response.json())
+  .then((res) => {
+    // console.log(res.content.rendered);
+    // debugger;
+    splashContentLeft.innerHTML = res.content.rendered;
+  })
+  .then(() => {
+    splashContentLeft.classList.add('fade-in');
+  })
+  .catch((err) => {
+    // console.log(err);
+    // debugger;
+  });
 
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
-  .then(response => response.json())
+  .then((response) => response.json())
   .then((posts) => {
-    const featuredMedia = posts.filter(post => post.featured_media);
+    const featuredMedia = posts.filter((post) => post.featured_media);
 
-    const blogTitles = posts.map(post => post.title.rendered);
-    const blogExcerpt = posts.map(post => post.excerpt.rendered);
+    const blogTitles = posts.map((post) => post.title.rendered);
+    const blogExcerpt = posts.map((post) => post.excerpt.rendered);
 
     blogPreviewTitles.forEach((t, i) => {
       const title = t;
@@ -32,8 +49,8 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
     });
 
     Promise.all(
-      featuredMedia.map(media => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
-        .then(response => response.json())
+      featuredMedia.map((media) => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
+        .then((response) => response.json())
         .then((data) => {
           if (data.media_details) return false;
           return data.media_details.sizes.medium;

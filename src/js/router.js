@@ -274,7 +274,7 @@ window.addEventListener('hashchange', (e) => {
   // select all dom elements with id attributes
   const idTags = document.querySelectorAll('[id]');
   let ids = [];
-  idTags.forEach(tag => ids.push(`#${tag.id}`));
+  idTags.forEach((tag) => ids.push(`#${tag.id}`));
 
   // if hash has a matching id on the page its an anchor link
   // execute the onRouterEventHandler
