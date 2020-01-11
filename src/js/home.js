@@ -1,5 +1,6 @@
 
 import { routes, onRouterEventHandler } from './router';
+import { handleErrors } from './utils/fetch';
 
 const treatmentRoutes = routes.slice(0, 4);
 const treatmentBtns = document.querySelectorAll('.treatments__btn');
@@ -12,21 +13,20 @@ const splashContentLeft = document.querySelector('.splash__content--left');
 
 // get splash page content
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
+  .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
-    // console.log(res.content.rendered);
-    // debugger;
     splashContentLeft.innerHTML = res.content.rendered;
   })
   .then(() => {
     splashContentLeft.classList.add('fade-in');
   })
   .catch((err) => {
-    // console.log(err);
-    // debugger;
+    console.error(err);
   });
 
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
+  .then(handleErrors)
   .then((response) => response.json())
   .then((posts) => {
     const featuredMedia = posts.filter((post) => post.featured_media);
@@ -50,6 +50,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
 
     Promise.all(
       featuredMedia.map((media) => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
+        .then(handleErrors)
         .then((response) => response.json())
         .then((data) => {
           if (data.media_details) return false;
@@ -61,10 +62,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
         return img.setAttribute('src', arr[i].source_url);
       });
     }).catch((err) => {
-      console.log(err); // eslint-disable-line
-      // blogPreviewImages.forEach((img) => {
-      //   img.setAttribute('src', 'img/article-stand-in.png');
-      // });
+      console.error(err); // eslint-disable-line
     });
   });
 

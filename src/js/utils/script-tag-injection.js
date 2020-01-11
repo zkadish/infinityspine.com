@@ -6,7 +6,7 @@ export const injectScripts = (scripts, parentNode) => {
   }
 };
 
-const filterScriptTags = (frag, callback) => {
+export const filterScriptTags = (frag, callback) => {
   const scriptTags = frag.querySelectorAll('script');
   const fragScriptTags = [];
   const jsScriptTags = [];
@@ -34,5 +34,3 @@ const filterScriptTags = (frag, callback) => {
   // tags being inserted withe the page content...
   callback(jsScriptTags);
 };
-
-export default filterScriptTags;

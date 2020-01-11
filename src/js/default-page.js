@@ -1,4 +1,4 @@
-import filterScriptTags, { injectScripts } from './utils';
+import { filterScriptTags, injectScripts } from './utils/script-tag-injection';
 
 const hash = window.location.hash.split('?')[0];
 const title = hash.replace('#', '').split('-').join(' ');
