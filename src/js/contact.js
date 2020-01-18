@@ -1,4 +1,4 @@
-import { handleErrors } from './utils/fetch';
+import handleErrors from './utils/fetch';
 
 // fixes issue with material textarea label getting cut off
 // by the inlined overflow value being applied by material-ui

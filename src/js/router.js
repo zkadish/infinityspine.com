@@ -1,5 +1,5 @@
-import { REVIEWS_ONE, REVIEWS_TWO } from './constants';
-import nodeFrag from './utils/html';
+import { ROUTES, REVIEWS_KEY_ONE, REVIEWS_KEY_TWO } from './constants';
+import documentFrag, { testimonialTags } from './utils/html';
 
 const { origin, pathname } = window.location;
 const body = document.querySelector('body');
@@ -7,11 +7,6 @@ const container = document.querySelector('.container');
 
 // live site at infinityspine.com
 let root = '/';
-
-// localhost apache server
-// if (pathname === '/infinity-spine/public/') {
-//   root = '/infinity-spine/public/';
-// }
 
 // localhost apache server
 if (pathname.includes('/infinity-spine/public/')) {
@@ -24,80 +19,46 @@ if (pathname === '/new/') {
   root = '/new/';
 }
 
-export const routes = [
-  '#nucca-chiropractic',
-  '#sports-physiotherapy',
-  '#functional-medicine',
-  '#red-near-infrared-therapy',
-  '#mission-vision',
-  '#about-dr-thoma',
-  '#corrective-exercises',
-  '#performance-exercise',
-  '#customized-nutrition',
-  '#welcome',
-  '#dr-thoma-articles',
-  '#new-patient-forms',
-  '#faqs',
-  '#more-testimonials',
-  '#contact',
-  '#directions',
-  '#home',
-];
-
-let page = window.location.hash;
-
-function testimonialTags(token) {
-  // TODO: look for a better solution... Cache the original HTML?
-  const scriptToken = document.createElement('script');
-  scriptToken.setAttribute('type', 'text/javascript');
-  scriptToken.innerHTML = (`
-    var review_token = "${token}"; 
-    var review_target = 'review-container';
-  `);
-
-  const scriptReview = document.createElement('script');
-  scriptReview.setAttribute('type', 'text/javascript');
-  scriptReview.setAttribute('src', 'https://reviewsonmywebsite.com/js/embed.js?v=7');
-
-  const reviewContainer = document.createElement('div');
-  reviewContainer.id = 'review-container';
-
-  return [scriptToken, scriptReview, reviewContainer];
-}
+// get the current page on load
+// TODO: account for params?
+let currentPage = window.location.hash.replace('#', '');
+const removePageScript = (script) => {
+  const pageScript = document.querySelectorAll(`[src="js/${script}.js"]`);
+  if (pageScript.length > 0) {
+    pageScript.forEach((tag) => body.removeChild(tag));
+  }
+};
 
 function getRouteContent(newRoute, anchor, article, pageId) {
   fetch(`${origin}${root}pages/${newRoute}.html`)
     .then((response) => response.text())
-    .then((response) => {
-      // remove javascript page <script></script> if it exists
-      const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
-      if (pageScript) {
-        pageScript.forEach((script) => {
-          body.removeChild(script);
-        });
-      }
-
-      // reset page, why?
-      // change page to pageRoute
-      page = newRoute;
-
-      const frag = nodeFrag(response);
-
-      // update "master page"
-      // container.innerHTML = response;
+    .then((pageHTML) => {
+      // before navigating to the new page remove
+      // the current page's <script> tag
+      removePageScript(currentPage);
+      // update current page with the new route so script tag
+      // can be removed on the next route change
+      currentPage = newRoute;
+      const frag = documentFrag(pageHTML);
       container.innerHTML = '';
+      // update "index.html"
       container.appendChild(frag);
     }).then(() => {
+      // create script tag for the newRoute
       const script = document.createElement('script');
-      script.setAttribute('id', page);
+      script.setAttribute('id', newRoute);
 
-      switch (page) {
+      switch (newRoute) {
         case 'home' || '': {
           const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-          script.setAttribute('src', 'js/home.js');
-          // insert page specific javascript
-          body.appendChild(script);
-          testimonialTags(REVIEWS_ONE).forEach((node) => reviews.appendChild(node));
+          const contactScript = document.querySelectorAll('[src="js/home.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/home.js');
+            body.appendChild(script);
+          }
+
+          testimonialTags(REVIEWS_KEY_ONE)
+            .forEach((node) => reviews.appendChild(node));
 
           if (!anchor) {
             window.history.replaceState({}, '', '#home');
@@ -128,6 +89,102 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           }
           break;
         }
+        case 'nucca-chiropractic': {
+          const contactScript = document.querySelectorAll('[src="js/nucca-chiropractic.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/nucca-chiropractic.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#nucca-chiropractic');
+          }
+          break;
+        }
+        case 'sports-physiotherapy': {
+          const contactScript = document.querySelectorAll('[src="js/sports-physiotherapy.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/sports-physiotherapy.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#sports-physiotherapy');
+          }
+          break;
+        }
+        case 'functional-medicine': {
+          const contactScript = document.querySelectorAll('[src="js/functional-medicine.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/functional-medicine.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#functional-medicine');
+          }
+          break;
+        }
+        case 'red-light-therapy': {
+          const contactScript = document.querySelectorAll('[src="js/red-light-therapy.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/red-light-therapy.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#red-light-therapy');
+          }
+          break;
+        }
+        case 'meet-dr-thoma': {
+          const contactScript = document.querySelectorAll('[src="js/meet-dr-thoma.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/meet-dr-thoma.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#meet-dr-thoma');
+          }
+          break;
+        }
+        case 'mission-vision': {
+          const contactScript = document.querySelectorAll('[src="js/mission-vision.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/mission-vision.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#mission-vision');
+          }
+          break;
+        }
+        case 'new-patient-forms': {
+          const contactScript = document.querySelectorAll('[src="js/new-patient-forms.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/new-patient-forms.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#new-patient-forms');
+          }
+          break;
+        }
+        case 'faqs': {
+          const contactScript = document.querySelectorAll('[src="js/faqs.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/faqs.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#faqs');
+          }
+          break;
+        }
         case 'dr-thoma-articles': {
           const articlesScript = document.querySelectorAll('[src="js/dr-thoma-articles.js"]');
           if (articlesScript) {
@@ -145,7 +202,8 @@ function getRouteContent(newRoute, anchor, article, pageId) {
         }
         case 'more-testimonials': {
           const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-          testimonialTags(REVIEWS_TWO).forEach((node) => reviews.appendChild(node));
+          testimonialTags(REVIEWS_KEY_TWO)
+            .forEach((node) => reviews.appendChild(node));
           break;
         }
         case 'default-page': {
@@ -188,7 +246,7 @@ export function onRouterEventHandler(e, article) {
     hash = '#home';
   }
 
-  if (routes.includes(hash)) {
+  if (ROUTES.includes(hash)) {
     const route = hash.replace(/#/g, '').split('?')[0];
     getRouteContent(route, '', article);
     return;
@@ -273,7 +331,7 @@ window.addEventListener('hashchange', (e) => {
   }
 
   // if hash is in routes
-  if (routes.includes(hash.split('?')[0])) {
+  if (ROUTES.includes(hash.split('?')[0])) {
     onRouterEventHandler(e, article);
     return;
   }
