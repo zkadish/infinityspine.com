@@ -1,4 +1,5 @@
 import { REVIEWS_ONE, REVIEWS_TWO } from './constants';
+import nodeFrag from './utils/html';
 
 const { origin, pathname } = window.location;
 const body = document.querySelector('body');
@@ -66,7 +67,7 @@ function testimonialTags(token) {
 
 function getRouteContent(newRoute, anchor, article, pageId) {
   fetch(`${origin}${root}pages/${newRoute}.html`)
-    .then(response => response.text())
+    .then((response) => response.text())
     .then((response) => {
       // remove javascript page <script></script> if it exists
       const pageScript = document.querySelectorAll(`[src="js/${page.replace('#', '')}.js"]`);
@@ -80,7 +81,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
       // change page to pageRoute
       page = newRoute;
 
-      const frag = document.createRange().createContextualFragment(response);
+      const frag = nodeFrag(response);
 
       // update "master page"
       // container.innerHTML = response;
@@ -96,7 +97,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           script.setAttribute('src', 'js/home.js');
           // insert page specific javascript
           body.appendChild(script);
-          testimonialTags(REVIEWS_ONE).forEach(node => reviews.appendChild(node));
+          testimonialTags(REVIEWS_ONE).forEach((node) => reviews.appendChild(node));
 
           if (!anchor) {
             window.history.replaceState({}, '', '#home');
@@ -109,10 +110,21 @@ function getRouteContent(newRoute, anchor, article, pageId) {
             script.setAttribute('src', 'js/contact.js');
             body.appendChild(script);
           }
-          // insert page specific javascript
 
           if (!anchor) {
             window.history.replaceState({}, '', '#contact');
+          }
+          break;
+        }
+        case 'directions': {
+          const contactScript = document.querySelectorAll('[src="js/directions.js"]');
+          if (contactScript.length === 0) {
+            script.setAttribute('src', 'js/directions.js');
+            body.appendChild(script);
+          }
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#directions');
           }
           break;
         }
@@ -133,7 +145,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
         }
         case 'more-testimonials': {
           const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-          testimonialTags(REVIEWS_TWO).forEach(node => reviews.appendChild(node));
+          testimonialTags(REVIEWS_TWO).forEach((node) => reviews.appendChild(node));
           break;
         }
         case 'default-page': {
@@ -149,12 +161,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         default:
-          // script.setAttribute('src', 'js/default-page.js');
-          // // insert page specific javascript
-          // body.appendChild(script);
-          // if (!anchor) {
-          //   window.history.replaceState({}, '', '#infinite-mind-retreat');
-          // }
+          // Do nothing
           break;
       }
 
@@ -174,8 +181,8 @@ function getRouteContent(newRoute, anchor, article, pageId) {
 export function onRouterEventHandler(e, article) {
   if (e) e.preventDefault();
   let hash = window.location.hash.split('?')[0];
-  const wpRoutes = JSON.parse(localStorage.wpRoutes).map(r => r.slug);
-  const wpPageIds = JSON.parse(localStorage.wpRoutes).map(r => r.pageId);
+  const wpRoutes = JSON.parse(localStorage.wpRoutes).map((r) => r.slug);
+  const wpPageIds = JSON.parse(localStorage.wpRoutes).map((r) => r.pageId);
 
   if (pathname === root && hash === '') {
     hash = '#home';
@@ -188,17 +195,17 @@ export function onRouterEventHandler(e, article) {
   }
 
   if (wpRoutes.includes(hash.replace('-1', ''))) {
-    const index = wpRoutes.findIndex(r => r === hash);
+    const index = wpRoutes.findIndex((r) => r === hash);
     getRouteContent('default-page', '', article, wpPageIds[index]);
     return;
   }
 
   // handle anchor hrefs
   const dataRoutes = [...document.querySelectorAll('[data-route]')]
-    .map(r => r.dataset.route.replace('#', ''));
+    .map((r) => r.dataset.route.replace('#', ''));
 
   const ids = [...document.querySelectorAll('[id]')]
-    .map(id => id.id);
+    .map((id) => id.id);
 
   // some anchors are also routes
   // the main menu buttons work this way
@@ -207,7 +214,7 @@ export function onRouterEventHandler(e, article) {
   // user back to the home page and the anchors
   // spot on the home page
   const routesAll = [...ids, ...dataRoutes];
-  const isAnchor = routesAll.some(route => route === hash.replace('#', ''));
+  const isAnchor = routesAll.some((route) => route === hash.replace('#', ''));
 
   if (!isAnchor) {
     window.location = 'pages/404.html';

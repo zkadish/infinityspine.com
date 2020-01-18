@@ -1,4 +1,5 @@
 import { filterScriptTags, injectScripts } from './utils/script-tag-injection';
+import nodeFrag from './utils/html';
 
 const hash = window.location.hash.split('?')[0];
 const title = hash.replace('#', '').split('-').join(' ');
@@ -19,7 +20,7 @@ fetch(`http://wp.infinityspine.com/wp-json/wp/v2/pages/${page}`)
   .then((json) => {
     pageCopy.innerHTML = '';
     const { rendered } = json.content;
-    const frag = document.createRange().createContextualFragment(rendered);
+    const frag = nodeFrag(rendered);
 
     const onload = (scripts, message) => {
       // if there are scripts once the last one has loaded

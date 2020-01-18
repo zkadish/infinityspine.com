@@ -28,6 +28,7 @@ module.exports = {
     contact: './src/js/contact.js',
     'dr-thoma-articles': './src/js/dr-thoma-articles.js',
     'default-page': './src/js/default-page.js',
+    directions: './src/js/directions.js',
   },
   output: {
     filename: '[name].js',
