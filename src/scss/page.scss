@@ -52,17 +52,6 @@
     justify-content: center;
   }
 
-  &__copy {
-    max-width: 620px;
-    color: $BLUE_DARK;
-    font-family: "robotothin", Arial, Helvetica, sans-serif;
-    font-size: 1.2rem;
-
-    p {
-      margin: 0 0 24px;
-    }
-  }
-
   img {
     width: 300px;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -115,5 +104,17 @@
     ol {
       max-width: 600px;
     }
+  }
+}
+
+.page-copy {
+  max-width: 620px;
+  color: $BLUE_DARK;
+  font-family: $PRIMARY_FONT_FAMILY;
+  font-size: $PRIMARY_FONT_SIZE;
+  opacity: 0;
+
+  div {
+    margin: 0 0 24px;
   }
 }

@@ -1,5 +1,5 @@
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const jsonImporter = require('node-sass-json-importer');
@@ -10,7 +10,6 @@ const mode = process.env.NODE_ENV;
 
 // NOTE: to gain more control you can make separate
 // webpack configs for the js and the css
-// TODO: create entries for page specific js
 // TODO: add postcss - autoprefixer - Verify its working
 // TODO: add css minification
 // TODO: add eslint-loader: https://medium.com/@jontorrado/working-with-webpack-4-es6-postcss-with-preset-env-and-more-93b3d77db7b2
@@ -18,7 +17,7 @@ const mode = process.env.NODE_ENV;
 
 console.log('devMode:', devMode);
 console.log('mode:', mode);
-// console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
+console.log('process.env.NODE_ENV:', process.env.NODE_ENV);
 
 module.exports = {
   mode,
@@ -29,6 +28,14 @@ module.exports = {
     'dr-thoma-articles': './src/js/dr-thoma-articles.js',
     'default-page': './src/js/default-page.js',
     directions: './src/js/directions.js',
+    'nucca-chiropractic': './src/js/nucca-chiropractic.js',
+    'sports-physiotherapy': './src/js/sports-physiotherapy.js',
+    'functional-medicine': './src/js/functional-medicine.js',
+    'red-light-therapy': './src/js/red-light-therapy.js',
+    'meet-dr-thoma': './src/js/meet-dr-thoma.js',
+    'mission-vision': './src/js/mission-vision.js',
+    'new-patient-forms': './src/js/new-patient-forms.js',
+    faqs: './src/js/faqs.js',
   },
   output: {
     filename: '[name].js',

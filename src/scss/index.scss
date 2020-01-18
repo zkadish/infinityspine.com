@@ -1,6 +1,7 @@
 @import "./material-ui/theme.scss";
+@import "_variables.scss";
 
-// material UI imported from node-modules
+// material UI modules
 @import "@material/ripple/mdc-ripple";
 @import "@material/form-field/mdc-form-field";
 @import "@material/checkbox/mdc-checkbox";
@@ -8,15 +9,14 @@
 @import "@material/floating-label/mdc-floating-label";
 // @import "../../node_modules/@material/button/dist/mdc.button";
 // @import "../../node_modules/@material/fab/dist/mdc.fab.css";
-
 @import "./material-ui/layout/mdc-layout-grid.scss";
+
 @import "./global.scss";
+
 @import "./home.scss";
 @import "./contact.scss";
 @import "./directions.scss";
 @import "./default-page.scss";
-
-//pages
 @import "./page.scss";
 
 @import "./media-querries.scss";

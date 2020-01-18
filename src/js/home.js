@@ -1,10 +1,12 @@
 
-import { routes, onRouterEventHandler } from './router';
-import { handleErrors } from './utils/fetch';
-import nodeFrag from './utils/html';
+import { ROUTES } from './constants';
+import { onRouterEventHandler } from './router';
+import handleErrors from './utils/fetch';
+import documentFrag from './utils/html';
 
-const treatmentRoutes = routes.slice(0, 4);
-const treatmentBtns = document.querySelectorAll('.treatments__btn');
+const treatmentRoutes = ROUTES.slice(0, 4);
+const treatmentBtns = document.querySelectorAll('.treatment__btn button');
+const treatments = document.querySelectorAll('.treatment');
 const testimonialsBtn = document.querySelector('.testimonials__btn button');
 const blogPreviewBtns = document.querySelectorAll('.articles-preview__btn');
 const blogPreviewImages = document.querySelectorAll('.articles-preview-image img');
@@ -28,12 +30,12 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
     console.error(err);
   });
 
-// about page content
+// about - wp.infinityspine.com/welcome page content
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
-    const frag = nodeFrag(res.content.rendered);
+    const frag = documentFrag(res.content.rendered);
     const about = frag.querySelectorAll('.selling-points__copy');
     const [a, b] = about;
     aboutInfinitySpine[0].appendChild(a);
@@ -42,6 +44,30 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
   .then(() => {
     aboutInfinitySpine[0].classList.add('fade-in');
     aboutInfinitySpine[1].classList.add('fade-in');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// treatments page
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2550')
+  .then(handleErrors)
+  .then((response) => response.json())
+  .then((res) => {
+    const frag = documentFrag(res.content.rendered);
+    const copy = frag.querySelectorAll('div');
+    treatments.forEach((treatment, i) => {
+      if (treatment.children[0].children.length === 0) {
+        treatment.children[0].appendChild(copy[i]);
+      }
+    });
+  })
+  .then(() => {
+    treatments.forEach((treatment) => {
+      if (!treatment.classList.contains('fade-in')) {
+        treatment.classList.add('fade-in');
+      }
+    });
   })
   .catch((err) => {
     console.error(err);

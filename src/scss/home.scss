@@ -239,6 +239,10 @@
   }
 }
 
+.about-copy {
+  opacity: 0;
+}
+
 .sub-nav {
   &__links {
     text-decoration: none;
@@ -312,19 +316,22 @@
     font-size: 1.2rem;
   }
 
+  img {
+    width: 300px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+
   &__img {
     position: absolute;
     right: 48px;
   }
+}
 
+.treatment {
+  opacity: 0;
   &__copy {
     margin: 0 24px 0 0;
     max-width: 620px;
-  }
-
-  img {
-    width: 300px;
-    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   }
 
   &__btn {
@@ -557,6 +564,10 @@
       }
     }
   }
+}
+
+.footer-copy {
+  opacity: 0;
 }
 
 .mobile-nav {

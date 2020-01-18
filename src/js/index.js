@@ -1,5 +1,7 @@
 import { MDCRipple } from '@material/ripple';
 import { WP_MAIN_NAV, MAIN_NAV } from './constants';
+import handleErrors from './utils/fetch';
+import documentFrag from './utils/html';
 
 import './router';
 
@@ -34,10 +36,10 @@ const headerLogo = document.querySelector('.header__logo');
 const mainNav = document.querySelector('.main-nav');
 const mobileNav = document.querySelector('.mobile-nav');
 const pageContainer = document.querySelector('.container');
+const footerCopy = document.querySelector('.footer__content');
 
 // animation
 window.onload = () => {
-  console.log('Page content has loaded!');
   pageContainer.classList.add('fade-in');
   headerLogo.classList.add('fade-in');
 };
@@ -119,6 +121,22 @@ fetch('http://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
   })
   .then(() => {
     mainNav.classList.add('fade-in');
+  });
+
+// get footer copy
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2553')
+  .then(handleErrors)
+  .then((response) => response.json())
+  .then((res) => {
+    const frag = documentFrag(res.content.rendered);
+
+    footerCopy.appendChild(frag);
+  })
+  .then(() => {
+    footerCopy.classList.add('fade-in');
+  })
+  .catch((err) => {
+    console.error(err);
   });
 
 // reset the home link href url so that the path
