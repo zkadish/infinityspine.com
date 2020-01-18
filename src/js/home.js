@@ -1,5 +1,7 @@
 
 import { routes, onRouterEventHandler } from './router';
+import { handleErrors } from './utils/fetch';
+import nodeFrag from './utils/html';
 
 const treatmentRoutes = routes.slice(0, 4);
 const treatmentBtns = document.querySelectorAll('.treatments__btn');
@@ -9,24 +11,45 @@ const blogPreviewImages = document.querySelectorAll('.articles-preview-image img
 const blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
 const splashContentLeft = document.querySelector('.splash__content--left');
+const aboutInfinitySpine = document.querySelectorAll('.about-copy');
 
-// get splash page content
+// get a pages
+// splash page content
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
+  .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
-    // console.log(res.content.rendered);
-    // debugger;
     splashContentLeft.innerHTML = res.content.rendered;
   })
   .then(() => {
     splashContentLeft.classList.add('fade-in');
   })
   .catch((err) => {
-    // console.log(err);
-    // debugger;
+    console.error(err);
   });
 
+// about page content
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
+  .then(handleErrors)
+  .then((response) => response.json())
+  .then((res) => {
+    const frag = nodeFrag(res.content.rendered);
+    const about = frag.querySelectorAll('.selling-points__copy');
+    const [a, b] = about;
+    aboutInfinitySpine[0].appendChild(a);
+    aboutInfinitySpine[1].appendChild(b);
+  })
+  .then(() => {
+    aboutInfinitySpine[0].classList.add('fade-in');
+    aboutInfinitySpine[1].classList.add('fade-in');
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// get 3 posts
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
+  .then(handleErrors)
   .then((response) => response.json())
   .then((posts) => {
     const featuredMedia = posts.filter((post) => post.featured_media);
@@ -50,6 +73,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
 
     Promise.all(
       featuredMedia.map((media) => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
+        .then(handleErrors)
         .then((response) => response.json())
         .then((data) => {
           if (data.media_details) return false;
@@ -61,10 +85,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
         return img.setAttribute('src', arr[i].source_url);
       });
     }).catch((err) => {
-      console.log(err); // eslint-disable-line
-      // blogPreviewImages.forEach((img) => {
-      //   img.setAttribute('src', 'img/article-stand-in.png');
-      // });
+      console.error(err); // eslint-disable-line
     });
   });
 

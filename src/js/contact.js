@@ -1,9 +1,4 @@
-import { MDCTextField } from '@material/textfield';
-
-const firstNameMDCTextField = new MDCTextField(document.querySelector('#first-name-field')); // eslint-disable-line
-const lastNameMDCTextField = new MDCTextField(document.querySelector('#last-name-field')); // eslint-disable-line
-const emailMDCTextField = new MDCTextField(document.querySelector('#email-field')); // eslint-disable-line
-const messageMDCTextField = new MDCTextField(document.querySelector('#message-field')); // eslint-disable-line
+import { handleErrors } from './utils/fetch';
 
 // fixes issue with material textarea label getting cut off
 // by the inlined overflow value being applied by material-ui
@@ -15,13 +10,14 @@ function onMousedownHandler() {
 }
 message.onmousedown = onMousedownHandler;
 
-// form sumbmition and validation
+// form submission and validation
 const firstNameInput = document.querySelector('#name-first-input');
 const lastNameInput = document.querySelector('#name-last-input');
 const emailInput = document.querySelector('#email-input');
 const checkbox = document.querySelector('#checkbox-1');
 const textArea = document.querySelector('#textarea');
 const submit = document.querySelector('.submit-btn');
+const schedule = document.querySelector('.schedule');
 
 const formData = {
   'name-first-input': '',
@@ -108,3 +104,15 @@ submit.onclick = () => {
   submit.setAttribute('disabled', '');
   sendEmail();
 };
+
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2522')
+  .then(handleErrors)
+  .then((response) => response.json())
+  .then((res) => {
+    // console.log(res);
+    // debugger;
+    schedule.innerHTML = res.content.rendered;
+  })
+  .catch((err) => {
+    console.error(err);
+  });

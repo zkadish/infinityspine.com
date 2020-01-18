@@ -328,12 +328,12 @@
   }
 
   &__btn {
-    padding: 16px 24px;
+    // padding: 16px 24px;
     margin: 16px 0 0;
-    cursor: pointer;
+    // cursor: pointer;
     font-family: "robotoregular", Arial, Helvetica, sans-serif;
     font-size: .75rem;
-    outline: none;
+    // outline: none;
   }
 }
 
@@ -369,7 +369,6 @@
   &__btn {
     text-align: center;
     button {
-      padding: 16px 24px;
       margin: 40px 0 0;
       cursor: pointer;
       font-family: "robotoregular", Arial, Helvetica, sans-serif;
@@ -476,11 +475,11 @@
   &__btn {
     text-align: center;
     button {
-      padding: 16px 24px;
-      cursor: pointer;
+      // padding: 16px 24px;
+      // cursor: pointer;
       font-family: "robotoregular", Arial, Helvetica, sans-serif;
       font-size: .75rem;
-      outline: none;
+      // outline: none;
     }
   }
 }

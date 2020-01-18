@@ -50,14 +50,19 @@ body {
 
 // common page components
 .schedule {
-  display: flex;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-wrap: wrap;
+
+  h2 {
+    width: 100%;
+    margin: 0 0 16px;
+  }
 
   .hours {
     padding: 8px;
     min-width: 160px;
     height: 80px;
-    font-size: 1rem;
+    font-size: 1.25rem;
     background: #3658a8;
     border: 1px solid white;
     border-width: 0 1px 1px 0;
