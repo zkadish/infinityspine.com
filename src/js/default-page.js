@@ -22,6 +22,12 @@ fetch(`http://wp.infinityspine.com/wp-json/wp/v2/pages/${page}`)
     const { rendered } = json.content;
     const frag = documentFrag(rendered);
 
+    // This magic tests for <script> tags in the content...
+    // pulls them out rebuilds them and appends them back
+    // into the page... only if there is a <script> tag
+    // that has innerHTML content... those tags have to be
+    // re-injected back onto the page or they will be ignored
+    // by the browser...
     const onload = (scripts, message) => {
       // if there are scripts once the last one has loaded
       console.log(message);
@@ -35,5 +41,4 @@ fetch(`http://wp.infinityspine.com/wp-json/wp/v2/pages/${page}`)
   })
   .catch((err) => {
     console.error(err);
-    debugger;
   });

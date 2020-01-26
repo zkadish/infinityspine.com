@@ -25,7 +25,7 @@ module.exports = {
     infinity: './src/index.js',
     home: './src/js/home.js',
     contact: './src/js/contact.js',
-    'dr-thoma-articles': './src/js/dr-thoma-articles.js',
+    articles: './src/js/articles.js',
     'default-page': './src/js/default-page.js',
     directions: './src/js/directions.js',
     'nucca-chiropractic': './src/js/nucca-chiropractic.js',
@@ -54,7 +54,7 @@ module.exports = {
           // {
           //   loader: 'style-loader',
           // },
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          devMode ? { loader: 'style-loader' } : MiniCssExtractPlugin.loader,
           // devMode ? 'style-loader'
           //   : {
           //     loader: MiniCssExtractPlugin.loader,
@@ -125,6 +125,18 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.worker\.js$/,
+        use: {
+          loader: 'worker-loader',
+          options: {
+            name: 'get.worker.js',
+            // TODO: make sure this works on new.infinityspine.com
+            // before going live
+            publicPath: '../public/js/',
+          },
+        },
       },
     ],
   },

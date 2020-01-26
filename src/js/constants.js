@@ -21,7 +21,7 @@ const ROUTES = [
   '#performance-exercise',
   '#customized-nutrition',
   '#welcome',
-  '#dr-thoma-articles',
+  '#articles',
   '#new-patient-forms',
   '#faqs',
   '#more-testimonials',

@@ -2,6 +2,7 @@ import { MDCRipple } from '@material/ripple';
 import { WP_MAIN_NAV, MAIN_NAV } from './constants';
 import handleErrors from './utils/fetch';
 import documentFrag from './utils/html';
+import Worker from './get.worker';
 
 import './router';
 
@@ -26,10 +27,19 @@ import '../forms/nucca-new-patient-form.pdf';
 import '../forms/functional-medicine-form.pdf';
 import '../forms/Insurance-Intake-form.pdf';
 
+// TODO: create a localStorage function for an easier interface...
 // set up localStorage
 if (!localStorage.getItem('wpRoutes')) {
   localStorage.setItem('wpRoutes', JSON.stringify([]));
 }
+
+// init worker
+const worker = new Worker();
+worker.onmessage = (message) => {
+  if (!localStorage.getItem('wpPosts')) {
+    localStorage.setItem('posts', JSON.stringify(message.data));
+  }
+};
 
 const mobileNavMenuBtn = document.querySelector('.header__logo--mobile-nav');
 const headerLogo = document.querySelector('.header__logo');
@@ -113,6 +123,7 @@ const createMainNav = (wpBtns = []) => {
 
 // get wp menu items
 fetch('http://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
+  .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
     const { items } = res;

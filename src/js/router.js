@@ -28,6 +28,17 @@ const removePageScript = (script) => {
     pageScript.forEach((tag) => body.removeChild(tag));
   }
 };
+const addRouteScript = (route) => {
+  const routeScripts = document.querySelectorAll(`[src="js/${route}.js"]`);
+  // if route script doesn't exist create and append it
+  // to the <body /> of the document
+  if (routeScripts.length === 0) {
+    const script = document.createElement('script');
+    script.setAttribute('id', route);
+    script.setAttribute('src', `js/${route}.js`);
+    body.appendChild(script);
+  }
+};
 
 function getRouteContent(newRoute, anchor, article, pageId) {
   fetch(`${origin}${root}pages/${newRoute}.html`)
@@ -50,13 +61,11 @@ function getRouteContent(newRoute, anchor, article, pageId) {
 
       switch (newRoute) {
         case 'home' || '': {
-          const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
-          const contactScript = document.querySelectorAll('[src="js/home.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/home.js');
-            body.appendChild(script);
-          }
+          addRouteScript('home');
 
+          // take into account testimonials is a special case...
+          // add the home.js???
+          const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
           testimonialTags(REVIEWS_KEY_ONE)
             .forEach((node) => reviews.appendChild(node));
 
@@ -66,11 +75,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'contact': {
-          const contactScript = document.querySelectorAll('[src="js/contact.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/contact.js');
-            body.appendChild(script);
-          }
+          addRouteScript('contact');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#contact');
@@ -78,11 +83,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'directions': {
-          const contactScript = document.querySelectorAll('[src="js/directions.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/directions.js');
-            body.appendChild(script);
-          }
+          addRouteScript('directions');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#directions');
@@ -90,11 +91,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'nucca-chiropractic': {
-          const contactScript = document.querySelectorAll('[src="js/nucca-chiropractic.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/nucca-chiropractic.js');
-            body.appendChild(script);
-          }
+          addRouteScript('nucca-chiropractic');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#nucca-chiropractic');
@@ -102,11 +99,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'sports-physiotherapy': {
-          const contactScript = document.querySelectorAll('[src="js/sports-physiotherapy.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/sports-physiotherapy.js');
-            body.appendChild(script);
-          }
+          addRouteScript('sports-physiotherapy');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#sports-physiotherapy');
@@ -114,11 +107,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'functional-medicine': {
-          const contactScript = document.querySelectorAll('[src="js/functional-medicine.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/functional-medicine.js');
-            body.appendChild(script);
-          }
+          addRouteScript('functional-medicine');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#functional-medicine');
@@ -126,11 +115,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'red-light-therapy': {
-          const contactScript = document.querySelectorAll('[src="js/red-light-therapy.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/red-light-therapy.js');
-            body.appendChild(script);
-          }
+          addRouteScript('red-light-therapy');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#red-light-therapy');
@@ -138,11 +123,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'meet-dr-thoma': {
-          const contactScript = document.querySelectorAll('[src="js/meet-dr-thoma.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/meet-dr-thoma.js');
-            body.appendChild(script);
-          }
+          addRouteScript('meet-dr-thoma');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#meet-dr-thoma');
@@ -150,11 +131,8 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'mission-vision': {
-          const contactScript = document.querySelectorAll('[src="js/mission-vision.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/mission-vision.js');
-            body.appendChild(script);
-          }
+          addRouteScript('mission-vision');
+
 
           if (!anchor) {
             window.history.replaceState({}, '', '#mission-vision');
@@ -162,11 +140,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'new-patient-forms': {
-          const contactScript = document.querySelectorAll('[src="js/new-patient-forms.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/new-patient-forms.js');
-            body.appendChild(script);
-          }
+          addRouteScript('new-patient-forms');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#new-patient-forms');
@@ -174,29 +148,26 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           break;
         }
         case 'faqs': {
-          const contactScript = document.querySelectorAll('[src="js/faqs.js"]');
-          if (contactScript.length === 0) {
-            script.setAttribute('src', 'js/faqs.js');
-            body.appendChild(script);
-          }
+          addRouteScript('faqs');
 
           if (!anchor) {
             window.history.replaceState({}, '', '#faqs');
           }
           break;
         }
-        case 'dr-thoma-articles': {
-          const articlesScript = document.querySelectorAll('[src="js/dr-thoma-articles.js"]');
+        case 'articles': {
+          const articlesScript = document.querySelectorAll('[src="js/articles.js"]');
           if (articlesScript) {
             articlesScript.forEach((s) => {
               body.removeChild(s);
             });
           }
-          script.setAttribute('src', 'js/dr-thoma-articles.js');
+          script.setAttribute('src', 'js/articles.js');
           body.appendChild(script);
+          // addRouteScript('dr-thoma-articles');
 
           if (!anchor) {
-            window.history.replaceState({}, '', `#dr-thoma-articles?article=${article}`);
+            window.history.replaceState({}, '', `#articles?article=${article}`);
           }
           break;
         }
@@ -204,22 +175,21 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           const reviews = document.querySelector('.testimonials .mdc-layout-grid__cell');
           testimonialTags(REVIEWS_KEY_TWO)
             .forEach((node) => reviews.appendChild(node));
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#more-testimonials');
+          }
           break;
         }
-        case 'default-page': {
-          const defaultPageScript = document.querySelectorAll('[src="js/default-page.js"]');
-          if (defaultPageScript.length === 0) {
-            script.setAttribute('src', 'js/default-page.js');
-            body.appendChild(script);
-          }
+        case 'default-page': { // infinite-mind-retreat
+          addRouteScript('default-page');
 
           if (!anchor) {
             window.history.replaceState({}, '', `#infinite-mind-retreat?page=${pageId}`);
           }
           break;
         }
-        default:
-          // Do nothing
+        default: // Do nothing
           break;
       }
 
@@ -236,7 +206,7 @@ function getRouteContent(newRoute, anchor, article, pageId) {
 }
 
 // get route
-export function onRouterEventHandler(e, article) {
+export default function onRouterEventHandler(e, article) {
   if (e) e.preventDefault();
   let hash = window.location.hash.split('?')[0];
   const wpRoutes = JSON.parse(localStorage.wpRoutes).map((r) => r.slug);
@@ -294,6 +264,7 @@ window.addEventListener('load', (e) => {
   const { hash } = window.location;
   if (hash.includes('article')) {
     article = hash.slice(hash.indexOf('?article') + 9);
+    debugger;
   }
 
   // handle apache dev environment
@@ -327,7 +298,10 @@ window.addEventListener('hashchange', (e) => {
   // TODO: use articleNum() from dr-thoma-articles.js
   // get article num
   if (hash.includes('article')) {
+    article = hash.match(/\?articles=[0-9]*/);
+    debugger
     article = hash.slice(hash.indexOf('?article') + 9);
+    debugger;
   }
 
   // if hash is in routes

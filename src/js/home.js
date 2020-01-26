@@ -1,6 +1,6 @@
 
 import { ROUTES } from './constants';
-import { onRouterEventHandler } from './router';
+import onRouterEventHandler from './router';
 import handleErrors from './utils/fetch';
 import documentFrag from './utils/html';
 
@@ -15,7 +15,6 @@ const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerp
 const splashContentLeft = document.querySelector('.splash__content--left');
 const aboutInfinitySpine = document.querySelectorAll('.about-copy');
 
-// get a pages
 // splash page content
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
   .then(handleErrors)
@@ -30,7 +29,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
     console.error(err);
   });
 
-// about - wp.infinityspine.com/welcome page content
+// selling-points/about - wp.infinityspine.com/welcome page content
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
   .then(handleErrors)
   .then((response) => response.json())
@@ -73,7 +72,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2550')
     console.error(err);
   });
 
-// get 3 posts
+// get last 3 articles
 fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
   .then(handleErrors)
   .then((response) => response.json())
@@ -97,6 +96,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
       excerpt.innerHTML = html;
     });
 
+    // get images for article preview if available
     Promise.all(
       featuredMedia.map((media) => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
         .then(handleErrors)
@@ -119,6 +119,9 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
 treatmentBtns.forEach((btn, i) => {
   function treatmentBtnsClickHandler() {
     window.history.pushState(null, null, treatmentRoutes[i]);
+    // TODO: look into weather or not this is needed
+    // or maybe there should be one function that handles
+    // routes for click events window.load.event and event.urlhaschnaged...
     onRouterEventHandler();
   }
   btn.addEventListener('click', treatmentBtnsClickHandler);
@@ -126,11 +129,12 @@ treatmentBtns.forEach((btn, i) => {
 
 blogPreviewBtns.forEach((btn, i) => {
   function blogPreviewBtnsClickHandler(e) {
-    window.history.pushState(null, null, '#dr-thoma-articles');
+    window.history.pushState(null, null, '#articles');
     /**
      * onRouterEventHandler()
      * @param [{object}, number] - event object, article uri param value '?article=1'
      */
+    // Why pass the click event?
     const articleNum = i + 1;
     onRouterEventHandler(e, articleNum);
   }
@@ -144,8 +148,11 @@ function testimonialsBtnClickHandler() {
 }
 testimonialsBtn.addEventListener('click', testimonialsBtnClickHandler);
 
+/**
+ * matchMedia - this function allows for execution of JavaScript
+ * on a screen size bases...
+ */
 const splash01 = document.querySelector('#splash-01');
-
 function matchMedia() {
   if (window.matchMedia('(min-width: 1920px)').matches) {
     // console.log('home.js - desk1920');
@@ -197,6 +204,7 @@ function matchMedia() {
 }
 matchMedia();
 
+// allows for updates as browser is being resized
 window.onresize = () => {
   matchMedia();
 };
