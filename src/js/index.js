@@ -2,6 +2,7 @@ import { MDCRipple } from '@material/ripple';
 import { WP_MAIN_NAV, MAIN_NAV } from './constants';
 import handleErrors from './utils/fetch';
 import documentFrag from './utils/html';
+import storageAvailable from './utils/localStorage';
 import Worker from './get.worker';
 
 import './router';
@@ -33,13 +34,23 @@ if (!localStorage.getItem('wpRoutes')) {
   localStorage.setItem('wpRoutes', JSON.stringify([]));
 }
 
-// init worker
-const worker = new Worker();
-worker.onmessage = (message) => {
-  if (!localStorage.getItem('wpPosts')) {
-    localStorage.setItem('posts', JSON.stringify(message.data));
-  }
-};
+/**
+ * initialize a webworker to fetch all posts and put
+ * them in to localStorage.
+ */
+const wpWorker = new Worker();
+// clear posts localStorage every time the site loads
+if (!storageAvailable('localStorage')) {
+  console.log('localStorage not available fall back to the window object.');
+} else {
+  wpWorker.onmessage = (message) => {
+    const { data } = message;
+    if (data.posts) {
+      localStorage.setItem('posts', JSON.stringify(data.posts));
+    }
+  };
+}
+
 
 const mobileNavMenuBtn = document.querySelector('.header__logo--mobile-nav');
 const headerLogo = document.querySelector('.header__logo');

@@ -1,4 +1,10 @@
-### Bugs and Issues
-- When navigating away from the "infinite mind retreat" page and back sometimes the default page is the only content that loads.
+# Issues and Bugs
 
-- When refreshing the "infinite mind retreat" page the PayPal button shows multiple times.
+- Issue: Add shadow box loading elements.
+
+- Issue: refactor the articles page.
+
+- Issue: add html forms.
+
+- Issue: add localStorage to maintain state of user.
+
