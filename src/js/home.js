@@ -3,12 +3,13 @@ import { ROUTES } from './constants';
 import onRouterEventHandler from './router';
 import handleErrors from './utils/fetch';
 import documentFrag from './utils/html';
+import storageAvailable from './utils/localStorage';
 
 const treatmentRoutes = ROUTES.slice(0, 4);
 const treatmentBtns = document.querySelectorAll('.treatment__btn button');
 const treatments = document.querySelectorAll('.treatment');
 const testimonialsBtn = document.querySelector('.testimonials__btn button');
-const blogPreviewBtns = document.querySelectorAll('.articles-preview__btn');
+const articlePreviewBtns = document.querySelectorAll('.articles-preview__btn');
 const blogPreviewImages = document.querySelectorAll('.articles-preview-image img');
 const blogPreviewTitles = document.querySelectorAll('.articles-preview__post h2');
 const blogPreviewExcerpts = document.querySelectorAll('.articles-preview__excerpt');
@@ -127,18 +128,24 @@ treatmentBtns.forEach((btn, i) => {
   btn.addEventListener('click', treatmentBtnsClickHandler);
 });
 
-blogPreviewBtns.forEach((btn, i) => {
-  function blogPreviewBtnsClickHandler(e) {
-    window.history.pushState(null, null, '#articles');
+articlePreviewBtns.forEach((btn, i) => {
+  function onArticlePreviewBtnHandler(e) {
+    let articleNum = null;
+    if (!storageAvailable('localStorage')) {
+      // TODO: get from window
+    } else {
+      articleNum = JSON.parse(localStorage.posts).length - i;
+    }
+    window.history.pushState(null, null, `#articles?article=${articleNum}`);
     /**
      * onRouterEventHandler()
      * @param [{object}, number] - event object, article uri param value '?article=1'
      */
     // Why pass the click event?
-    const articleNum = i + 1;
+    // const articleNum = i + 1;
     onRouterEventHandler(e, articleNum);
   }
-  btn.addEventListener('click', blogPreviewBtnsClickHandler);
+  btn.addEventListener('click', onArticlePreviewBtnHandler);
 });
 
 // testimonials more button

@@ -1,5 +1,6 @@
 import { ROUTES, REVIEWS_KEY_ONE, REVIEWS_KEY_TWO } from './constants';
 import documentFrag, { testimonialTags } from './utils/html';
+import storageAvailable from './utils/localStorage';
 
 const { origin, pathname } = window.location;
 const body = document.querySelector('body');
@@ -20,7 +21,12 @@ if (pathname === '/new/') {
 }
 
 // get the current page on load
-// TODO: account for params?
+// TODO: account for params? Yes! Handle all types of
+// route calls with the router.
+// TODO: Load HTML and JavaScript for the page every time
+// and inject the page js at the bottom of the HTML being
+// loaded. So that it gets removed all with the HTML when
+// a new route is being loaded.
 let currentPage = window.location.hash.replace('#', '');
 const removePageScript = (script) => {
   const pageScript = document.querySelectorAll(`[src="js/${script}.js"]`);
@@ -263,8 +269,9 @@ window.addEventListener('load', (e) => {
   let article = null;
   const { hash } = window.location;
   if (hash.includes('article')) {
+    // TODO: replace with paramValue() in utils/router
     article = hash.slice(hash.indexOf('?article') + 9);
-    debugger;
+    // debugger;
   }
 
   // handle apache dev environment
@@ -292,16 +299,26 @@ window.addEventListener('hashchange', (e) => {
     return;
   }
 
+  let articlesLength = null;
+  if (!storageAvailable('localStorage')) {
+    // TODO: get from window
+  } else {
+    articlesLength = JSON.parse(localStorage.posts).length;
+  }
+
   let article = null;
   const { hash } = window.location;
-
+  // debugger
   // TODO: use articleNum() from dr-thoma-articles.js
   // get article num
   if (hash.includes('article')) {
     article = hash.match(/\?articles=[0-9]*/);
-    debugger
+    // debugger
     article = hash.slice(hash.indexOf('?article') + 9);
-    debugger;
+    if (article === 's') {
+      article = articlesLength;
+    }
+    // debugger;
   }
 
   // if hash is in routes

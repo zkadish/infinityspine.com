@@ -134,7 +134,8 @@ module.exports = {
             name: 'get.worker.js',
             // TODO: make sure this works on new.infinityspine.com
             // before going live
-            publicPath: '../public/js/',
+            publicPath: '../public/js/', // development
+            // publicPath: '../js/', // production
           },
         },
       },
