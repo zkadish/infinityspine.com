@@ -153,6 +153,14 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           }
           break;
         }
+        case 'patient-forms': {
+          addRouteScript('patient-forms');
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#patient-forms');
+          }
+          break;
+        }
         case 'faqs': {
           addRouteScript('faqs');
 
