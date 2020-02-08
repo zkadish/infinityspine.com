@@ -35,6 +35,7 @@ module.exports = {
     'meet-dr-thoma': './src/js/meet-dr-thoma.js',
     'mission-vision': './src/js/mission-vision.js',
     'new-patient-forms': './src/js/new-patient-forms.js',
+    'patient-forms': './src/js/patient-forms.js',
     faqs: './src/js/faqs.js',
   },
   output: {

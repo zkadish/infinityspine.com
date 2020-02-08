@@ -1,12 +1,12 @@
 import handleErrors from './utils/fetch';
 import documentFrag from './utils/html';
 
+console.log('patient forms loaded');
+
 const pageCopy = document.querySelector('.page-copy');
 
-console.log('meet dr thoma loaded');
-
-// Meet Dr Thoma
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2569')
+// New Patient Forms
+fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2575')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

@@ -23,6 +23,7 @@ const ROUTES = [
   '#welcome',
   '#articles',
   '#new-patient-forms',
+  '#patient-forms',
   '#faqs',
   '#more-testimonials',
   '#contact',

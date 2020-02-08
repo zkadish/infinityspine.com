@@ -1,4 +1,4 @@
-import { handleErrors } from './utils/fetch';
+import handleErrors from './utils/fetch';
 import documentFrag from './utils/html';
 
 const pageCopy = document.querySelector('.page-copy');
