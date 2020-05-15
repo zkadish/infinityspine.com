@@ -6,6 +6,8 @@
 @import "@material/form-field/mdc-form-field";
 @import "@material/checkbox/mdc-checkbox";
 @import "@material/textfield/mdc-text-field";
+@import "@material/textfield/helper-text/mdc-text-field-helper-text";
+
 @import "@material/floating-label/mdc-floating-label";
 // @import "../../node_modules/@material/button/dist/mdc.button";
 // @import "../../node_modules/@material/fab/dist/mdc.fab.css";
@@ -16,10 +18,11 @@
 @import "./home.scss";
 @import "./contact.scss";
 @import "./directions.scss";
+@import "./nucca-patient-form.scss";
 @import "./default-page.scss";
 @import "./page.scss";
 
-@import "./media-querries.scss";
+@import "./media-queries.scss";
 
 // utils should always come last
 @import "./utils";

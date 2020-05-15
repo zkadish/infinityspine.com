@@ -161,6 +161,14 @@ function getRouteContent(newRoute, anchor, article, pageId) {
           }
           break;
         }
+        case 'nucca-patient-form': {
+          addRouteScript('nucca-patient-form');
+
+          if (!anchor) {
+            window.history.replaceState({}, '', '#nucca-patient-form');
+          }
+          break;
+        }
         case 'faqs': {
           addRouteScript('faqs');
 

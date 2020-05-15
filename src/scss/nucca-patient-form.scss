@@ -1,0 +1,43 @@
+// .form {
+//   padding-top: 48px;
+//   padding-bottom: 48px;
+// }
+.page {
+  max-width: 1000px;
+  // border: 1px solid green;
+}
+
+.form {
+  // display: flex;
+  // justify-content: center;
+  max-width: 1000px;
+  min-width: 800px;
+  margin: 0 auto;
+  border: 1px solid red;
+
+  // &__container {
+  //   // border: 1px solid green;
+  // }
+
+  &__text-field {
+    // border: 1px solid red;
+    .mdc-text-field {
+      @include mdc-text-field-helper-text-color($mdc-theme-primary)
+    }
+  }
+}
+
+.test {
+  border: 1px solid red;
+  // color: white;
+  width: 100px;
+  height: 100px;
+}
+
+// .mdc-text-field:not(.mdc-text-field--disabled)+.mdc-text-field-helper-line .mdc-text-field-helper-text {
+//   color: rgba(255,255,255,0.6);
+// }
+
+// .mdc-text-field:not(.mdc-text-field--disabled)+.mdc-text-field-helper-line .mdc-text-field-helper-text {
+//   color: rgba(0,0,0,1);
+// }
