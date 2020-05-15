@@ -33,15 +33,25 @@
               will be some of the most important
               choices you make in life!
             </div>
-            <button
-              class="new-patient mdc-button mdc-button--raised"
-              aria-label="new patient"
-              type="submit"
-              onclick="window.open('forms/infinity-spine-new-patient-form.pdf')"
-            >
-              <!-- <i class="fab fa-pagelines"></i>&nbsp -->
-              <span class="mdc-fab__label">New Patient Form</span>
-            </button>
+            <div class="buttons-container">
+              <!-- <button
+                class="new-patient mdc-button mdc-button--raised"
+                aria-label="new patient"
+                type="submit"
+                onclick="window.open('forms/infinity-spine-new-patient-form.pdf')"
+              >
+                <span class="mdc-fab__label">New Patient Form</span>
+              </button> -->
+              <button
+                class="new-patient mdc-button mdc-button--raised"
+                aria-label="new patient"
+                type="submit"
+                onclick="window.open('https://scheduler.chirofusionlive.com/infinityspinecenter')"
+              >
+                <!-- <i class="fab fa-pagelines"></i>&nbsp -->
+                <span class="mdc-fab__label">Schedule Appointment</span>
+              </button>
+          </div>
             <!-- <div class="splash__content--social">
               <button class="social mdc-fab">
                 <i class="fab fa-facebook-square"></i>
@@ -145,23 +155,33 @@
       <a class="sub-nav__links" href="#new-patient-forms">
         New Patient Forms
       </a><br />
-      <a class="sub-nav__links" href="#faqs">
-        Frequently Asked Questions
+      <a class="sub-nav__links" onclick="window.open('https://scheduler.chirofusionlive.com/infinityspinecenter')">
+        Schedule Appointment
       </a><br />
-      Treatment Types
+      <a class="sub-nav__links" onclick="document.location='#treatments'">
+        Treatment Types
+      </a>
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
       <h2>Learn More</h2>
       <a class="sub-nav__links" href="#more-testimonials">
         Testimonials
       </a><br />
-      Dr. Thoma’s Articles
+      <a class="sub-nav__links" href="#faqs">
+        Frequently Asked Questions
+      </a><br />
+      <a class="sub-nav__links" onclick="document.location='#articles'">
+        Dr. Thoma’s Articles
+      </a>
     </div>
     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-3 mdc-layout-grid__cell--span-4-pho480 mdc-layout-grid__cell--span-4-phone">
       <h2>Location</h2>
-      8080 E Gelding Dr, Suite 102<br />
-      Scottsdale, AZ 85260<br />
-      <a class="sub-nav__links" href="#directions">Directions</a>
+      <a class="sub-nav__links" href="#directions">
+      <i class="fas fa-map-marker-alt"></i>
+        8080 E Gelding Dr, Suite 102<br />
+        Scottsdale, AZ 85260
+      </a>
+      <!-- <a class="sub-nav__links" href="#directions">Directions</a> -->
     </div>
   </div>
 </div>

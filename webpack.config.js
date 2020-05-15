@@ -36,6 +36,7 @@ module.exports = {
     'mission-vision': './src/js/mission-vision.js',
     'new-patient-forms': './src/js/new-patient-forms.js',
     'patient-forms': './src/js/patient-forms.js',
+    'nucca-patient-form': './src/js/nucca-patient-form.js',
     faqs: './src/js/faqs.js',
   },
   output: {
@@ -164,4 +165,5 @@ module.exports = {
     contentBase: path.join(__dirname, 'public'),
     // quiet: true,
   },
+  // watch: true,
 };
