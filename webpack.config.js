@@ -38,6 +38,7 @@ module.exports = {
     'patient-forms': './src/js/patient-forms.js',
     'nucca-patient-form': './src/js/nucca-patient-form.js',
     faqs: './src/js/faqs.js',
+    // 'get.worker': './src/js/get.worker.js',
   },
   output: {
     filename: '[name].js',
@@ -136,7 +137,7 @@ module.exports = {
             name: 'get.worker.js',
             // TODO: make sure this works on new.infinityspine.com
             // before going live
-            publicPath: '../public/js/', // development
+            publicPath: '../js/', // development
             // publicPath: '../js/', // production
           },
         },

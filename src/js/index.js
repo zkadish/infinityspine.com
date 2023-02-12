@@ -10,11 +10,13 @@ import './router';
 // import images
 import '../img/logo.png';
 import '../img/logo-only.png';
+import '../img/logo-only-small.png';
 import '../img/splash-01.png';
 import '../img/splash-01-pho480.png';
 import '../img/runners.png';
 import '../img/gentle.png';
 import '../img/adjustment.png';
+import '../img/article-stand-in.png';
 import '../img/sports.png';
 import '../img/functional.png';
 import '../img/red-light.png';

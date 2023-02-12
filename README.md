@@ -36,3 +36,7 @@ var review_target = 'review-container';
 - focus on primary and secondary persona
 - new patients, scheduling, treatments, articles 
 - move about to the footer
+
+# Running the project
+
+- NodeJs@13*

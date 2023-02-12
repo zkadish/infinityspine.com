@@ -1,5 +1,5 @@
 assets
 dist
 node_modules
-
-DEVNOTES.md
+public/
+_public/
