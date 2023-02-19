@@ -4,7 +4,7 @@ import documentFrag from './utils/html';
 const pageCopy = document.querySelector('.page-copy');
 
 // NUCCA chiropractic
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2556')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2556')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

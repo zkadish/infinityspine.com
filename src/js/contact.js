@@ -105,7 +105,7 @@ submit.onclick = () => {
   sendEmail();
 };
 
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2522')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2522')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

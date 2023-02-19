@@ -6,7 +6,7 @@ const pageCopy = document.querySelector('.page-copy');
 console.log('functional medicine loaded');
 
 // Functional Medicine
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2562')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2562')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

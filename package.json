@@ -6,7 +6,7 @@
   "scripts": {
     "production": "NODE_ENV=production webpack",
     "postproduction": "mv public/js/infinity.css public/css; cp src/pages/* public/pages",
-    "prebuild": "mkdir -p public/pages",
+    "prebuild": "mkdir -p public/pages; mkdir -p public/css",
     "build": "NODE_ENV=development webpack",
     "postbuild": "cp src/pages/* public/pages",
     "prestart": "NODE_ENV=development webpack",

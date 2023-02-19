@@ -367,8 +367,10 @@
 
     .mdc-layout-grid__cell {
       height: inherit;
+      margin: auto;
       &:nth-child(2n+2) {
         margin: 0 0 48px;
+        width: 360px;
       }
       &:nth-child(8) {
         margin: 0;
@@ -646,8 +648,10 @@
 
     .mdc-layout-grid__cell {
       height: inherit;
+      margin: auto;
       &:nth-child(2n+2) {
         margin: 0 0 48px;
+        width: 280px;
       }
       &:nth-child(8) {
         margin: 0;

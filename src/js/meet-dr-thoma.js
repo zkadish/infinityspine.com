@@ -6,7 +6,7 @@ const pageCopy = document.querySelector('.page-copy');
 console.log('meet dr thoma loaded');
 
 // Meet Dr Thoma
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2569')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2569')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

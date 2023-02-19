@@ -4,7 +4,7 @@ import documentFrag from './utils/html';
 const pageCopy = document.querySelector('.page-copy');
 
 // Mission Vision
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2572')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2572')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

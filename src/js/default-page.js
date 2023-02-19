@@ -10,7 +10,7 @@ h2.innerHTML = title;
 const pageCopy = document.querySelector('.default-page .page__copy');
 pageCopy.innerHTML = '';
 
-fetch(`http://wp.infinityspine.com/wp-json/wp/v2/pages/${page}`)
+fetch(`https://wp.infinityspine.com/wp-json/wp/v2/pages/${page}`)
   .then((response) => {
     if (!response.ok) {
       throw new Error('Response failed!');

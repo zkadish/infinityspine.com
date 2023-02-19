@@ -1,26 +1,5 @@
 # ssh:
-- $ssh ssh -v -oHostKeyAlgorithms=+ssh-rsa ver442czvd64@infinityspine.com
-- password: m,X@UZy.705#g
-
-# Copy files to godaddy installation:
-`````
-#!/bin/bash
-
-STARTED="copy files to www.infinityspine.com/public_html/new"
-echo $STARTED 
-scp -r ~/Sites/infinity-spine/public/* ver442czvd64@infinityspine.com:public_html/new
-# scp -r ~/Sites/infinity-spine/public/js/* ver442czvd64@infinityspine.com:public_html/new/js
-`````
-
-# Copy files to zachkadish.com:
-`````
-#!/bin/bash
-
-STARTED="copy files to www.zachkadish.com/public_html/infinity-spine/public"
-echo $STARTED 
-# scp -r public/* zkadish@zachkadish.com:/home/zkadish/public_html/infinity-spine/public
-scp -r public/* zkadish@zachkadish.com:public_html/infinity-spine/public
-`````
+- $ssh -v -oHostKeyAlgorithms=+ssh-rsa ver442czvd64@infinityspine.com
 
 ## Resources
 

@@ -17,7 +17,7 @@ const splashContentLeft = document.querySelector('.splash__content--left');
 const aboutInfinitySpine = document.querySelectorAll('.about-copy');
 
 // splash page content
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
@@ -31,7 +31,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2509')
   });
 
 // selling-points/about - wp.infinityspine.com/welcome page content
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
@@ -50,7 +50,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2543')
   });
 
 // treatments page
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2550')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2550')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
@@ -74,7 +74,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2550')
   });
 
 // get last 3 articles
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
   .then(handleErrors)
   .then((response) => response.json())
   .then((posts) => {
@@ -99,7 +99,7 @@ fetch('http://wp.infinityspine.com/wp-json/wp/v2/posts?per_page=3')
 
     // get images for article preview if available
     Promise.all(
-      featuredMedia.map((media) => fetch(`http://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
+      featuredMedia.map((media) => fetch(`https://wp.infinityspine.com/wp-json/wp/v2/media/${media}`)
         .then(handleErrors)
         .then((response) => response.json())
         .then((data) => {

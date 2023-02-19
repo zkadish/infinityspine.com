@@ -135,20 +135,20 @@ const createMainNav = (wpBtns = []) => {
 };
 
 // get wp menu items
-fetch('http://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
+fetch('https://wp.infinityspine.com/wp-json/wp-api-menus/v2/menus/3')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
-    const { items } = res;
-    const wpMainNav = items.find((item) => item.object_slug === WP_MAIN_NAV[0]);
-    createMainNav([wpMainNav]);
+    // const { items } = res;
+    // const wpMainNav = items.find((item) => item.object_slug === WP_MAIN_NAV[0]);
+    createMainNav([]);
   })
   .then(() => {
     mainNav.classList.add('fade-in');
   });
 
 // get footer copy
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2553')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2553')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

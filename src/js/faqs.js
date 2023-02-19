@@ -4,7 +4,7 @@ import documentFrag from './utils/html';
 const pageCopy = document.querySelector('.page-copy');
 
 // Frequently Asked Questions
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2578')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2578')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {

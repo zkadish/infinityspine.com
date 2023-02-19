@@ -6,7 +6,7 @@ console.log('patient forms loaded');
 const pageCopy = document.querySelector('.page-copy');
 
 // New Patient Forms
-fetch('http://wp.infinityspine.com/wp-json/wp/v2/pages/2575')
+fetch('https://wp.infinityspine.com/wp-json/wp/v2/pages/2575')
   .then(handleErrors)
   .then((response) => response.json())
   .then((res) => {
